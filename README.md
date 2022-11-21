@@ -10,10 +10,10 @@ Site Name is inspired by [______](insert link here). Give site brief description
 
 <h2>Wiki Links:</h2>
 
-[User Stories]()
+[User Stories](https://github.com/davidchou0112/Capstone/wiki/User-Stories)
 
-[Feature List]()
+[Feature List](https://github.com/davidchou0112/Capstone/wiki/MVP-Feature-List)
 
-[Database Schema]()
+[Database Schema](https://github.com/davidchou0112/Capstone/wiki/DB-Schema)
 
-[API Documentation]()
+[API Documentation](https://github.com/davidchou0112/Capstone/wiki/API-Documentation)
