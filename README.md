@@ -10,7 +10,7 @@ Site Name is inspired by [______](insert link here). Give site brief description
 
 <h2>Wiki Links:</h2>
 
--[User Stories]()
--[Feature List]()
--[Database Schema]()
--[API Documentation]()
+-- [User Stories]()
+-- [Feature List]()
+-- [Database Schema]()
+-- [API Documentation]()
