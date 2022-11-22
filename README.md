@@ -2,7 +2,7 @@ Site Name is inspired by [______](insert link here). Give site brief description
 <br>
 <br>
 
-**Live Site: [Site Name](insert link here)
+Live Site: [Site Name](insert link here)
 <br>
 <br>
 
