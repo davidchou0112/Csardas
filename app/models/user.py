@@ -10,11 +10,11 @@ class User(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20), nullable=False, unique=True)
-    firstname = db.Column(db.String(20), nullable=False)
-    lastname = db.Column(db.String(20), nullable=False)
-    email = db.Column(db.String(40), nullable=False, unique=True)
-    hashed_password = db.Column(db.String(200), nullable=False)
+    username = db.Column(db.String(200), nullable=False, unique=True)
+    firstname = db.Column(db.String(200), nullable=False)
+    lastname = db.Column(db.String(200), nullable=False)
+    email = db.Column(db.String(400), nullable=False, unique=True)
+    hashed_password = db.Column(db.String(2000), nullable=False)
 
     image = db.relationship("Image", back_populates="user")
     tags = db.relationship('Tag', back_populates='user')
@@ -41,30 +41,6 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
         }
-    
-# class Images(db.Model, UserMixin):
-#     __tablename__ = 'images'
-    
-#     if environment == 'production':
-#         __table_args__ = {'schema': SCHEMA}
-        
-#     id = db.Column(db.Integer, primary_key=True)
-#     title = db.Column(db.String(40), nullable=False)
-#     description = db.Column(db.String(255), nullable=False)
-#     image_url = db.Column(db.String(40), nullable=False)
-#     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
-    
-#     user = db.relationship("User", back_populates="images")
-
-    
-#     def to_dict(self):
-#         return {
-#             'id': self.id,
-#             'title': self.title,
-#             'description': self.description,
-#             'image_url': self.image_url,
-#             'user_id': self.user_id
-#         }
 
 class Image(db.Model, UserMixin):
     __tablename__ = 'images'
@@ -73,8 +49,8 @@ class Image(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(20), nullable=False)
-    description = db.Column(db.String(500), nullable=False)
+    title = db.Column(db.String(200), nullable=False)
+    description = db.Column(db.String(5000), nullable=False)
     image_url = db.Column(db.String, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
 
@@ -83,7 +59,6 @@ class Image(db.Model, UserMixin):
     comments = db.relationship("Comment", back_populates='image', cascade='all, delete')
     likes = db.relationship("Like", back_populates='image', cascade='all, delete')
     
-
     def to_dict(self):
         return {
             "id" : self.id,
@@ -101,7 +76,7 @@ class Tag(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
         
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(10), nullable =False)
+    name = db.Column(db.String(100), nullable =False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     image_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("images.id")), nullable=False)
     
@@ -123,13 +98,12 @@ class Comment(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
         
     id = db.Column(db.Integer, primary_key=True)
-    body = db.Column(db.String(500), nullable =False)
+    body = db.Column(db.String(5000), nullable =False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     image_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("images.id")), nullable=False)
     
     image = db.relationship("Image", back_populates='comments')
     user = db.relationship("User", back_populates='comments')
-    
     
     def to_dict(self):
         return {
@@ -151,7 +125,6 @@ class Like(db.Model, UserMixin):
     
     image = db.relationship("Image", back_populates='likes')
     user = db.relationship("User", back_populates='likes')
-    
     
     def to_dict(self):
         return {
