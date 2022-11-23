@@ -85,7 +85,7 @@ class Image(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(20), nullable=False)
-    description = db.Column(db.String(500))
+    description = db.Column(db.String(500), nullable=False)
     image_url = db.Column(db.String, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
@@ -100,7 +100,7 @@ class Image(db.Model, UserMixin):
             "description" : self.description,
             "image_url" : self.image_url,
             "user_id" : self.user_id,
-            'likes': [like.to_dict() for like in self.likes],
+            # 'likes': [like.to_dict() for like in self.likes],
     }
 
 class Tag(db.Model, UserMixin):
@@ -110,11 +110,11 @@ class Tag(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
         
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(10))
+    name = db.Column(db.String(10), nullable =False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     image_id = db.Column(db.Integer, db.ForeignKey('images.id'), nullable=False)
     
-    image = db.relationship('Image', back_populates='tags')
+    image = db.relationship("Image", back_populates='tags')
     
     def to_dict(self):
         return {
