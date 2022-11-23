@@ -1,45 +1,45 @@
 from app.models import db, Image, environment, SCHEMA
 
 def seed_images():
-    image1 = Image(
-        id= , title = '', description = '', image_url = '', user_id = ''
+    v = Image(
+        title = 'V', description = 'V, an alias for Valerie, is a mercenary involved in a series of singular events during the year 2077, which toppled the balance of power in Night City.', image_url = '', user_id = '1'
     )
-    image2 = Image(
-        id= , title = '', description = '', image_url = '', user_id = ''
+    vik = Image(
+        title = 'Viktor Vektor', description = 'Viktor Vektor, or Vik for short, is a ripperdoc in Cyberpunk 2077. His clinic is located behind Mistys store in Little China, Watson. Talented, patient, and professional, Viktor has extended Vs credit on a number of occasions, but never complains.', image_url = '', user_id = '1'
     )
-    image3 = Image(
-        id= , title = '', description = '', image_url = '', user_id = ''
+    corpoRat = Image(
+        title = 'The Corpo-Rat', description = '', image_url = '', user_id = '1'
     )
-    image4 = Image(
-        id= , title = '', description = '', image_url = '', user_id = ''
+    nomad = Image(
+        title = 'The Nomad', description = '', image_url = '', user_id = '1'
     )
-    image5 = Image(
-        id= , title = '', description = '', image_url = '', user_id = ''
+    streetKid = Image(
+        title = 'The Streetkid', description = '', image_url = '', user_id = '1'
     )
     image6 = Image(
-        id= , title = '', description = '', image_url = '', user_id = ''
+        title = '', description = '', image_url = '', user_id = '2'
     )
     image7 = Image(
-        id= , title = '', description = '', image_url = '', user_id = ''
+        title = '', description = '', image_url = '', user_id = '2'
     )
     image8 = Image(
-        id= , title = '', description = '', image_url = '', user_id = ''
+        title = '', description = '', image_url = '', user_id = '2'
     )
     image9 = Image(
-        id= , title = '', description = '', image_url = '', user_id = ''
+        title = '', description = '', image_url = '', user_id = '3'
     )
     image10 = Image(
-        id= , title = '', description = '', image_url = '', user_id = ''
+        title = '', description = '', image_url = '', user_id = '3'
     )
     image11 = Image(
-        id= , title = '', description = '', image_url = '', user_id = ''
+        title = '', description = '', image_url = '', user_id = '3'
     )
     
-    db.session.add(image1)
-    db.session.add(image2)
-    db.session.add(image3)
-    db.session.add(image4)
-    db.session.add(image5)
+    db.session.add(v)
+    db.session.add(vik)
+    db.session.add(corpoRat)
+    db.session.add(nomad)
+    db.session.add(streetKid)
     db.session.add(image6)
     db.session.add(image7)
     db.session.add(image8)
