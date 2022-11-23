@@ -16,7 +16,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(40), nullable=False, unique=True)
     hashed_password = db.Column(db.String(20), nullable=False)
 
-    images = db.relationship("Images", back_populates="user")
+    images = db.relationship("Image", back_populates="user")
     # stocks = db.relationship("Transaction", back_populates="user")
 
     @property
@@ -37,8 +37,8 @@ class User(db.Model, UserMixin):
             'lastname': self.lastname,
             'username': self.username,
             'email': self.email,
-            'images': self.list_to_dict(),
-            'stocks':self.list_to_dict_stocks()
+            # 'images': self.list_to_dict(),
+            # 'stocks':self.list_to_dict_stocks()
         }
 
     # def list_to_dict(self):
