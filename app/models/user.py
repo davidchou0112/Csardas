@@ -112,7 +112,7 @@ class Tag(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(10), nullable =False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    image_id = db.Column(db.Integer, db.ForeignKey('images.id'), nullable=False)
+    image_id = db.Column(db.Integer, db.ForeignKey('my_schema.images.id'), nullable=False)
     
     image = db.relationship("Image", back_populates='tags')
     
