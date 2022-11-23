@@ -40,6 +40,7 @@ class User(db.Model, UserMixin):
             'lastname': self.lastname,
             'username': self.username,
             'email': self.email,
+            'hashed_password': self.hashed_password,
         }
 
 class Image(db.Model, UserMixin):
