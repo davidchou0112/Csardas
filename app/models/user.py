@@ -10,13 +10,13 @@ class User(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(20), nullable=False, unique=True)
     firstname = db.Column(db.String(20), nullable=False)
     lastname = db.Column(db.String(20), nullable=False)
-    username = db.Column(db.String(20), nullable=False, unique=True)
     email = db.Column(db.String(40), nullable=False, unique=True)
     hashed_password = db.Column(db.String(20), nullable=False)
 
-    # images = db.relationship("Image", back_populates="user")
+    images = db.relationship("Image", back_populates="user")
 
     @property
     def password(self):
@@ -62,91 +62,91 @@ class User(db.Model, UserMixin):
 #             'user_id': self.user_id
 #         }
 
-# class Image(db.Model, UserMixin):
-#     __tablename__ = 'images'
+class Image(db.Model, UserMixin):
+    __tablename__ = 'images'
   
-#     if environment == 'production':
-#         __table_args__ = {'schema': SCHEMA}
+    if environment == 'production':
+        __table_args__ = {'schema': SCHEMA}
 
-#     id = db.Column(db.Integer, primary_key=True)
-#     title = db.Column(db.String(20), nullable=False)
-#     description = db.Column(db.String(500), nullable=False)
-#     image_url = db.Column(db.String, nullable=False)
-#     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(20), nullable=False)
+    description = db.Column(db.String(500), nullable=False)
+    image_url = db.Column(db.String, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
 
-#     user = db.relationship("User", back_populates="images")
-#     tags = db.relationship("Tag", back_populates='image', cascade='all, delete')
-#     comments = db.relationship("Comment", back_populates='image', cascade='all, delete')
-#     likes = db.relationship("Like", back_populates='image', cascade='all, delete')
+    user = db.relationship("User", back_populates="images")
+    tags = db.relationship("Tag", back_populates='image', cascade='all, delete')
+    comments = db.relationship("Comment", back_populates='image', cascade='all, delete')
+    likes = db.relationship("Like", back_populates='image', cascade='all, delete')
     
 
-#     def to_dict(self):
-#         return {
-#             "id" : self.id,
-#             "title" : self.title,
-#             "description" : self.description,
-#             "image_url" : self.image_url,
-#             "user_id" : self.user_id,
-#             'likes': [like.to_dict() for like in self.likes],
-#     }
+    def to_dict(self):
+        return {
+            "id" : self.id,
+            "title" : self.title,
+            "description" : self.description,
+            "image_url" : self.image_url,
+            "user_id" : self.user_id,
+            'likes': [like.to_dict() for like in self.likes],
+    }
 
-# class Tag(db.Model, UserMixin):
-#     __tablename__ = 'tags'
+class Tag(db.Model, UserMixin):
+    __tablename__ = 'tags'
     
-#     if environment == 'production':
-#         __table_args__ = {'schema': SCHEMA}
+    if environment == 'production':
+        __table_args__ = {'schema': SCHEMA}
         
-#     id = db.Column(db.Integer, primary_key=True)
-#     name = db.Column(db.String(10), nullable =False)
-#     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
-#     image_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("images.id")), nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(10), nullable =False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
+    image_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("images.id")), nullable=False)
     
-#     image = db.relationship("Image", back_populates='tags')
+    image = db.relationship("Image", back_populates='tags')
     
-#     def to_dict(self):
-#         return {
-#             'id': self.id,
-#             'name': self.name,
-#             'user_id': self.user_id,
-#             'image_id': self.image_id
-#         }
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'user_id': self.user_id,
+            'image_id': self.image_id
+        }
         
-# class Comment(db.Model, UserMixin):
-#     __tablename__ = 'comments'
+class Comment(db.Model, UserMixin):
+    __tablename__ = 'comments'
     
-#     if environment == 'production':
-#         __table_args__ = {'schema': SCHEMA}
+    if environment == 'production':
+        __table_args__ = {'schema': SCHEMA}
         
-#     id = db.Column(db.Integer, primary_key=True)
-#     body = db.Column(db.String(500), nullable =False)
-#     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
-#     image_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("images.id")), nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.String(500), nullable =False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
+    image_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("images.id")), nullable=False)
     
-#     image = db.relationship("Image", back_populates='comments')
+    image = db.relationship("Image", back_populates='comments')
     
-#     def to_dict(self):
-#         return {
-#             'id': self.id,
-#             'body': self.body,
-#             'user_id': self.user_id,
-#             'image_id': self.image_id
-#         }
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'body': self.body,
+            'user_id': self.user_id,
+            'image_id': self.image_id
+        }
         
-# class Like(db.Model, UserMixin):
-#     __tablename__ = 'likes'
+class Like(db.Model, UserMixin):
+    __tablename__ = 'likes'
     
-#     if environment == 'production':
-#         __table_args__ = {'schema': SCHEMA}
+    if environment == 'production':
+        __table_args__ = {'schema': SCHEMA}
         
-#     id = db.Column(db.Integer, primary_key=True)
-#     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
-#     image_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("images.id")), nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
+    image_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("images.id")), nullable=False)
     
-#     image = db.relationship("Image", back_populates='likes')
+    image = db.relationship("Image", back_populates='likes')
     
-#     def to_dict(self):
-#         return {
-#             'id': self.id,
-#             'user_id': self.user_id,
-#             'image_id': self.image_id
-#         }
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'image_id': self.image_id
+        }
