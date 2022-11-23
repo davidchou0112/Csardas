@@ -14,7 +14,7 @@ class User(db.Model, UserMixin):
     firstname = db.Column(db.String(20), nullable=False)
     lastname = db.Column(db.String(20), nullable=False)
     email = db.Column(db.String(40), nullable=False, unique=True)
-    hashed_password = db.Column(db.String(20), nullable=False)
+    hashed_password = db.Column(db.String(200), nullable=False)
 
     image = db.relationship("Image", back_populates="user")
     tags = db.relationship('Tag', back_populates='user')
