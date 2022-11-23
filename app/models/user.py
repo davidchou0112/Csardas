@@ -10,11 +10,11 @@ class User(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20), nullable=False, unique=True)
-    firstname = db.Column(db.String(20), nullable=False)
-    lastname = db.Column(db.String(20), nullable=False)
-    email = db.Column(db.String(40), nullable=False, unique=True)
-    hashed_password = db.Column(db.String(200), nullable=False)
+    username = db.Column(db.String(255), nullable=False, unique=True)
+    firstname = db.Column(db.String(255), nullable=False)
+    lastname = db.Column(db.String(255), nullable=False)
+    email = db.Column(db.String(255), nullable=False, unique=True)
+    hashed_password = db.Column(db.String(500), nullable=False)
 
     image = db.relationship("Image", back_populates="user")
     tags = db.relationship('Tag', back_populates='user')
@@ -50,9 +50,9 @@ class Image(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(20), nullable=False)
+    title = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(500), nullable=False)
-    image_url = db.Column(db.String(200), nullable=False)
+    image_url = db.Column(db.String(500), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
 
     user = db.relationship("User", back_populates="image")
@@ -77,7 +77,7 @@ class Tag(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
         
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(20), nullable =False)
+    name = db.Column(db.String(255), nullable =False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     image_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("images.id")), nullable=False)
     
