@@ -37,21 +37,7 @@ class User(db.Model, UserMixin):
             'lastname': self.lastname,
             'username': self.username,
             'email': self.email,
-            # 'images': self.list_to_dict(),
-            # 'stocks':self.list_to_dict_stocks()
         }
-
-    # def list_to_dict(self):
-    #     ls_dict = {}
-    #     for ls in self.images:
-    #         ls_dict[ls.to_dict()['id']] = ls.to_dict()
-    #     return ls_dict
-
-    # def list_to_dict_stocks(self):
-    #     ls_dict = {}
-    #     for ls in self.stocks:
-    #         ls_dict[ls.to_dict()['id']] = ls.to_dict()
-    #     return ls_dict
     
 # class Images(db.Model, UserMixin):
 #     __tablename__ = 'images'
@@ -89,10 +75,10 @@ class Image(db.Model, UserMixin):
     image_url = db.Column(db.String, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
-    # comments = db.relationship("Comment", back_populates='image', cascade='all, delete')
-    # likes = db.relationship("Like", back_populates='image', cascade='all, delete')
-    tags = db.relationship("Tag", back_populates='image', cascade='all, delete')
     user = db.relationship("User", back_populates="images")
+    tags = db.relationship("Tag", back_populates='image', cascade='all, delete')
+    comments = db.relationship("Comment", back_populates='image', cascade='all, delete')
+    likes = db.relationship("Like", back_populates='image', cascade='all, delete')
     
 
     def to_dict(self):
@@ -122,6 +108,46 @@ class Tag(db.Model, UserMixin):
         return {
             'id': self.id,
             'name': self.name,
+            'user_id': self.user_id,
+            'image_id': self.image_id
+        }
+        
+class Comment(db.Model, UserMixin):
+    __tablename__ = 'comments'
+    
+    if environment == 'production':
+        __table_args__ = {'schema': SCHEMA}
+        
+    id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.String(500), nullable =False)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    image_id = db.Column(db.Integer, db.ForeignKey("images.id"), nullable=False)
+    
+    image = db.relationship("Image", back_populates='comments')
+    
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'body': self.body,
+            'user_id': self.user_id,
+            'image_id': self.image_id
+        }
+        
+class Like(db.Model, UserMixin):
+    __tablename__ = 'likes'
+    
+    if environment == 'production':
+        __table_args__ = {'schema': SCHEMA}
+        
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    image_id = db.Column(db.Integer, db.ForeignKey("images.id"), nullable=False)
+    
+    image = db.relationship("Image", back_populates='likes')
+    
+    def to_dict(self):
+        return {
+            'id': self.id,
             'user_id': self.user_id,
             'image_id': self.image_id
         }
