@@ -78,7 +78,7 @@ class Image(db.Model, UserMixin):
     user = db.relationship("User", back_populates="images")
     tags = db.relationship("Tag", back_populates='image', cascade='all, delete')
     comments = db.relationship("Comment", back_populates='image', cascade='all, delete')
-    # likes = db.relationship("Like", back_populates='image', cascade='all, delete')
+    likes = db.relationship("Like", back_populates='image', cascade='all, delete')
     
 
     def to_dict(self):
@@ -119,7 +119,7 @@ class Comment(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
         
     id = db.Column(db.Integer, primary_key=True)
-    body = db.Column(db.String(10), nullable =False)
+    body = db.Column(db.String(500), nullable =False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     image_id = db.Column(db.Integer, db.ForeignKey("images.id"), nullable=False)
     
@@ -129,6 +129,25 @@ class Comment(db.Model, UserMixin):
         return {
             'id': self.id,
             'body': self.body,
+            'user_id': self.user_id,
+            'image_id': self.image_id
+        }
+        
+class Like(db.Model, UserMixin):
+    __tablename__ = 'likes'
+    
+    if environment == 'production':
+        __table_args__ = {'schema': SCHEMA}
+        
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    image_id = db.Column(db.Integer, db.ForeignKey("images.id"), nullable=False)
+    
+    image = db.relationship("Image", back_populates='likes')
+    
+    def to_dict(self):
+        return {
+            'id': self.id,
             'user_id': self.user_id,
             'image_id': self.image_id
         }
