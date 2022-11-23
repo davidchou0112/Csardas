@@ -16,7 +16,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(40), nullable=False, unique=True)
     hashed_password = db.Column(db.String(20), nullable=False)
 
-    # images = db.relationship("Images", back_populates="user")
+    images = db.relationship("Images", back_populates="user")
     # stocks = db.relationship("Transaction", back_populates="user")
 
     @property
@@ -92,6 +92,8 @@ class Image(db.Model, UserMixin):
     # comments = db.relationship("Comment", back_populates='image', cascade='all, delete')
     # likes = db.relationship("Like", back_populates='image', cascade='all, delete')
     tags = db.relationship("Tag", back_populates='image', cascade='all, delete')
+    user = db.relationship("User", back_populates="images")
+    
 
     def to_dict(self):
         return {
@@ -111,8 +113,8 @@ class Tag(db.Model, UserMixin):
         
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(10), nullable =False)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    image_id = db.Column(db.Integer, db.ForeignKey('my_schema.images.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    image_id = db.Column(db.Integer, db.ForeignKey("images.id"), nullable=False)
     
     image = db.relationship("Image", back_populates='tags')
     
