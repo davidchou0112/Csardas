@@ -24,11 +24,11 @@ def seed():
         undo_tags()
         undo_images()
         undo_users()
-    seed_comments()
     seed_users()
     seed_images()
     seed_tags()
     seed_likes()
+    seed_comments()
     # Add other seed functions here
 
 
