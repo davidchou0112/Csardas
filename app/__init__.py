@@ -116,6 +116,27 @@ def get_single_image(image_id):
         }, 404
     return image.to_dict()
 
+# ========== Create an Image ===========
+@app.route('/api/users/<int:user_id>/images', methods=["POST"])
+# @login_required
+def post_new_image(user_id):
+    data = request.get_json()
+    new_image = Image(
+        title = data['title'],
+        description = data['description'],
+        image_url = data['image_url'],
+        user_id = user_id
+    )
+    
+    db.session.add(new_image)
+    db.session.commit()
+    return new_image.to_dict()
+
+
+# ========== Update an Image ===========
+
+# ========== Delete an Image ===========
+
 # ========= Get all Comments ==========
 @app.route('/api/users/<int:user_id>/comments')
 # @login_required
@@ -169,6 +190,7 @@ def post_new_comment(user_id, image_id):
     db.session.commit()
     return new_comment.to_dict()
 
+# ========== Delete a Comment ===========
 
 
 
