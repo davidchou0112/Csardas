@@ -126,6 +126,17 @@ def get_user_comments(user_id):
         all_comments.append(lst.to_dict())
     return jsonify(all_comments)
 
+# ========== Get Comment by Id ==========
+@app.route('/api/comments/<int:id>')
+# @login_required
+def get_comments_by_id(id):
+    comment = Comment.query.get(id)
+    if not comment:
+        return {
+            "message": "Watchlist not found",
+            "statusCode": 404,
+        }, 404
+    return comment.to_dict()
 
 # ============= Always leave these two at the bottom of the file page =============
 
