@@ -73,8 +73,6 @@ def api_help():
     return route_list
 
 
-# ===================================================
-
 # ============ Get all users =============
 @app.route('/api/users')
 # @login_required
@@ -227,8 +225,6 @@ def delete_comment(id):
     db.session.delete(comment)
     db.session.commit()
     return 'Comment has successfully been deleted'
-
-
 
 # ============= Always leave these two at the bottom of the file page =============
 
