@@ -154,7 +154,20 @@ def update_comment(id):
     
     return comment.to_dict()
 
-# =========== 
+# =========== Create a Comment ==========
+@app.route('/api/users/<int:user_id>/images/<int:image_id>/comments', methods=["POST"])
+# @login_required
+def post_new_comment(user_id, image_id):
+    data = request.get_json()
+    new_comment = Comment(
+        user_id = user_id,
+        image_id = image_id,
+        body = data['body']
+    )
+    
+    db.session.add(new_comment)
+    db.session.commit()
+    return new_comment.to_dict()
 
 
 
