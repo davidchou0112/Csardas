@@ -116,6 +116,56 @@ def get_single_image(image_id):
         }, 404
     return image.to_dict()
 
+# ========== Create an Image ===========
+@app.route('/api/users/<int:user_id>/images', methods=["POST"])
+# @login_required
+def post_new_image(user_id):
+    data = request.get_json()
+    new_image = Image(
+        title = data['title'],
+        description = data['description'],
+        image_url = data['image_url'],
+        user_id = user_id
+    )
+    
+    db.session.add(new_image)
+    db.session.commit()
+    return new_image.to_dict()
+
+
+# ========== Update an Image =========== (not working)
+# @app.route('/api/users/<int:user_id>/images/<int:id>', methods=["PUT"])
+# def update_image(id, user_id):
+# @login_required
+@app.route('/api/images/<int:id>', methods=["PUT"])
+def update_image(id):
+    image = Image.query.get(id)
+    if not image:
+        return {
+            "message": "Watchlist not found",
+            "statusCode": 404,
+        }, 404
+    data = request.get_json()
+    
+    image.title = data['title'],
+    image.description = data['description'],
+    image.image_url = data['image_url'],
+    # user_id = user_id
+
+    db.session.commit()
+    return image.to_dict()
+
+
+# ========== Delete an Image ===========
+@app.route('/api/images/<int:id>', methods=["DELETE"])
+# @login_required
+def delete_image(id):
+    image = Image.query.get(id)
+    db.session.delete(image)
+    db.session.commit()
+    return 'Image successfully deleted.'
+
+
 # ========= Get all Comments ==========
 @app.route('/api/users/<int:user_id>/comments')
 # @login_required
@@ -154,8 +204,22 @@ def update_comment(id):
     
     return comment.to_dict()
 
-# =========== 
+# =========== Create a Comment ==========
+@app.route('/api/users/<int:user_id>/images/<int:image_id>/comments', methods=["POST"])
+# @login_required
+def post_new_comment(user_id, image_id):
+    data = request.get_json()
+    new_comment = Comment(
+        user_id = user_id,
+        image_id = image_id,
+        body = data['body']
+    )
+    
+    db.session.add(new_comment)
+    db.session.commit()
+    return new_comment.to_dict()
 
+# ========== Delete a Comment ===========
 
 
 
