@@ -155,6 +155,7 @@ def update_image(id):
     db.session.commit()
     return image.to_dict()
 
+
 # ========== Delete an Image ===========
 @app.route('/api/images/<int:id>', methods=["DELETE"])
 # @login_required
