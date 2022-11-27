@@ -116,7 +116,15 @@ def get_single_image(image_id):
         }, 404
     return image.to_dict()
 
-
+# ========= Get all Comments ==========
+@app.route('/api/users/<int:user_id>/comments')
+# @login_required
+def get_user_comments(user_id):
+    all_comments = []
+    data = Comment.query.filter(Comment.user_id == user_id).all()
+    for lst in data:
+        all_comments.append(lst.to_dict())
+    return jsonify(all_comments)
 
 
 # ============= Always leave these two at the bottom of the file page =============
