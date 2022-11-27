@@ -220,7 +220,13 @@ def post_new_comment(user_id, image_id):
     return new_comment.to_dict()
 
 # ========== Delete a Comment ===========
-
+@app.route('/api/comments/<int:id>', methods=["DELETE"])
+# @login_required
+def delete_comment(id):
+    comment = Comment.query.get(id)
+    db.session.delete(comment)
+    db.session.commit()
+    return 'Comment has successfully been deleted'
 
 
 
