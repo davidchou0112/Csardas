@@ -138,6 +138,28 @@ def get_comments_by_id(id):
         }, 404
     return comment.to_dict()
 
+# ========== Update a Comment =========
+@app.route('/api/comments/<int:id>', methods=["PUT"])
+# @login_required
+def update_comment(id):
+    comment = Comment.query.get(id)
+    if not comment:
+        return {
+            "message": "Watchlist not found",
+            "statusCode": 404,
+        }, 404
+    data = request.get_json()
+    comment.body = data['body']
+    db.session.commit()
+    
+    return comment.to_dict()
+
+
+
+
+
+
+
 # ============= Always leave these two at the bottom of the file page =============
 
 @app.route('/', defaults={'path': ''})
