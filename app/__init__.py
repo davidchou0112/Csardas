@@ -1,10 +1,10 @@
 import os
-from flask import Flask, render_template, request, session, redirect
+from flask import Flask, render_template, request, session, redirect, jsonify
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
-from flask_login import LoginManager
-from .models import db, User
+from flask_login import LoginManager, login_required, current_user
+from .models import db, User, Image, Comment, Like, Tag
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .seeds import seed_commands
@@ -73,13 +73,48 @@ def api_help():
     return route_list
 
 
+# ===================================================
+
+# ============ Get all users =============
+@app.route('/api/users')
+# @login_required
+def get_all_users():
+    all_users = []
+    data = User.query.all()
+    for user in data:
+        all_users.append(user.to_dict())
+    return jsonify(all_users)
+
+# =========== Get single user by id ==========
+@app.route('/api/users/<int:id>')
+# @login_required
+def get_user(id):
+    # print(request, 'this is request')
+    data = User.query.get(id).to_dict()
+    return data
 
 
+# ========= Get all Images =========
+@app.route('/api/images')
+# @login_required
+def get_images():
+    all_images = []
+    data = Image.query.all()
+    for image in data:
+        all_images.append(image.to_dict())
+    return jsonify(all_images)
 
-
-
-
-
+# ========= Get single Image ==========
+@app.route('/api/images/<int:image_id>')
+# @login_required
+def get_single_image(image_id):
+    image = Image.query.get(image_id)
+    if not image:
+        return {
+            "message": "Image couldn't be found",
+            "statusCode": 404,
+        }, 404
+    return image.to_dict()
 
 
 
