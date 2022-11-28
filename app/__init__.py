@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, session, redirect, jsonify
+from flask import Flask, render_template, request, session, redirect, jsonify, Blueprint
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
@@ -10,7 +10,71 @@ from .api.auth_routes import auth_routes
 from .seeds import seed_commands
 from .config import Config
 
+from .boto3 import (
+    upload_file_to_s3, allowed_file, get_unique_filename)
+
+# image_routes = Blueprint("images", __name__)
+
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
+
+# boto3 aws
+print('~~~~~~~~am i getting here 1')
+@app.route("/api/users/aws", methods=["POST"])
+def upload_image():
+    # if "image" not in request.files:
+    #     return {"errors": "image required"}, 400
+    image = request.files["image"]
+
+    if not allowed_file(image.filename):
+        print('did i get here 1')
+        return {"errors": "file type not permitted"}, 400
+
+    image.filename = get_unique_filename(image.filename)
+
+    upload = upload_file_to_s3(image)
+
+    if "url" not in upload:
+        print('did i get here 2')
+        # if the dictionary doesn't have a url key
+        # it means that there was an error when we tried to upload
+        # so we send back that error message
+        return upload, 400
+
+    url = upload["url"]
+    print("-----------", url)
+    return url
+
+# @login_required
+# def upload_image():
+#     print('~~~~~~~am i getting here 2')
+#     if "image" not in request.files:
+#         return {"errors": "image required"}, 400
+
+#     image = request.files["image"]
+
+#     if not allowed_file(image.filename):
+#         return {"errors": "file type not permitted"}, 400
+    
+#     image.filename = get_unique_filename(image.filename)
+
+#     upload = upload_file_to_s3(image)
+
+#     if "url" not in upload:
+#         # if the dictionary doesn't have a url key
+#         # it means that there was an error when we tried to upload
+#         # so we send back that error message
+#         return upload, 400
+
+#     url = upload["url"]
+#     # flask_login allows us to get the current user from the request
+#     new_image = Image(user=current_user, image_url=url)
+#     db.session.add(new_image)
+#     db.session.commit()
+#     return url
+
+print('~~~~~~~~~am i getting here 3')
+
+
 
 # Setup login manager
 login = LoginManager(app)
@@ -73,8 +137,6 @@ def api_help():
     return route_list
 
 
-# ===================================================
-
 # ============ Get all users =============
 @app.route('/api/users')
 # @login_required
@@ -133,13 +195,18 @@ def post_new_image(user_id):
     return new_image.to_dict()
 
 
-# ========== Update an Image =========== (not working)
-# @app.route('/api/users/<int:user_id>/images/<int:id>', methods=["PUT"])
-# def update_image(id, user_id):
+# ========== Update an Image ===========
 # @login_required
 @app.route('/api/images/<int:id>', methods=["PUT"])
 def update_image(id):
+    test = upload_image()
+    
     image = Image.query.get(id)
+    print('~~~this is image1:~~~:', image)
+    # image['title'] = 'testing image title'
+    
+    print('what type is this image', type(image))
+    # print('~~~this is image2:~~~:', image)
     if not image:
         return {
             "message": "Watchlist not found",
@@ -147,12 +214,17 @@ def update_image(id):
         }, 404
     data = request.get_json()
     
-    image.title = data['title'],
-    image.description = data['description'],
-    image.image_url = data['image_url'],
-    # user_id = user_id
+    print('~~~~does it get here~~~ this is data:', data)
+    
+    image.title = data['title']
+    print('~~~this is image.title:', image.title)
+    image.description = data['description']
+    # image.image_url = data['image_url']
+    image.image_url = test
+    
 
     db.session.commit()
+    print('~~~images after session commit ~~~:', image)
     return image.to_dict()
 
 
@@ -220,9 +292,13 @@ def post_new_comment(user_id, image_id):
     return new_comment.to_dict()
 
 # ========== Delete a Comment ===========
-
-
-
+@app.route('/api/comments/<int:id>', methods=["DELETE"])
+# @login_required
+def delete_comment(id):
+    comment = Comment.query.get(id)
+    db.session.delete(comment)
+    db.session.commit()
+    return 'Comment has successfully been deleted'
 
 # ============= Always leave these two at the bottom of the file page =============
 
