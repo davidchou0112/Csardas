@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import AllImages from './components/Images/allImages';
+import PostImage from './components/PostImage/postImage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -47,8 +48,12 @@ function App() {
           <AllImages />
         </Route>
 
+        <Route path='/users/:userId/images/upload'>
+          <PostImage />
+        </Route>
+
       </Switch>
-    </BrowserRouter>
+    </BrowserRouter >
   );
 }
 
