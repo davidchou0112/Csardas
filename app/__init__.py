@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, session, redirect, jsonify
+from flask import Flask, render_template, request, session, redirect, jsonify, Blueprint
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
@@ -9,6 +9,10 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .seeds import seed_commands
 from .config import Config
+from .boto3testing import (
+    upload_file_to_s3, allowed_file, get_unique_filename)
+
+image_routes = Blueprint("images", __name__)
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 
@@ -140,7 +144,7 @@ def update_image(id):
     # image['title'] = 'testing image title'
     
     print('what type is this image', type(image))
-    print('~~~this is image2:~~~:', image)
+    # print('~~~this is image2:~~~:', image)
     if not image:
         return {
             "message": "Watchlist not found",
@@ -150,13 +154,14 @@ def update_image(id):
     
     print('~~~~does it get here~~~ this is data:', data)
     
-    image.title = data['title'],
-    image.description = data['description'],
-    image.image_url = data['image_url'],
+    image.title = data['title']
+    print('~~~this is image.title:', image.title)
+    image.description = data['description']
+    image.image_url = data['image_url']
 
     db.session.commit()
     print('~~~images after session commit ~~~:', image)
-    return image
+    return image.to_dict()
     # return image.to_dict()
 
 

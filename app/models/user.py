@@ -43,7 +43,7 @@ class User(db.Model, UserMixin):
             'hashed_password': self.hashed_password,
         }
 
-class Image(db.Model, UserMixin):
+class Image(db.Model):
     __tablename__ = 'images'
   
     if environment == 'production':
