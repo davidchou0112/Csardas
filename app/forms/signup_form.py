@@ -29,4 +29,4 @@ class SignUpForm(FlaskForm):
     
     
 # class ImageForm(FlaskForm):
-# profile_img = StringField(validators=[URL(require_tld=True, message='Must be a valid URL')])
+# image_url = TextField(validators=[URL(require_tld=True, message='Must be a valid URL')])
