@@ -132,12 +132,12 @@ def post_new_image(user_id):
 
 
 # ========== Update an Image =========== (not working)
-# @app.route('/api/users/<int:user_id>/images/<int:id>', methods=["PUT"])
-# def update_image(id, user_id):
 # @login_required
 @app.route('/api/images/<int:id>', methods=["PUT"])
 def update_image(id):
-    image = Image.query.get(id)
+    image = Image.query.get(id).to_dict()
+    print('what type is this image', type(image))
+    print('~~~this is image:~~~:', image)
     if not image:
         return {
             "message": "Watchlist not found",
@@ -145,13 +145,16 @@ def update_image(id):
         }, 404
     data = request.get_json()
     
-    image.title = data['title'],
-    image.description = data['description'],
-    image.image_url = data['image_url'],
-    # user_id = user_id
+    print('~~~~does it get here~~~ this is data:', data)
+    
+    image['title'] = data['title'],
+    image['description'] = data['description'],
+    image['image_url'] = data['image_url'],
 
     db.session.commit()
-    return image.to_dict()
+    print('~~~images after session commit ~~~:', image)
+    return image
+    # return image.to_dict()
 
 
 # ========== Delete an Image ===========
