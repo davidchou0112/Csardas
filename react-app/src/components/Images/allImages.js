@@ -6,6 +6,7 @@ const AllImages = () => {
     const dispatch = useDispatch();
     const image = useSelector(state => state.images.allImages)
     console.log('this is image:', image)
+
     useEffect(() => {
         dispatch(getAllImages())
     }, [dispatch])
@@ -13,6 +14,7 @@ const AllImages = () => {
     return (
         <div>
             <h1>Display All Images Here</h1>
+            <img src={image['1']?.image_url} alt='pic didnt load' />
             {/* <div>{image[0].image_url}</div> */}
         </div>
     )

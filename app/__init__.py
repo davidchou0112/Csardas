@@ -135,9 +135,12 @@ def post_new_image(user_id):
 # @login_required
 @app.route('/api/images/<int:id>', methods=["PUT"])
 def update_image(id):
-    image = Image.query.get(id).to_dict()
+    image = Image.query.get(id)
+    print('~~~this is image1:~~~:', image)
+    # image['title'] = 'testing image title'
+    
     print('what type is this image', type(image))
-    print('~~~this is image:~~~:', image)
+    print('~~~this is image2:~~~:', image)
     if not image:
         return {
             "message": "Watchlist not found",
@@ -147,9 +150,9 @@ def update_image(id):
     
     print('~~~~does it get here~~~ this is data:', data)
     
-    image['title'] = data['title'],
-    image['description'] = data['description'],
-    image['image_url'] = data['image_url'],
+    image.title = data['title'],
+    image.description = data['description'],
+    image.image_url = data['image_url'],
 
     db.session.commit()
     print('~~~images after session commit ~~~:', image)
