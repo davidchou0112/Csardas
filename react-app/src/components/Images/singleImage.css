@@ -1,0 +1,17 @@
+.single_image_wrapper {
+    display: column;
+    justify-items: center;
+    margin: 2% 10% 5% 10%;
+}
+
+.single_image {
+    width: 100%;
+    height: fit-content;
+}
+
+.comments_position {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: center;
+    justify-items: center;
+}
