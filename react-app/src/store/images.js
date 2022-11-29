@@ -7,7 +7,7 @@ const GET_ALL_IMAGES = 'images/displayAllImages';
 const GET_SINGLE_IMAGE = 'images/displaySingleImage';
 
 // might not need anymore because can already create the image through aws
-const POST_IMAGE = 'images/postImage';
+// const POST_IMAGE = 'images/postImage';
 
 const UPDATE_IMAGE = 'images/updateImage';
 const DELETE = 'images/deleteImage';
@@ -73,6 +73,7 @@ export const actionUpdateImage = (update, imageId) => async dispatch => {
         body: JSON.stringify(update)
     })
 
+    console.log('~~~~~~~~~~~~got here~~~~~~~~')
     if (response.ok) {
         const updatedImage = await response.json();
         dispatch(updateImage(updatedImage))

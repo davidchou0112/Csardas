@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
+import { csrfFetch } from '../../store/csrf';
 import { actionUpdateImage, getSingleImage } from '../../store/images';
 
 const EditImageForm = () => {
@@ -8,6 +9,8 @@ const EditImageForm = () => {
     const history = useHistory();
     const image = useSelector(state => state.images.singleImage)
     const { imageId } = useParams();
+
+    const [images, setImage] = useState(null);
 
     const [title, setTitle] = useState();
     const [description, setDescription] = useState();
@@ -27,21 +30,50 @@ const EditImageForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const image = {
-            id: imageId,
-            title,
-            imageUrl
-        }
-        let newImage = await dispatch(actionUpdateImage(image, imageId));
+        const formData = new FormData();
+        formData.append("image", images);
 
-        if (newImage) {
-            history.push(`/images/${imageId}`)
-        }
+        await fetch(`/api/users/aws`, {
+            method: "POST",
+            body: formData,
+        })
+            .then(async (url) => {
+                let imgUrl = await url.text()
+                const newImage = {
+                    title,
+                    description,
+                    image_url: imgUrl
+                }
+                dispatch(actionUpdateImage(newImage, imageId))
+                console.log('~~~did i get here in handlesubmit??')
+                // const res = await csrfFetch(`/api/images/${imageId}`, {
+                //     method: "PUT",
+                //     headers: {
+                //         "Content-Type": "application/json"
+                //     },
+                //     body: JSON.stringify(newImage),
+                // })
+            })
+        // const image = {
+        //     title,
+        //     description,
+        //     imageUrl
+        // }
+        // let newImage = await dispatch(actionUpdateImage(image, imageId));
+
+        // if (newImage) {
+        history.push(`/images/${imageId}`)
+        // }
     }
 
     const handleCancel = (e) => {
         e.preventDefault();
         history.push(`/images/${imageId}`)
+    }
+
+    const updateImage = (e) => {
+        const file = e.target.files[0];
+        setImage(file);
     }
 
     return (
@@ -61,11 +93,16 @@ const EditImageForm = () => {
                 onChange={(e) => setDescription(e.target.value)}
             />
             <br></br>
-            <input
+            {/* <input
                 value={imageUrl}
                 type='text'
                 placeholder='Image Url'
                 onChange={(e) => setImageUrl(e.target.value)}
+            /> */}
+            <input
+                type="file"
+                accept="image/*"
+                onChange={updateImage}
             />
             <br></br>
             <button type='submit' >Edit Image</button>

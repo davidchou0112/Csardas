@@ -167,11 +167,11 @@ def post_new_image(user_id):
 
 # ========== Update an Image ===========
 # @login_required
-@app.route('/api/images/<int:id>', methods=["PUT"])
-def update_image(id):
-    test = upload_image()
+@app.route('/api/images/<int:image_id>', methods=["PUT"])
+def update_image(image_id):
+    # test = upload_image()
     
-    image = Image.query.get(id)
+    image = Image.query.get(image_id)
     # print('~~~this is image1:~~~:', image)
     
     # print('what type is this image', type(image))
@@ -188,8 +188,8 @@ def update_image(id):
     image.title = data['title']
     # print('~~~this is image.title:', image.title)
     image.description = data['description']
-    # image.image_url = data['image_url']
-    image.image_url = test
+    image.image_url = data['image_url']
+    # image.image_url = data
     
 
     db.session.commit()
