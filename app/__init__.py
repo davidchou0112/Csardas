@@ -208,7 +208,8 @@ def delete_image(id):
 
 
 # ========= Get all Comments ==========
-@app.route('/api/users/<int:user_id>/comments')
+# @app.route('/api/users/<int:user_id>/comments')
+@app.route('/api/comments')
 # @login_required
 def get_user_comments(user_id):
     all_comments = []

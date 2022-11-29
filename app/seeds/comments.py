@@ -23,6 +23,12 @@ def seed_comments():
     u2c2 = Comment(
         body = 'You think now ya a big shot eh?', user_id= 2, image_id=3
     )
+    u3c1 = Comment(
+        body = 'Great angles!!', user_id= 3, image_id=1
+    )
+    u3c2 = Comment(
+        body = 'Wow thats filthy.', user_id= 3, image_id=11
+    )
     
     db.session.add(u1c1)
     db.session.add(u1c2)
@@ -31,6 +37,9 @@ def seed_comments():
     db.session.add(u1c5)
     db.session.add(u2c1)
     db.session.add(u2c2)
+    db.session.add(u3c1)
+    db.session.add(u3c2)
+
     db.session.commit()
     
 def undo_comments():

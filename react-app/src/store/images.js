@@ -15,6 +15,7 @@ const DELETE = 'images/deleteImage';
 // REGULAR ACTION CREATOR
 
 const displayAllImages = (images) => {
+    // console.log('~~~~~~~~~~~this is images from displayAllImages:', images)
     return {
         type: GET_ALL_IMAGES,
         images
