@@ -33,7 +33,7 @@ const SingleImage = () => {
             Likes: {likes}
 
             <div>
-                <AllComments />
+                <AllComments imageId={imageId} />
             </div>
 
             <div>

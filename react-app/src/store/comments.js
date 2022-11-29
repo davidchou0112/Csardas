@@ -19,8 +19,8 @@ const displayAllComments = (comments) => {
 
 // THUNK
 
-export const getAllComments = () => async dispatch => {
-    const response = await fetch(`/api/comments`);
+export const getAllComments = (userId) => async dispatch => {
+    const response = await fetch(`/api/comments/${userId}`);
     // const response = await fetch(`/api/users/${userId}/comments`);
 
 
@@ -40,7 +40,7 @@ const commentsReducer = (state = initialState, action) => {
                 ...state,
                 allComments: {}
             }
-            action.images.forEach(el => {
+            action.comments.forEach(el => {
                 newState.allComments[el.id] = el
             })
             return newState

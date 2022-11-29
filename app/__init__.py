@@ -207,13 +207,16 @@ def delete_image(id):
     return 'Image successfully deleted.'
 
 
-# ========= Get all Comments ==========
+# ========= Get all Comments of this Image ==========
 # @app.route('/api/users/<int:user_id>/comments')
-@app.route('/api/comments')
+@app.route('/api/comments/<int:image_id>')
 # @login_required
-def get_user_comments(user_id):
+def get_user_comments(image_id):
     all_comments = []
-    data = Comment.query.filter(Comment.user_id == user_id).all()
+    # this line will get all user's comments V user_id == user_id
+    # data = Comment.query.filter(Comment.user_id == user_id).all()
+    data = Comment.query.filter(Comment.image_id == image_id).all()
+    
     for lst in data:
         all_comments.append(lst.to_dict())
     return jsonify(all_comments)
