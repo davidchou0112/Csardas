@@ -84,7 +84,7 @@ export const actionUpdateImage = (update, imageId) => async dispatch => {
 
 export const actionDeleteImage = (imageId) => async (dispatch) => {
     const response = await fetch(`/api/images/${imageId}`, {
-        methods: 'DELETE'
+        method: 'DELETE'
     })
     if (response.ok) {
         await dispatch(deleteImage(imageId))

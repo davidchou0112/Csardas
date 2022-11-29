@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { csrfFetch } from '../../store/csrf';
 import { actionUpdateImage, getSingleImage } from '../../store/images';
 
-const EditImageForm = () => {
+const EditImageForm = ({ setShowModal }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const image = useSelector(state => state.images.singleImage)
@@ -45,30 +45,15 @@ const EditImageForm = () => {
                     image_url: imgUrl
                 }
                 dispatch(actionUpdateImage(newImage, imageId))
-                // console.log('~~~did i get here in handlesubmit??')
-                // const res = await csrfFetch(`/api/images/${imageId}`, {
-                //     method: "PUT",
-                //     headers: {
-                //         "Content-Type": "application/json"
-                //     },
-                //     body: JSON.stringify(newImage),
-                // })
             })
-        // const image = {
-        //     title,
-        //     description,
-        //     imageUrl
-        // }
-        // let newImage = await dispatch(actionUpdateImage(image, imageId));
-
-        // if (newImage) {
         history.push(`/images/${imageId}`)
-        // }
+        setShowModal(false)
     }
 
     const handleCancel = (e) => {
         e.preventDefault();
         history.push(`/images/${imageId}`)
+        setShowModal(false)
     }
 
     const updateImage = (e) => {
@@ -93,12 +78,6 @@ const EditImageForm = () => {
                 onChange={(e) => setDescription(e.target.value)}
             />
             <br></br>
-            {/* <input
-                value={imageUrl}
-                type='text'
-                placeholder='Image Url'
-                onChange={(e) => setImageUrl(e.target.value)}
-            /> */}
             <input
                 type="file"
                 accept="image/*"
