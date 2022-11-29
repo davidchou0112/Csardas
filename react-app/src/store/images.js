@@ -5,7 +5,10 @@
 
 const GET_ALL_IMAGES = 'images/displayAllImages';
 const GET_SINGLE_IMAGE = 'images/displaySingleImage';
-const POST_IMAGE = 'images/postImage';
+
+// might not need anymore because can already create the image through aws
+// const POST_IMAGE = 'images/postImage';
+
 const UPDATE_IMAGE = 'images/updateImage';
 const DELETE = 'images/deleteImage';
 
@@ -18,6 +21,13 @@ const displayAllImages = (images) => {
     }
 }
 
+const displaySingleImage = (singleImage) => {
+    return {
+        type: GET_SINGLE_IMAGE,
+        singleImage
+    }
+}
+
 // THUNK
 
 export const getAllImages = () => async dispatch => {
@@ -26,6 +36,15 @@ export const getAllImages = () => async dispatch => {
     if (response.ok) {
         const data = await response.json()
         dispatch(displayAllImages(data));
+    }
+}
+
+export const getSingleImage = (imageId) => async dispatch => {
+    const response = await fetch(`/api/images/${imageId}`)
+
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(displaySingleImage(data))
     }
 }
 
@@ -43,6 +62,16 @@ const imagesReducer = (state = initialState, action) => {
             action.images.forEach(el => {
                 newState.allImages[el.id] = el
             })
+            return newState
+
+        case GET_SINGLE_IMAGE:
+            newState = {
+                ...state,
+                singleImage: { ...action.singleImage }
+            }
+            // action.images.forEach(el => {
+            //     newState.singleImage[el.id] = el
+            // })
             return newState
 
         default:

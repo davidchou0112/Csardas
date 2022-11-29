@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import AllImages from './components/Images/allImages';
+import SingleImage from './components/Images/singleImage';
 import PostImage from './components/PostImage/postImage';
 
 function App() {
@@ -46,6 +47,10 @@ function App() {
 
         <Route path='/' exact={true}>
           <AllImages />
+        </Route>
+
+        <Route path='/images/:imageId' exact={true}>
+          <SingleImage />
         </Route>
 
         <Route path='/users/:userId/images/upload'>

@@ -31,7 +31,7 @@ const UploadPicture = () => {
             body: formData,
         })
             .then(async (url) => {
-                console.log('did you get in here????')
+                // console.log('did you get in here????')
                 let imgUrl = await url.text()
                 const newImage = {
                     title,
@@ -45,7 +45,7 @@ const UploadPicture = () => {
                     },
                     body: JSON.stringify(newImage),
                 })
-
+                setImageLoading(false)
             })
             .catch(() => {
                 alert('failed!')

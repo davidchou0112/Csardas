@@ -1,21 +1,32 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { getAllImages } from '../../store/images';
 
 const AllImages = () => {
     const dispatch = useDispatch();
-    const image = useSelector(state => state.images.allImages)
-    console.log('this is image:', image)
+    const images = useSelector(state => state.images.allImages)
+    console.log('~~~~~~~~~this is image:', images)
 
     useEffect(() => {
         dispatch(getAllImages())
     }, [dispatch])
 
+    console.log('~~~~~~~~Object.values(image)', Object.values(images).map(image => (image)))
+
     return (
         <div>
             <h1>Display All Images Here</h1>
-            <img src={image['1']?.image_url} alt='pic didnt load' />
-            {/* <div>{image[0].image_url}</div> */}
+            {Object.values(images).map(image => (
+                <NavLink to={`/images/${image.id}`}>
+                    <img src={image?.image_url} alt='pic didnt load' />
+                    {image?.title}
+                    <br></br>
+                    {image?.description}
+                    <br></br>
+                    Likes: {image?.likes.length}
+                </NavLink>
+            ))}
         </div>
     )
 }
