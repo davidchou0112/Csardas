@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 // import { getAllComments } from '../../store/comments';
 import { getAllImages } from '../../store/images';
+import './allImages.css'
 
 const AllImages = () => {
     const dispatch = useDispatch();
@@ -21,21 +22,20 @@ const AllImages = () => {
     return (
         <div>
             <h1>Home Page</h1>
-            <div>
+            <div className='home_all_images'>
                 {Object.values(images).map(image => (
-
-                    <NavLink to={`/images/${image.id}`}>
-                        <img src={image?.image_url} alt='pic didnt load' />
-                        <br></br>
-                        {image?.title}
-                        <br></br>
-                        {image?.description}
-                        <br></br>
-                        Likes: {image?.likes.length}
-                        <br></br>
-                        Comments: {comments?.length}
-                    </NavLink>
-
+                    <div className='home_image_wrapper'>
+                        <NavLink to={`/images/${image.id}`}>
+                            <img className='home_image' src={image?.image_url} alt='pic didnt load' />
+                            {image?.title}
+                            {/* <br></br>
+                            {image?.description}
+                            <br></br>
+                            Likes: {image?.likes.length}
+                            <br></br>
+                            Comments: {comments?.length} */}
+                        </NavLink>
+                    </div>
                 ))}
             </div>
         </div>
