@@ -1,4 +1,4 @@
-// import { csrfFetch } from './csrf';
+import { csrfFetch } from './csrf';
 
 
 // CONSTANTS 
@@ -7,7 +7,7 @@ const GET_ALL_IMAGES = 'images/displayAllImages';
 const GET_SINGLE_IMAGE = 'images/displaySingleImage';
 
 // might not need anymore because can already create the image through aws
-// const POST_IMAGE = 'images/postImage';
+const POST_IMAGE = 'images/postImage';
 
 const UPDATE_IMAGE = 'images/updateImage';
 const DELETE = 'images/deleteImage';
@@ -24,6 +24,13 @@ const displayAllImages = (images) => {
 const displaySingleImage = (singleImage) => {
     return {
         type: GET_SINGLE_IMAGE,
+        singleImage
+    }
+}
+
+const updateImage = (singleImage) => {
+    return {
+        type: UPDATE_IMAGE,
         singleImage
     }
 }
@@ -48,6 +55,23 @@ export const getSingleImage = (imageId) => async dispatch => {
     }
 }
 
+export const actionUpdateImage = (update, imageId) => async dispatch => {
+    const response = await csrfFetch(`/api/images/${imageId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(update)
+    })
+
+    if (response.ok) {
+        const updatedImage = await response.json();
+        dispatch(updateImage(updatedImage))
+
+        return updateImage
+    }
+}
+
 // REDUCER
 
 const initialState = { allImages: {}, singleImage: {} };
@@ -69,9 +93,13 @@ const imagesReducer = (state = initialState, action) => {
                 ...state,
                 singleImage: { ...action.singleImage }
             }
-            // action.images.forEach(el => {
-            //     newState.singleImage[el.id] = el
-            // })
+            return newState
+
+        case UPDATE_IMAGE:
+            newState = {
+                ...state,
+                singleImage: { ...action.singleImage }
+            }
             return newState
 
         default:

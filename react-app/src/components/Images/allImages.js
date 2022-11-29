@@ -16,10 +16,11 @@ const AllImages = () => {
 
     return (
         <div>
-            <h1>Display All Images Here</h1>
+            <h1>Home Page</h1>
             {Object.values(images).map(image => (
                 <NavLink to={`/images/${image.id}`}>
                     <img src={image?.image_url} alt='pic didnt load' />
+                    <br></br>
                     {image?.title}
                     <br></br>
                     {image?.description}

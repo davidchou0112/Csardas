@@ -2,14 +2,15 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSingleImage } from '../../store/images';
 import { useParams } from 'react-router-dom'
+import EditImageForm from '../EditImage';
 
 const SingleImage = () => {
     const dispatch = useDispatch();
     const image = useSelector(state => state.images.singleImage)
-    console.log('~~~~~~~~~~~this is image:', image)
+    // console.log('~~~~~~~~~~~this is image:', image)
 
     const { imageId } = useParams();
-
+    // const likes = image.likes.length
     useEffect(() => {
         dispatch(getSingleImage(imageId))
     }, [dispatch, imageId])
@@ -21,7 +22,10 @@ const SingleImage = () => {
             <br></br>
             {image?.description}
             <br></br>
-            Likes: {image?.likes.length}
+            {/* Likes: {likes} */}
+            <div>
+                <EditImageForm />
+            </div>
         </div>
     )
 }
