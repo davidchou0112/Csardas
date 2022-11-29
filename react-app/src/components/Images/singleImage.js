@@ -4,6 +4,7 @@ import { getSingleImage } from '../../store/images';
 import { useParams } from 'react-router-dom'
 import EditImageForm from '../EditImage';
 import AllComments from '../Comments';
+import './singleImage.css'
 
 const SingleImage = () => {
     const dispatch = useDispatch();
@@ -26,18 +27,20 @@ const SingleImage = () => {
     return (
         <div>
             <h1>{image?.title}</h1>
-            <img src={image?.image_url} alt='pic didnt load' />
-            <br></br>
-            {image?.description}
-            <br></br>
-            Likes: {likes}
+            <div className='single_image_wrapper'>
+                <img className='single_image' src={image?.image_url} alt='pic didnt load' />
+                <br></br>
+                {image?.description}
+                <br></br>
+                Likes: {likes}
 
-            <div>
-                <AllComments imageId={imageId} />
-            </div>
+                <div className='comments_position'>
+                    <AllComments imageId={imageId} />
+                </div>
 
-            <div>
-                <EditImageForm />
+                <div>
+                    <EditImageForm />
+                </div>
             </div>
         </div>
     )
