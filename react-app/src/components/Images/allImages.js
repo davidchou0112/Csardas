@@ -27,7 +27,9 @@ const AllImages = () => {
                     <div className='home_image_wrapper'>
                         <NavLink to={`/images/${image.id}`}>
                             <img className='home_image' src={image?.image_url} alt='pic didnt load' />
-                            {image?.title}
+                            <div className='home_image_title'>
+                                {image?.title}
+                            </div>
                             {/* <br></br>
                             {image?.description}
                             <br></br>

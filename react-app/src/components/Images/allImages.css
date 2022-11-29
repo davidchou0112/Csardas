@@ -14,3 +14,8 @@
     width: 100%;
     height: fit-content;
 }
+
+.home_image_title {
+    display: flex;
+    justify-content: center;
+}
