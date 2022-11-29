@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { actionDeleteImage, getSingleImage } from '../../store/images';
-import { useParams } from 'react-router-dom'
+import { actionDeleteImage, getSingleImage, getAllImages } from '../../store/images';
+import { Redirect, useHistory, useParams } from 'react-router-dom'
 import EditImageForm from '../EditImage';
 import AllComments from '../Comments';
 import './singleImage.css'
 import UpdateImageModal from '../EditImage/editModal';
 
 const SingleImage = () => {
+    const history = useHistory();
     const dispatch = useDispatch();
     const image = useSelector(state => state.images?.singleImage)
     // console.log('~~~~~~~~~~~this is image:', image)
@@ -18,6 +19,7 @@ const SingleImage = () => {
     const likes = image?.likes?.length
 
     // console.log('======this is likes:', likes)
+
 
     useEffect(() => {
         // console.log('~~~~~~~~~~~~useEffect loaded~~~~~~~~~~~~~')
@@ -64,8 +66,8 @@ const SingleImage = () => {
                         <UpdateImageModal />
                     </div>
                     <button className='deleteButton'
-                        onClick={() => dispatch(actionDeleteImage(image.id))}>
-                        Delete
+                        onClick={() => dispatch(actionDeleteImage(image.id), dispatch(getAllImages()).then(history.push('/')))}>
+                        Delete Image
                     </button>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 // import { getAllComments } from '../../store/comments';
@@ -7,6 +7,8 @@ import './allImages.css'
 
 const AllImages = () => {
     const dispatch = useDispatch();
+    const [isLoaded, setIsLoaded] = useState(false);
+
     const images = useSelector(state => state.images?.allImages)
     const comments = useSelector(state => Object.values(state.comments?.allComments))
 
@@ -14,12 +16,13 @@ const AllImages = () => {
 
     useEffect(() => {
         dispatch(getAllImages())
-        // dispatch(getAllComments())
+            // dispatch(getAllComments())
+            .then(() => setIsLoaded(true))
     }, [dispatch])
 
     // console.log('~~~~~~~~Object.values(image)', Object.values(images).map(image => (image)))
 
-    return (
+    return isLoaded && (
         <div>
             <h1>Home Page</h1>
             <div className='home_all_images'>
