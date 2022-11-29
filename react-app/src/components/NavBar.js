@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
+import ProfileButton from './ProfileButton';
 
 const NavBar = () => {
 
@@ -42,11 +43,13 @@ const NavBar = () => {
 
 
       <div className='header_right'>
-        <NavLink to='/users/userId/images/upload' exact={true} activeClassName='active'>
+        {/* <NavLink to='/users/userId/images/upload' exact={true} activeClassName='active'>
           <button>Post an Image</button>
-        </NavLink>
+        </NavLink> */}
 
-        <LogoutButton />
+        <ProfileButton user={user} />
+
+        {/* <LogoutButton /> */}
       </div>
 
     </div>
