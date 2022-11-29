@@ -9,9 +9,9 @@ import './singleImage.css'
 const SingleImage = () => {
     const dispatch = useDispatch();
     const image = useSelector(state => state.images?.singleImage)
-    console.log('~~~~~~~~~~~this is image:', image)
+    // console.log('~~~~~~~~~~~this is image:', image)
     const user = useSelector(state => state.session.user);
-    console.log('~~~~~~~~~~~~~user:', user)
+    // console.log('~~~~~~~~~~~~~user:', user)
 
     const { imageId } = useParams();
     const likes = image?.likes?.length
@@ -25,7 +25,26 @@ const SingleImage = () => {
 
     // console.log('did i get here, before return?')
 
-    if (user.id !== image.user_id) {
+    if (user) {
+        if (user.id !== image.user_id) {
+            return (
+                <div>
+                    <h1>{image?.title}</h1>
+                    <div className='single_image_wrapper'>
+                        <img className='single_image' src={image?.image_url} alt='pic didnt load' />
+                        <br></br>
+                        {image?.description}
+                        <br></br>
+                        Likes: {likes}
+
+                        <div className='comments_position'>
+                            <AllComments imageId={imageId} />
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+
         return (
             <div>
                 <h1>{image?.title}</h1>
@@ -38,6 +57,10 @@ const SingleImage = () => {
 
                     <div className='comments_position'>
                         <AllComments imageId={imageId} />
+                    </div>
+
+                    <div>
+                        <EditImageForm />
                     </div>
                 </div>
             </div>
@@ -57,12 +80,11 @@ const SingleImage = () => {
                 <div className='comments_position'>
                     <AllComments imageId={imageId} />
                 </div>
-
-                <div>
-                    <EditImageForm />
-                </div>
             </div>
         </div>
     )
+
+
+
 }
 export default SingleImage;
