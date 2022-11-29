@@ -20,7 +20,7 @@ const SingleImage = () => {
         dispatch(getSingleImage(imageId))
     }, [dispatch, imageId])
 
-    console.log('did i get here, before return?')
+    // console.log('did i get here, before return?')
 
 
     return (
