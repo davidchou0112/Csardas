@@ -1,37 +1,55 @@
-
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
+import './NavBar.css'
 
 const NavBar = () => {
-  return (
-    <nav>
-      <ul>
-        <li>
+
+  const user = useSelector(state => state.session.user);
+  // console.log('this is user', user)
+
+  if (!user) {
+    return (
+      <div className='header_wrapper'>
+        <div className='header_left'>
           <NavLink to='/' exact={true} activeClassName='active'>
-            Home
+            <button>Home</button>
           </NavLink>
-        </li>
-        <li>
+        </div>
+
+        <div className='header_right'>
           <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
+            <button>Log In</button>
           </NavLink>
-        </li>
-        <li>
+
           <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
+            <button>Sign Up</button>
           </NavLink>
-        </li>
-        <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
-        </li>
-        <li>
-          <LogoutButton />
-        </li>
-      </ul>
-    </nav>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className='header_wrapper'>
+
+      <div className='header_left'>
+        <NavLink to='/' exact={true} activeClassName='active'>
+          <button>Home</button>
+        </NavLink>
+      </div>
+
+
+      <div className='header_right'>
+        <NavLink to='/users/userId/images/upload' exact={true} activeClassName='active'>
+          <button>Post an Image</button>
+        </NavLink>
+
+        <LogoutButton />
+      </div>
+
+    </div>
   );
 }
 
