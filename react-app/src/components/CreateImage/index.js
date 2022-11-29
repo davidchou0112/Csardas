@@ -50,6 +50,7 @@ const UploadPicture = () => {
             .catch(() => {
                 alert('failed!')
             })
+        history.push('/')
     }
 
     const updateImage = (e) => {
@@ -59,29 +60,31 @@ const UploadPicture = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <label>
-            </label>
+            <label>Title
+            </label><br></br>
             <input
                 value={title}
                 type='text'
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder='Title'
 
-            />
-            <label>
-            </label>
+            /><br></br>
+
+            <label>Description
+            </label><br></br>
             <input
                 value={description}
                 type='text'
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder='Description'
-            />
+            /><br></br>
 
+            <label>Image Url</label><br></br>
             <input
                 type="file"
                 accept="image/*"
                 onChange={updateImage}
-            />
+            /><br></br>
             <button type="submit">Submit</button>
             {(imageLoading) && <p>Loading...</p>}
         </form>
