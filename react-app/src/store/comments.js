@@ -19,8 +19,8 @@ const displayAllComments = (comments) => {
 
 // THUNK
 
-export const getAllComments = (userId) => async dispatch => {
-    const response = await fetch(`/api/comments/${userId}`);
+export const getAllComments = (imageId) => async dispatch => {
+    const response = await fetch(`/api/comments/images/${imageId}`);
     // const response = await fetch(`/api/users/${userId}/comments`);
 
 

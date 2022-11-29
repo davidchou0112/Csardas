@@ -178,7 +178,7 @@ def update_image(image_id):
     # print('~~~this is image2:~~~:', image)
     if not image:
         return {
-            "message": "Watchlist not found",
+            "message": "Comment not found",
             "statusCode": 404,
         }, 404
     data = request.get_json()
@@ -209,7 +209,7 @@ def delete_image(id):
 
 # ========= Get all Comments of this Image ==========
 # @app.route('/api/users/<int:user_id>/comments')
-@app.route('/api/comments/<int:image_id>')
+@app.route('/api/comments/images/<int:image_id>')
 # @login_required
 def get_user_comments(image_id):
     all_comments = []
@@ -228,7 +228,7 @@ def get_comments_by_id(id):
     comment = Comment.query.get(id)
     if not comment:
         return {
-            "message": "Watchlist not found",
+            "message": "Comment not found",
             "statusCode": 404,
         }, 404
     return comment.to_dict()
@@ -240,7 +240,7 @@ def update_comment(id):
     comment = Comment.query.get(id)
     if not comment:
         return {
-            "message": "Watchlist not found",
+            "message": "Comment not found",
             "statusCode": 404,
         }, 404
     data = request.get_json()

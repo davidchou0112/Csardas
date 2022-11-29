@@ -14,7 +14,12 @@ const AllComments = ({ imageId }) => {
     }, [dispatch, imageId])
 
     return (
-        <h3>~comments~</h3>
+        <>
+            <p>Comments</p>
+            {comments.map(comment => (
+                <h3>{comment.body}</h3>
+            ))}
+        </>
     )
 }
 export default AllComments
