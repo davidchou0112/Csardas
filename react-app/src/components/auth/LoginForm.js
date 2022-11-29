@@ -10,6 +10,11 @@ const LoginForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  const demoUserButton = (e) => {
+    setEmail('demo@aa.io');
+    setPassword('password');
+  }
+
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
@@ -38,7 +43,7 @@ const LoginForm = () => {
         ))}
       </div>
       <div>
-        <label htmlFor='email'>Email</label>
+        <label htmlFor='email'>Email</label><br></br>
         <input
           name='email'
           type='text'
@@ -48,15 +53,16 @@ const LoginForm = () => {
         />
       </div>
       <div>
-        <label htmlFor='password'>Password</label>
+        <label htmlFor='password'>Password</label><br></br>
         <input
           name='password'
           type='password'
           placeholder='Password'
           value={password}
           onChange={updatePassword}
-        />
-        <button type='submit'>Login</button>
+        /><br></br>
+        <button type='submit'>Login</button><br></br>
+        <button type='submit' onClick={demoUserButton}>Demo User</button>
       </div>
     </form>
   );

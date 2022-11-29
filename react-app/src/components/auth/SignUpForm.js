@@ -60,7 +60,7 @@ const SignUpForm = () => {
         ))}
       </div>
       <div>
-        <label>User Name</label>
+        <label>User Name</label><br></br>
         <input
           type='text'
           name='username'
@@ -69,7 +69,7 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>First Name</label>
+        <label>First Name</label><br></br>
         <input
           type='text'
           name='firstname'
@@ -78,7 +78,7 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Last Name</label>
+        <label>Last Name</label><br></br>
         <input
           type='text'
           name='lastname'
@@ -87,7 +87,7 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Email</label>
+        <label>Email</label><br></br>
         <input
           type='text'
           name='email'
@@ -96,7 +96,7 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Password</label>
+        <label>Password</label><br></br>
         <input
           type='password'
           name='password'
@@ -105,7 +105,7 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Repeat Password</label>
+        <label>Repeat Password</label><br></br>
         <input
           type='password'
           name='repeat_password'
