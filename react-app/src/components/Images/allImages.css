@@ -1,7 +1,8 @@
 .home_all_images {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     justify-items: center;
+    margin: 5% 10% 5% 10%;
 }
 
 .home_image_wrapper {
