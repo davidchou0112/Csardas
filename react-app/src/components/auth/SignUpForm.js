@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import './Auth.css'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -53,8 +54,8 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
+    <form className='signup_wrapper' id='signup_background' onSubmit={onSignUp}>
+      <div >
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
@@ -66,45 +67,40 @@ const SignUpForm = () => {
           name='username'
           onChange={updateUsername}
           value={username}
-        ></input>
-      </div>
-      <div>
+        ></input><br></br>
+
         <label>First Name</label><br></br>
         <input
           type='text'
           name='firstname'
           onChange={updateFirstName}
           value={firstname}
-        ></input>
-      </div>
-      <div>
+        ></input><br></br>
+
         <label>Last Name</label><br></br>
         <input
           type='text'
           name='lastname'
           onChange={updateLastName}
           value={lastname}
-        ></input>
-      </div>
-      <div>
+        ></input><br></br>
+
         <label>Email</label><br></br>
         <input
           type='text'
           name='email'
           onChange={updateEmail}
           value={email}
-        ></input>
-      </div>
-      <div>
+        ></input><br></br>
+
         <label>Password</label><br></br>
         <input
           type='password'
           name='password'
           onChange={updatePassword}
           value={password}
-        ></input>
-      </div>
-      <div>
+        ></input><br></br>
+
         <label>Repeat Password</label><br></br>
         <input
           type='password'
@@ -112,9 +108,9 @@ const SignUpForm = () => {
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}
-        ></input>
+        ></input><br></br>
+        <button type='submit'>Sign Up</button>
       </div>
-      <button type='submit'>Sign Up</button>
     </form>
   );
 };

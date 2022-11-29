@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import './Auth.css'
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -36,35 +37,37 @@ const LoginForm = () => {
   }
 
   return (
+    // <div>
     <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label htmlFor='email'>Email</label><br></br>
-        <input
-          name='email'
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={updateEmail}
-        />
-      </div>
-      <div>
-        <label htmlFor='password'>Password</label><br></br>
-        <input
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={updatePassword}
-        /><br></br>
-        <button type='submit'>Login</button><br></br>
-        <button type='submit' onClick={demoUserButton}>Demo User</button>
+      <div className='login_wrapper' id='login_background'>
+        <div>
+          {errors.map((error, ind) => (
+            <div key={ind}>{error}</div>
+          ))}
+        </div>
+        <div>
+          <label htmlFor='email'>Email</label><br></br>
+          <input
+            name='email'
+            type='text'
+            placeholder='Email'
+            value={email}
+            onChange={updateEmail}
+          /><br></br>
+          <label htmlFor='password'>Password</label><br></br>
+          <input
+            name='password'
+            type='password'
+            placeholder='Password'
+            value={password}
+            onChange={updatePassword}
+          /><br></br>
+          <button type='submit'>Login</button><br></br>
+          <button type='submit' onClick={demoUserButton}>Demo User</button>
+        </div>
       </div>
     </form>
+
   );
 };
 
