@@ -21,6 +21,8 @@ const displayAllComments = (comments) => {
 
 export const getAllComments = () => async dispatch => {
     const response = await fetch(`/api/comments`);
+    // const response = await fetch(`/api/users/${userId}/comments`);
+
 
     if (response.ok) {
         const data = await response.json()

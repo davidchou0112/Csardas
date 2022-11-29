@@ -36,6 +36,13 @@ const updateImage = (singleImage) => {
     }
 }
 
+const deleteImage = (imageId) => {
+    return {
+        type: DELETE,
+        imageId
+    }
+}
+
 // THUNK
 
 export const getAllImages = () => async dispatch => {
@@ -48,6 +55,7 @@ export const getAllImages = () => async dispatch => {
 }
 
 export const getSingleImage = (imageId) => async dispatch => {
+    console.log('got here! 1')
     const response = await fetch(`/api/images/${imageId}`)
 
     if (response.ok) {
@@ -73,6 +81,15 @@ export const actionUpdateImage = (update, imageId) => async dispatch => {
     }
 }
 
+export const actionDeleteImage = (imageId) => async (dispatch) => {
+    const response = await fetch(`/api/images/${imageId}`, {
+        methods: 'DELETE'
+    })
+    if (response.ok) {
+        await dispatch(deleteImage(imageId))
+    }
+}
+
 // REDUCER
 
 const initialState = { allImages: {}, singleImage: {} };
@@ -94,6 +111,7 @@ const imagesReducer = (state = initialState, action) => {
                 ...state,
                 singleImage: { ...action.singleImage }
             }
+            console.log('~~~~~~this is newState:', newState)
             return newState
 
         case UPDATE_IMAGE:
@@ -101,6 +119,14 @@ const imagesReducer = (state = initialState, action) => {
                 ...state,
                 singleImage: { ...action.singleImage }
             }
+            return newState
+
+        case DELETE:
+            newState = {
+                allImages: { ...state.allImages },
+                singleImage: {}
+            }
+            delete newState.allImages[action.imageId]
             return newState
 
         default:
