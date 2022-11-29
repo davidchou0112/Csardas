@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getSingleImage } from '../../store/images';
+import { actionDeleteImage, getSingleImage } from '../../store/images';
 import { useParams } from 'react-router-dom'
 import EditImageForm from '../EditImage';
 import AllComments from '../Comments';
@@ -61,9 +61,12 @@ const SingleImage = () => {
                     </div>
 
                     <div>
-                        {/* <EditImageForm /> */}
                         <UpdateImageModal />
                     </div>
+                    <button className='deleteButton'
+                        onClick={() => dispatch(actionDeleteImage(image.id))}>
+                        Delete
+                    </button>
                 </div>
             </div>
         )
