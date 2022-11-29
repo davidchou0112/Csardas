@@ -24,14 +24,15 @@ const AllImages = () => {
 
     if (!user) {
         return (
-
-            <div className='body__wrapper'>
-                <div className='body__session1'>
-                    <h1 id='body__h1'>Find your inspiration.</h1>
-                    <h2 id='body__h2'>Join the Csárdás community.</h2>
-                    <NavLink className='body__button' id='body__button_0' to='/sign-up' exact={true} activeClassName='active'>
-                        Get Started
+            <div className='splash_wrapper' id='splash_background'>
+                <div className='splash_inside_wrapper'>
+                    <h1>Find your inspiration.</h1>
+                    <h2>Join the Csárdás community.</h2>
+                    <NavLink to='/sign-up' exact={true} activeClassName='active'>
+                        <button>Get Started</button>
                     </NavLink>
+                    <div><small>Already on Csárdás? <NavLink to='/login' exact={true}>Login</NavLink></small></div>
+
                 </div>
             </div>
         )
@@ -39,8 +40,7 @@ const AllImages = () => {
 
 
     return isLoaded && (
-        <div>
-            <h1>Home Page</h1>
+        <div id='home_background'>
             <div className='home_all_images'>
                 {Object.values(images).map(image => (
                     <div className='home_image_wrapper'>
