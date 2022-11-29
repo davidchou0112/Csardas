@@ -45,7 +45,7 @@ const EditImageForm = () => {
                     image_url: imgUrl
                 }
                 dispatch(actionUpdateImage(newImage, imageId))
-                console.log('~~~did i get here in handlesubmit??')
+                // console.log('~~~did i get here in handlesubmit??')
                 // const res = await csrfFetch(`/api/images/${imageId}`, {
                 //     method: "PUT",
                 //     headers: {

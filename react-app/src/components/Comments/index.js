@@ -5,7 +5,7 @@ import { getAllComments } from '../../store/comments';
 const AllComments = ({ imageId }) => {
     const dispatch = useDispatch();
     const comments = useSelector(state => Object.values(state?.comments?.allComments))
-    console.log('~~this is comments:', comments)
+    // console.log('~~this is comments:', comments)
     // const userId = useSelector(state => state.session.user.id)
 
 

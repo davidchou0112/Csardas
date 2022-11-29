@@ -55,7 +55,7 @@ export const getAllImages = () => async dispatch => {
 }
 
 export const getSingleImage = (imageId) => async dispatch => {
-    console.log('got here! 1')
+    // console.log('got here! 1')
     const response = await fetch(`/api/images/${imageId}`)
 
     if (response.ok) {
@@ -73,7 +73,7 @@ export const actionUpdateImage = (update, imageId) => async dispatch => {
         body: JSON.stringify(update)
     })
 
-    console.log('~~~~~~~~~~~~got here~~~~~~~~')
+    // console.log('~~~~~~~~~~~~got here~~~~~~~~')
     if (response.ok) {
         const updatedImage = await response.json();
         dispatch(updateImage(updatedImage))
@@ -112,7 +112,7 @@ const imagesReducer = (state = initialState, action) => {
                 ...state,
                 singleImage: { ...action.singleImage }
             }
-            console.log('~~~~~~this is newState:', newState)
+            // console.log('~~~~~~this is newState:', newState)
             return newState
 
         case UPDATE_IMAGE:

@@ -26,7 +26,7 @@ def upload_image():
     image = request.files["image"]
 
     if not allowed_file(image.filename):
-        print('did i get here 1')
+        # print('did i get here 1')
         return {"errors": "file type not permitted"}, 400
 
     image.filename = get_unique_filename(image.filename)
@@ -34,7 +34,7 @@ def upload_image():
     upload = upload_file_to_s3(image)
 
     if "url" not in upload:
-        print('did i get here 2')
+        # print('did i get here 2')
         # if the dictionary doesn't have a url key
         # it means that there was an error when we tried to upload
         # so we send back that error message
