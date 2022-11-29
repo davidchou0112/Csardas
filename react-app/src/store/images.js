@@ -83,7 +83,7 @@ export const actionUpdateImage = (update, imageId) => async dispatch => {
 }
 
 export const actionDeleteImage = (imageId) => async (dispatch) => {
-    const response = await fetch(`/api/images/${imageId}`, {
+    const response = await csrfFetch(`/api/images/${imageId}`, {
         method: 'DELETE'
     })
     if (response.ok) {
