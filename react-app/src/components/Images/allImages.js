@@ -6,13 +6,13 @@ import { getAllImages } from '../../store/images';
 const AllImages = () => {
     const dispatch = useDispatch();
     const images = useSelector(state => state.images.allImages)
-    console.log('~~~~~~~~~this is image:', images)
+    // console.log('~~~~~~~~~this is image:', images)
 
     useEffect(() => {
         dispatch(getAllImages())
     }, [dispatch])
 
-    console.log('~~~~~~~~Object.values(image)', Object.values(images).map(image => (image)))
+    // console.log('~~~~~~~~Object.values(image)', Object.values(images).map(image => (image)))
 
     return (
         <div>

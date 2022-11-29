@@ -172,10 +172,9 @@ def update_image(id):
     test = upload_image()
     
     image = Image.query.get(id)
-    print('~~~this is image1:~~~:', image)
-    # image['title'] = 'testing image title'
+    # print('~~~this is image1:~~~:', image)
     
-    print('what type is this image', type(image))
+    # print('what type is this image', type(image))
     # print('~~~this is image2:~~~:', image)
     if not image:
         return {
@@ -184,17 +183,17 @@ def update_image(id):
         }, 404
     data = request.get_json()
     
-    print('~~~~does it get here~~~ this is data:', data)
+    # print('~~~~does it get here~~~ this is data:', data)
     
     image.title = data['title']
-    print('~~~this is image.title:', image.title)
+    # print('~~~this is image.title:', image.title)
     image.description = data['description']
     # image.image_url = data['image_url']
     image.image_url = test
     
 
     db.session.commit()
-    print('~~~images after session commit ~~~:', image)
+    # print('~~~images after session commit ~~~:', image)
     return image.to_dict()
 
 
