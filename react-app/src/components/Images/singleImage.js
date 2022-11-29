@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import EditImageForm from '../EditImage';
 import AllComments from '../Comments';
 import './singleImage.css'
+import UpdateImageModal from '../EditImage/editModal';
 
 const SingleImage = () => {
     const dispatch = useDispatch();
@@ -60,7 +61,8 @@ const SingleImage = () => {
                     </div>
 
                     <div>
-                        <EditImageForm />
+                        {/* <EditImageForm /> */}
+                        <UpdateImageModal />
                     </div>
                 </div>
             </div>
