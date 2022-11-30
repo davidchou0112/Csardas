@@ -49,14 +49,16 @@ const SingleImage = () => {
         }
         return (
             <div>
-                <div>
-                    <h1>{image?.title}
+                <div className='single_image_header'>
+                    <h1>{image?.title}</h1>
+                    <div className='single_image_edit_delete'>
                         <UpdateImageModal />
                         <button className='deleteButton'
                             onClick={() => dispatch(actionDeleteImage(image.id), dispatch(getAllImages()).then(history.push('/')))}>
                             Delete Image
                         </button>
-                    </h1>
+                    </div>
+
                 </div>
                 <div className='single_image_wrapper'>
                     <img className='single_image' src={image?.image_url} alt='pic didnt load' />

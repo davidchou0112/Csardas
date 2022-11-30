@@ -2,9 +2,14 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
-    margin: 1% 10% 5% 10%;
+    margin: 0% 18% 0% 18%;
     padding-top: 5%;
     padding-bottom: 5%;
+    /* height: 100vh; */
+}
+
+.home_make_long {
+    height: 100vh;
 }
 
 .home_image_wrapper {
@@ -45,7 +50,7 @@
     padding-top: 5%;
     padding-bottom: 20%;
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    /* grid-template-columns: repeat(1, 1fr); */
     justify-content: center;
     justify-items: center;
 }

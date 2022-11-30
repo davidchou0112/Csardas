@@ -1,12 +1,24 @@
 .single_image_wrapper {
     display: column;
     justify-items: center;
-    margin: 2% 10% 5% 10%;
+    margin: 0% 10% 5% 10%;
 }
 
 .single_image {
     width: 100%;
     height: fit-content;
+}
+
+.single_image_header {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.single_image_edit_delete {
+    display: flex;
+    align-items: center;
 }
 
 .comments_position {
