@@ -8,8 +8,8 @@ import EditCommentModal from '../EditComment/editCommentModal';
 const AllComments = ({ imageId }) => {
     const dispatch = useDispatch();
     const comments = useSelector(state => Object.values(state?.comments?.allComments))
-    const commentUserId = comments.map(comment => (comment.user_id))
-
+    const loggedUserId = useSelector(state => state.session.user.id)
+    const singleComment = useSelector(state => state.comments.singleComment)
     // console.log('~~~~', commentUserId)
 
     // console.log('~~this is comments:', comments)
@@ -18,7 +18,7 @@ const AllComments = ({ imageId }) => {
 
     useEffect(() => {
         dispatch(getAllComments(imageId))
-    }, [dispatch, imageId])
+    }, [dispatch, imageId, singleComment])
 
     return (
         <div>
@@ -26,13 +26,17 @@ const AllComments = ({ imageId }) => {
             {comments.map(comment => (
 
                 <p>
-                    {commentUserId}:{comment.body}
-                    <EditCommentModal commentId={comment.id} />
-                    <button className='edit_button'
-                        onClick={() => dispatch(actionDeleteComment(comment.id), dispatch(getSingleImage()).then(history.push(`/images/${imageId}`)))}>
-                        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
-                        <span class="material-symbols-outlined">delete</span>
-                    </button>
+                    {comment.user?.firstname}:{comment.body}
+                    {loggedUserId === comment.user_id && (
+                        <div>
+                            <EditCommentModal commentId={comment.id} />
+                            <button className='edit_button'
+                                onClick={() => dispatch(actionDeleteComment(comment.id), dispatch(getSingleImage()).then(history.push(`/images/${imageId}`)))}>
+                                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
+                                <span class="material-symbols-outlined">delete</span>
+                            </button>
+                        </div>
+                    )}
                 </p>
             ))}
         </div>

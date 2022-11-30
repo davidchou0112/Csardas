@@ -51,7 +51,7 @@ const AllImages = () => {
                                     <br></br>
                                     {/* {image?.description}
                                 <br></br> */}
-                                    Likes: {image?.likes.length}
+                                    {/* Likes: {image?.likes.length} */}
                                 </div>
                                 {/* <br></br>
                                 Comments: {comments?.length} */}
