@@ -8,6 +8,10 @@ import EditCommentModal from '../EditComment/editCommentModal';
 const AllComments = ({ imageId }) => {
     const dispatch = useDispatch();
     const comments = useSelector(state => Object.values(state?.comments?.allComments))
+    const commentUserId = comments.map(comment => (comment.user_id))
+
+    console.log('222', commentUserId)
+
     // console.log('~~this is comments:', comments)
     // const userId = useSelector(state => state.session.user.id)
     const history = useHistory();
@@ -20,8 +24,9 @@ const AllComments = ({ imageId }) => {
         <div>
             <h3>Comments:</h3>
             {comments.map(comment => (
+
                 <p>
-                    {comment.body}
+                    {commentUserId}:{comment.body}
                     <button><EditCommentModal commentId={comment.id} /></button>
                     <button
                         onClick={() => dispatch(actionDeleteComment(comment.id), dispatch(getSingleImage()).then(history.push(`/images/${imageId}`)))}>

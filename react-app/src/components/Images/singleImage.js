@@ -49,7 +49,15 @@ const SingleImage = () => {
         }
         return (
             <div>
-                <h1>{image?.title}</h1>
+                <div>
+                    <h1>{image?.title}
+                        <UpdateImageModal />
+                        <button className='deleteButton'
+                            onClick={() => dispatch(actionDeleteImage(image.id), dispatch(getAllImages()).then(history.push('/')))}>
+                            Delete Image
+                        </button>
+                    </h1>
+                </div>
                 <div className='single_image_wrapper'>
                     <img className='single_image' src={image?.image_url} alt='pic didnt load' />
                     <br></br>
@@ -63,13 +71,7 @@ const SingleImage = () => {
 
                     {/* <button><EditCommentModal commentId={commentId} /></button> */}
 
-                    <div>
-                        <UpdateImageModal />
-                    </div>
-                    <button className='deleteButton'
-                        onClick={() => dispatch(actionDeleteImage(image.id), dispatch(getAllImages()).then(history.push('/')))}>
-                        Delete Image
-                    </button>
+
                 </div>
             </div>
         )
