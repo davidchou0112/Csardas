@@ -254,10 +254,10 @@ def update_comment(id):
 @app.route('/api/images/<int:image_id>/comments', methods=["POST"])
 
 # @login_required
-def post_new_comment(user_id, image_id):
+def post_new_comment(image_id):
     data = request.get_json()
     new_comment = Comment(
-        user_id = user_id,
+        user_id = data['userId'],
         image_id = image_id,
         body = data['body']
     )

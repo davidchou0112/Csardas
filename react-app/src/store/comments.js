@@ -73,7 +73,7 @@ export const getSingleComments = (id) => async dispatch => {
 
 export const createComment = (singleComment, imageId) => async dispatch => {
     const response = await csrfFetch(`/api/images/${imageId}/comments`, {
-        method: 'POST',
+        method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
@@ -137,8 +137,7 @@ const commentsReducer = (state = initialState, action) => {
 
         case CREATE_COMMENT:
             newState = { ...state }
-            let id = action.comment.id
-            newState.allComments[id] = action.comment
+            newState.allComments[action.singleComment.id] = action.singleComment
             return newState
 
 

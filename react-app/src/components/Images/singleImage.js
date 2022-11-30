@@ -6,6 +6,8 @@ import EditImageForm from '../EditImage';
 import AllComments from '../Comments';
 import './singleImage.css'
 import UpdateImageModal from '../EditImage/editModal';
+import CreateCommentForm from '../CreateComment';
+import CreateCommentModal from '../CreateComment/createModal';
 
 const SingleImage = () => {
     const history = useHistory();
@@ -36,6 +38,10 @@ const SingleImage = () => {
 
                         <div className='comments_position'>
                             <AllComments imageId={imageId} />
+                        </div>
+                        <div>
+                            {/* <CreateCommentForm /> */}
+                            <CreateCommentModal />
                         </div>
                     </div>
                 </div>
