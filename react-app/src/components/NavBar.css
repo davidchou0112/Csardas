@@ -35,8 +35,15 @@
     border-radius: 5px;
     padding: 2px;
     padding-right: 2px;
-    margin: 2px;
+    /* margin: 2px; */
+    margin: 5%;
+
     margin-right: 15px;
+    margin-bottom: 10px;
     height: auto;
     cursor: pointer;
+}
+
+.logo {
+    height: 40px;
 }

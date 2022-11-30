@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
+import Logo from '../../src/components/BackgroundImage/Csardas_logo.jpg'
 import ProfileButton from './ProfileButton';
 
 const NavBar = () => {
@@ -15,7 +16,7 @@ const NavBar = () => {
       <div className='header_wrapper'>
         <div className='header_left'>
           <NavLink to='/' exact={true} activeClassName='active'>
-            <button>Home</button>
+            <img className='logo' src={Logo} alt='logo' />
           </NavLink>
         </div>
 
@@ -37,7 +38,7 @@ const NavBar = () => {
 
       <div className='header_left'>
         <NavLink to='/' exact={true} activeClassName='active'>
-          <button>Home</button>
+          <img className='logo' src={Logo} alt='logo' />
         </NavLink>
       </div>
 

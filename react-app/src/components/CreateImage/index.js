@@ -38,6 +38,7 @@ const UploadPicture = () => {
                     description,
                     image_url: imgUrl
                 }
+                // res is used incase you want to check for if res.ok
                 const res = await csrfFetch(`/api/users/${user_id.id}/images`, {
                     method: "POST",
                     headers: {
@@ -45,7 +46,9 @@ const UploadPicture = () => {
                     },
                     body: JSON.stringify(newImage),
                 })
-                setImageLoading(false)
+                if (res.ok) {
+                    setImageLoading(false)
+                }
             })
             .catch(() => {
                 alert('failed!')

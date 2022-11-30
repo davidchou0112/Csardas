@@ -17,7 +17,10 @@ function UpdateImageModal() {
     return (
         <>
             <button className="watchlist-page-icon" onClick={() => setShowModal(true)}>
-                <i class="fa-solid fa-pen"></i> Edit Image
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
+                <span class="material-symbols-outlined">
+                    edit
+                </span>
             </button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>

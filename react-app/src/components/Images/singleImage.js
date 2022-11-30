@@ -28,7 +28,9 @@ const SingleImage = () => {
         if (user.id !== image.user_id) {
             return (
                 <div>
-                    <h1>{image?.title}</h1>
+                    <div className='single_image_header'>
+                        <h1>{image?.title}</h1>
+                    </div>
                     <div className='single_image_wrapper'>
                         <img className='single_image' src={image?.image_url} alt='pic didnt load' />
                         <br></br>
@@ -55,7 +57,8 @@ const SingleImage = () => {
                         <UpdateImageModal />
                         <button className='deleteButton'
                             onClick={() => dispatch(actionDeleteImage(image.id), dispatch(getAllImages()).then(history.push('/')))}>
-                            Delete Image
+                            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
+                            <span class="material-symbols-outlined">delete</span>
                         </button>
                     </div>
 
