@@ -65,14 +65,12 @@ function ProfileButton({ user }) {
 
                 {showMenu && (
                     <ul className='profile-dropdown'>
-
-                        <p className='options'>
-                            {user.username}
-                        </p>
-
-                        <p className='options'>
-                            {user.email}
-                        </p>
+                        <div>
+                            <p className='options'>
+                                {user.username}<br></br>
+                                {user.email}
+                            </p>
+                        </div>
 
                         {/* <p className='options' >
                             <NavLink to='/current' >
@@ -95,10 +93,8 @@ function ProfileButton({ user }) {
                                 <button className='profileButtons'>
                                     Post an Image
                                 </button>
-                            </NavLink>
-                        </p>
+                            </NavLink><br></br>
 
-                        <p className='options'>
                             <button className='profileButtons' onClick={logout}>Log Out</button>
                         </p>
                     </ul>
