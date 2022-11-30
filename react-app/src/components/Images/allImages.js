@@ -16,7 +16,7 @@ const AllImages = () => {
 
     useEffect(() => {
         dispatch(getAllImages())
-        dispatch(getAllComments())
+            // dispatch(getAllComments())
             .then(() => setIsLoaded(true))
     }, [dispatch])
 
