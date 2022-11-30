@@ -10,7 +10,7 @@ const AllComments = ({ imageId }) => {
     const comments = useSelector(state => Object.values(state?.comments?.allComments))
     const commentUserId = comments.map(comment => (comment.user_id))
 
-    console.log('222', commentUserId)
+    // console.log('~~~~', commentUserId)
 
     // console.log('~~this is comments:', comments)
     // const userId = useSelector(state => state.session.user.id)

@@ -3,12 +3,20 @@
     grid-template-columns: repeat(1, 1fr);
     justify-content: center;
     justify-items: center;
-    background-color: gray;
+    background-color: rgb(206, 209, 236);
     border-radius: 10px;
+    padding-bottom: 20px;
+    padding-top: 15px;
 }
 
 .edit_button {
     background-color: transparent;
     border: transparent;
     cursor: pointer;
+}
+
+#textarea {
+    width: 400px;
+    height: 150px;
+    resize: none;
 }
