@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../src/store/session';
 import { NavLink, useHistory } from 'react-router-dom';
 // import EditSpotFormModal from '../EditSpot';
+import './NavBar.css';
 
 // import { useSelector } from 'react-redux';
 // import CreateSpotFormModal from '../CreateSpotFormModal';
@@ -56,7 +57,10 @@ function ProfileButton({ user }) {
         return (
             <>
                 <button className='profile-button' onClick={openMenu}>
-                    <i className='fas fa-user-circle' />
+                    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
+                    <span class="material-symbols-outlined">
+                        cinematic_blur
+                    </span>
                 </button>
 
                 {showMenu && (
@@ -87,7 +91,7 @@ function ProfileButton({ user }) {
                         </p> */}
 
                         <p className='options' >
-                            <NavLink to='/users/userId/images/upload' exact={true} activeClassName='active'>
+                            <NavLink to={`/users/${user.id}/images/upload`} exact={true} activeClassName='active'>
                                 <button className='profileButtons'>
                                     Post an Image
                                 </button>

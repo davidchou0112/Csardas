@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { csrfFetch } from '../../store/csrf';
 import { actionUpdateImage, getSingleImage } from '../../store/images';
+import './EditImage.css'
 
 const EditImageForm = ({ setShowModal }) => {
     const dispatch = useDispatch();
@@ -62,7 +63,7 @@ const EditImageForm = ({ setShowModal }) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className='edit_image_wrapper' onSubmit={handleSubmit}>
             <h1>Edit Pic Form </h1>
             <input
                 value={title}
@@ -84,7 +85,9 @@ const EditImageForm = ({ setShowModal }) => {
                 onChange={updateImage}
             />
             <br></br>
-            <button type='submit' >Edit Image</button>
+            <button type='submit' >
+                Edit Image
+            </button>
             <button onClick={handleCancel} type='button'>Cancel</button>
         </form>
 

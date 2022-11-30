@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import { useDispatch } from "react-redux";
 import EditImageForm from ".";
 import { Modal } from "../context/Modal";
-
+import './EditImage.css'
 
 function UpdateImageModal() {
     const [showModal, setShowModal] = useState(false)
@@ -16,8 +16,11 @@ function UpdateImageModal() {
 
     return (
         <>
-            <button className="watchlist-page-icon" onClick={() => setShowModal(true)}>
-                <i class="fa-solid fa-pen"></i> Edit Image
+            <button className="edit_button" onClick={() => setShowModal(true)}>
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
+                <span class="material-symbols-outlined">
+                    edit
+                </span>
             </button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>

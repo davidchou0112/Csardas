@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { getAllComments } from '../../store/comments';
 // import { getAllComments } from '../../store/comments';
 import { getAllImages } from '../../store/images';
 import './allImages.css'
@@ -11,12 +12,11 @@ const AllImages = () => {
     const user = useSelector(state => state.session.user)
     const images = useSelector(state => state.images?.allImages)
     const comments = useSelector(state => Object.values(state.comments?.allComments))
-
-    // console.log('~~~~~~~~~this is image:', images)
+    console.log('~~~~~~~~~this is image:', images)
 
     useEffect(() => {
         dispatch(getAllImages())
-            // dispatch(getAllComments())
+        dispatch(getAllComments())
             .then(() => setIsLoaded(true))
     }, [dispatch])
 
@@ -48,13 +48,13 @@ const AllImages = () => {
                                 <img className='home_image' src={image?.image_url} alt='pic didnt load' />
                                 <div className='home_image_title'>
                                     {image?.title}
+                                    <br></br>
+                                    {/* {image?.description}
+                                <br></br> */}
+                                    Likes: {image?.likes.length}
                                 </div>
                                 {/* <br></br>
-                            {image?.description}
-                            <br></br>
-                            Likes: {image?.likes.length}
-                            <br></br>
-                            Comments: {comments?.length} */}
+                                Comments: {comments?.length} */}
                             </NavLink>
                         </div>
                     ))}

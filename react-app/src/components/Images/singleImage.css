@@ -27,3 +27,9 @@
     justify-content: center;
     justify-items: center;
 }
+
+.deleteButton {
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+}
