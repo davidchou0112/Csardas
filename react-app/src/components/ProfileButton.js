@@ -70,7 +70,7 @@ function ProfileButton({ user }) {
                             {user.email}
                         </p>
 
-                        <p className='options' >
+                        {/* <p className='options' >
                             <NavLink to='/current' >
                                 <button className='profileButtons'>
                                     My Images
@@ -84,7 +84,7 @@ function ProfileButton({ user }) {
                                     My Reviews
                                 </button>
                             </NavLink>
-                        </p>
+                        </p> */}
 
                         <p className='options' >
                             <NavLink to='/users/userId/images/upload' exact={true} activeClassName='active'>

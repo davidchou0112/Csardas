@@ -57,6 +57,15 @@ function App() {
           <PostImage />
         </Route>
 
+        <Route path='/current' exact={true}>
+
+        </Route>
+
+        <Route path='/my-reviews' exact={true}>
+
+        </Route>
+
+
       </Switch>
     </BrowserRouter >
   );

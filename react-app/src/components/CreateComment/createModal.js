@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 // import { useDispatch } from "react-redux";
-import EditImageForm from ".";
+import CreateCommentForm from ".";
 import { Modal } from "../context/Modal";
 
 
-function UpdateImageModal() {
+function CreateCommentModal() {
     const [showModal, setShowModal] = useState(false)
     // const dispatch = useDispatch();
     // const [showModal, setShowModal] = useContext(ModalContext)
@@ -17,11 +17,11 @@ function UpdateImageModal() {
     return (
         <>
             <button className="watchlist-page-icon" onClick={() => setShowModal(true)}>
-                <i class="fa-solid fa-pen"></i> Edit Image
+                <i class="fa-solid fa-pen"></i>Post Comment
             </button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    < EditImageForm
+                    < CreateCommentForm
                         setShowModal={setShowModal}
                     />
                 </Modal>
@@ -30,4 +30,4 @@ function UpdateImageModal() {
     )
 }
 
-export default UpdateImageModal
+export default CreateCommentModal
