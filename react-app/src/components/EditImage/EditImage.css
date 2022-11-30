@@ -6,3 +6,9 @@
     background-color: gray;
     border-radius: 10px;
 }
+
+.edit_button {
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+}

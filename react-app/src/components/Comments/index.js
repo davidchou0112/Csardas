@@ -27,10 +27,11 @@ const AllComments = ({ imageId }) => {
 
                 <p>
                     {commentUserId}:{comment.body}
-                    <button><EditCommentModal commentId={comment.id} /></button>
-                    <button
+                    <EditCommentModal commentId={comment.id} />
+                    <button className='edit_button'
                         onClick={() => dispatch(actionDeleteComment(comment.id), dispatch(getSingleImage()).then(history.push(`/images/${imageId}`)))}>
-                        Delete Comment
+                        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
+                        <span class="material-symbols-outlined">delete</span>
                     </button>
                 </p>
             ))}
