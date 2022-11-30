@@ -2,17 +2,17 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionDeleteImage, getSingleImage, getAllImages } from '../../store/images';
 import { Redirect, useHistory, useParams } from 'react-router-dom'
-import EditImageForm from '../EditImage';
 import AllComments from '../Comments';
 import './singleImage.css'
 import UpdateImageModal from '../EditImage/editModal';
-import CreateCommentForm from '../CreateComment';
-import CreateCommentModal from '../CreateComment/createModal';
+import CreateCommentModal from '../CreateComment/createCommentModal';
+import EditCommentModal from '../EditComment/editCommentModal';
 
 const SingleImage = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const image = useSelector(state => state.images?.singleImage)
+    const commentId = useSelector(state => state.comments.allComments.id)
     // console.log('~~~~~~~~~~~this is image:', image)
     const user = useSelector(state => state.session.user);
     // console.log('~~~~~~~~~~~~~user:', user)
@@ -60,6 +60,8 @@ const SingleImage = () => {
                     <div className='comments_position'>
                         <AllComments imageId={imageId} />
                     </div>
+
+                    <button><EditCommentModal commentId={commentId} /></button>
 
                     <div>
                         <UpdateImageModal />

@@ -62,8 +62,8 @@ export const getAllComments = (imageId) => async dispatch => {
 //     const response = await csrfFetch(`/api/`)
 // }
 
-export const getSingleComments = (id) => async dispatch => {
-    const response = await fetch(`/api/comments/${id}`);
+export const getSingleComments = (commentId) => async dispatch => {
+    const response = await fetch(`/api/comments/${commentId}`);
 
     if (response.ok) {
         const data = await response.json()
