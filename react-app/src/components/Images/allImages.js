@@ -32,7 +32,6 @@ const AllImages = () => {
                         <button>Get Started</button>
                     </NavLink>
                     <div><small>Already on Csárdás? <NavLink to='/login' exact={true}>Login</NavLink></small></div>
-
                 </div>
             </div>
         )
@@ -41,23 +40,25 @@ const AllImages = () => {
 
     return isLoaded && (
         <div id='home_background'>
-            <div className='home_all_images'>
-                {Object.values(images).map(image => (
-                    <div className='home_image_wrapper'>
-                        <NavLink to={`/images/${image.id}`}>
-                            <img className='home_image' src={image?.image_url} alt='pic didnt load' />
-                            <div className='home_image_title'>
-                                {image?.title}
-                            </div>
-                            {/* <br></br>
+            <div className='home_make_long'>
+                <div className='home_all_images'>
+                    {Object.values(images).map(image => (
+                        <div className='home_image_wrapper'>
+                            <NavLink to={`/images/${image.id}`}>
+                                <img className='home_image' src={image?.image_url} alt='pic didnt load' />
+                                <div className='home_image_title'>
+                                    {image?.title}
+                                </div>
+                                {/* <br></br>
                             {image?.description}
                             <br></br>
                             Likes: {image?.likes.length}
                             <br></br>
                             Comments: {comments?.length} */}
-                        </NavLink>
-                    </div>
-                ))}
+                            </NavLink>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     )
