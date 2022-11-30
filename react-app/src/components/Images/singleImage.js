@@ -12,7 +12,7 @@ const SingleImage = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const image = useSelector(state => state.images?.singleImage)
-    const commentId = useSelector(state => state.comments.allComments.id)
+    // const commentId = useSelector(state => state.comments.allComments.id)
     // console.log('~~~~~~~~~~~this is image:', image)
     const user = useSelector(state => state.session.user);
     // console.log('~~~~~~~~~~~~~user:', user)
@@ -61,7 +61,7 @@ const SingleImage = () => {
                         <AllComments imageId={imageId} />
                     </div>
 
-                    <button><EditCommentModal commentId={commentId} /></button>
+                    {/* <button><EditCommentModal commentId={commentId} /></button> */}
 
                     <div>
                         <UpdateImageModal />

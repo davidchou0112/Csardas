@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllComments } from '../../store/comments';
+import EditCommentModal from '../EditComment/editCommentModal';
 
 const AllComments = ({ imageId }) => {
     const dispatch = useDispatch();
@@ -17,7 +18,10 @@ const AllComments = ({ imageId }) => {
         <div>
             <h3>Comments:</h3>
             {comments.map(comment => (
-                <p>{comment.body}</p>
+                <p>
+                    {comment.body}
+                    <button><EditCommentModal commentId={comment.id} /></button>
+                </p>
             ))}
         </div>
     )

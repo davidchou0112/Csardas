@@ -9,7 +9,7 @@ function EditCommentModal({ commentId }) {
     return (
         <>
             <button className="watchlist-page-icon" onClick={() => setShowModal(true)}>
-                <i class="fa-solid fa-pen"></i>Post Comment
+                <i class="fa-solid fa-pen"></i>Edit Comment
             </button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>

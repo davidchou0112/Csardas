@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getSingleComments, updateComment } from '../../store/comments';
+import { getSingleImage } from '../../store/images';
 
-const EditCommentForm = ({ commentId }) => {
+const EditCommentForm = ({ commentId, setShowModal }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const comment = useSelector(state => state);
     const imageId = useSelector(state => state.images.singleImage.id)
 
-    const [body, setBody] = useState('');
+    const [body, setBody] = useState();
 
     useEffect(() => {
         dispatch(getSingleComments(commentId));
@@ -35,12 +36,23 @@ const EditCommentForm = ({ commentId }) => {
         let newComment = await dispatch(updateComment(comment, commentId));
 
         if (newComment) {
-            history.push(`/images/${imageId}`)
+            dispatch(getSingleImage())
+                .then(history.push(`/images/${imageId}`))
+                .then(setShowModal(false))
         }
     }
 
     return (
-        <>edit me</>
+        <form onSubmit={handleSubmit}>
+            <>Edit Your Comment</><br></br>
+            <input
+                value={body}
+                type='text'
+                placeholder='Body'
+                onChange={(e) => setBody(e.target.value)}
+            /><br></br>
+            <button type='submit' >Edit Comment</button>
+        </form>
     )
 }
 export default EditCommentForm;
