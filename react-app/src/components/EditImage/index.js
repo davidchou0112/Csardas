@@ -64,7 +64,8 @@ const EditImageForm = ({ setShowModal }) => {
 
     return (
         <form className='edit_image_wrapper' onSubmit={handleSubmit}>
-            <h1>Edit Pic Form </h1>
+            <h1>Edit Image</h1><br></br>
+            <label>Title:</label>
             <input
                 value={title}
                 type='text'
@@ -72,7 +73,9 @@ const EditImageForm = ({ setShowModal }) => {
                 onChange={(e) => setTitle(e.target.value)}
             />
             <br></br>
-            <input
+            <label>Description:</label>
+            <textarea
+                id='textarea'
                 value={description}
                 type='text'
                 placeholder='Description'
@@ -86,7 +89,7 @@ const EditImageForm = ({ setShowModal }) => {
             />
             <br></br>
             <button type='submit' >
-                Edit Image
+                Submit Changes
             </button>
             <button onClick={handleCancel} type='button'>Cancel</button>
         </form>

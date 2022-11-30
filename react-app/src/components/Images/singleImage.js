@@ -7,12 +7,15 @@ import './singleImage.css'
 import UpdateImageModal from '../EditImage/editModal';
 import CreateCommentModal from '../CreateComment/createCommentModal';
 import EditCommentModal from '../EditComment/editCommentModal';
+import { getAllComments } from '../../store/comments';
 
 const SingleImage = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const image = useSelector(state => state.images?.singleImage)
-    // const commentId = useSelector(state => state.comments.allComments.id)
+    const comments = useSelector(state => state.comments.allComments)
+    const length = Object.values(comments).map(comment => comments.allComments)
+    console.log('~~~~~~~~~', length)
     // console.log('~~~~~~~~~~~this is image:', image)
     const user = useSelector(state => state.session.user);
     // console.log('~~~~~~~~~~~~~user:', user)
@@ -27,7 +30,7 @@ const SingleImage = () => {
     if (user) {
         if (user.id !== image.user_id) {
             return (
-                <div>
+                <div className='single_image_page'>
                     <div className='single_image_header'>
                         <h1>{image?.title}</h1>
                     </div>
@@ -36,21 +39,34 @@ const SingleImage = () => {
                         <br></br>
                         {image?.description}
                         <br></br>
-                        Likes: {likes}
 
-                        <div className='comments_position'>
-                            <AllComments imageId={imageId} />
+                        <div className='comments_details'>
+                            <div>
+                                <div className='comments_position'>
+                                    <AllComments imageId={imageId} />
+                                </div>
+                                <div className='post_comment_button'>
+                                    <CreateCommentModal />
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <div>Likes: {likes}</div>
+                                    {/* <div>Likes</div> */}
+                                </div>
+                                <div>
+                                    <div>Comments: {length}</div>
+                                    {/* <div>Comments</div> */}
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            {/* <CreateCommentForm /> */}
-                            <CreateCommentModal />
-                        </div>
+
                     </div>
                 </div>
             )
         }
         return (
-            <div>
+            <div className='single_image_page'>
                 <div className='single_image_header'>
                     <h1>{image?.title}</h1>
                     <div className='single_image_edit_delete'>
@@ -68,10 +84,26 @@ const SingleImage = () => {
                     <br></br>
                     {image?.description}
                     <br></br>
-                    Likes: {likes}
+                    <div className='comments_details'>
+                        <div>
+                            <div className='comments_position'>
+                                <AllComments imageId={imageId} />
+                            </div>
+                            <div className='post_comment_button'>
+                                <CreateCommentModal />
+                            </div>
+                        </div>
 
-                    <div className='comments_position'>
-                        <AllComments imageId={imageId} />
+                        <div>
+                            <div>
+                                <div>Likes: {likes}</div>
+                                {/* <div>Likes</div> */}
+                            </div>
+                            <div>
+                                <div>Comments: {length}</div>
+                                {/* <div>Comments</div> */}
+                            </div>
+                        </div>
                     </div>
 
                     {/* <button><EditCommentModal commentId={commentId} /></button> */}

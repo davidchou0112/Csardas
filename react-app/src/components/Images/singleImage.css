@@ -21,6 +21,11 @@
     align-items: center;
 }
 
+.single_image_page {
+    background-color: aqua;
+    height: 100vh;
+}
+
 .comments_position {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
@@ -32,4 +37,16 @@
     background-color: transparent;
     border: transparent;
     cursor: pointer;
+}
+
+.post_comment_button {
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}
+
+.comments_details {
+    margin-top: 5%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
