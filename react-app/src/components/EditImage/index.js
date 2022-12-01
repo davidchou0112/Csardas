@@ -17,6 +17,10 @@ const EditImageForm = ({ setShowModal }) => {
     const [description, setDescription] = useState();
     const [imageUrl, setImageUrl] = useState();
 
+    // validation
+    const [error, setError] = useState([])
+    let Error = [];
+
     useEffect(() => {
         dispatch(getSingleImage(imageId))
     }, [dispatch, imageId])
@@ -31,6 +35,13 @@ const EditImageForm = ({ setShowModal }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError([]);
+        if (!title) Error.push('Title cannot be empty.')
+        if (!description) Error.push('Description cannot be empty.')
+        // if (!imageUrl) Error.push('Image Url cannot be empty.')
+        setError(Error)
+        if (error) return;
+
         const formData = new FormData();
         formData.append("image", images);
 
@@ -65,6 +76,9 @@ const EditImageForm = ({ setShowModal }) => {
     return (
         <form className='edit_image_wrapper' onSubmit={handleSubmit}>
             <h1>Edit Image</h1><br></br>
+            <div>{error.map((error, ind) => (
+                <div key={ind}>{error}</div>
+            ))}</div><br></br>
             <label>Title:</label>
             <input
                 value={title}

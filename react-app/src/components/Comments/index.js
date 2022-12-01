@@ -26,7 +26,8 @@ const AllComments = ({ imageId }) => {
             {comments.map(comment => (
 
                 <p>
-                    {comment.user?.firstname}:{comment.body}
+                    {comment.user?.firstname}:<br></br>
+                    {comment.body}
                     {loggedUserId === comment.user_id && (
                         <div>
                             <EditCommentModal commentId={comment.id} />
