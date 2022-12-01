@@ -111,7 +111,9 @@ const SignUpForm = () => {
           value={repeatPassword}
           required={true}
         ></input><br></br><br></br>
-        <button id='submit' type='submit'>Sign Up</button>
+        <div id='button_position'>
+          <button id='submit' type='submit'>Sign Up</button>
+        </div>
       </div>
       {/* <div id='white_me'><small>Already on Csárdás? <NavLink to='/login' exact={true}>Login</NavLink></small></div> */}
     </form>

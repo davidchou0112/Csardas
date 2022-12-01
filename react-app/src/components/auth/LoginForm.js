@@ -62,7 +62,7 @@ const LoginForm = () => {
             value={password}
             onChange={updatePassword}
           /><br></br><br></br>
-          <div id='login_button_position'>
+          <div id='button_position'>
             <button id='submit' type='submit' onClick={demoUserButton}>Demo User</button><br></br>
             <button id='submit' type='submit'>Login</button>
           </div>

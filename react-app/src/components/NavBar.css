@@ -74,6 +74,23 @@
     height: 40px;
 }
 
-#splash_nav_right {
+.splash_nav_right {
     cursor: pointer;
+    background-color: transparent;
+    color: white;
+    font-size: large;
+}
+
+#login_button {
+    border-right: 1px solid white;
+    margin-right: 20px;
+    padding-right: 30px;
+}
+
+#login_button:hover {
+    color: #54b3d6;
+}
+
+#signup_button:hover {
+    color: #54b3d6;
 }
