@@ -10,6 +10,8 @@ def user_exists(form, field):
     user = User.query.filter(User.email == email).first()
     if user:
         raise ValidationError('Email address is already in use.')
+    if not email.__contains__('@' and '.'):
+        raise ValidationError('Should be in email format')
     
 def username_exists(form, field):
     # Checking if username is already in use
@@ -38,6 +40,20 @@ def password_valid(form, field):
     password = field.data
     if len(password) < 6 or len(password) > 20:
         raise ValidationError('Password should be betweeen 6 and 20 charaters.')
+
+# def email_valid(form, field):
+#     email = field.data
+#     if(len(email) < 1 or len(email)) > 20: 
+#         raise ValidationError('Must have email that is less than 20 characters.')
+#     user = User.query.filter(User.email == email).first()
+#     if user:
+#         raise ValidationError{
+#             'Email is already in use.'
+#         }
+#     if not email.__contains__('@' and '.'):
+#         raise ValidationError('Should be in email format')
+    
+    
 
 class SignUpForm(FlaskForm):
     username = StringField(

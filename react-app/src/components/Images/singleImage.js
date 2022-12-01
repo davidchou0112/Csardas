@@ -78,7 +78,9 @@ const SingleImage = () => {
                             </button>
                         </div>
                     </div>
-                    {image?.description}
+                    <div id='description'>
+                        {image?.description}
+                    </div>
                     <br></br>
                     <div className='comments_details'>
                         <div>

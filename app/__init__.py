@@ -24,7 +24,8 @@ def upload_image():
     # if "image" not in request.files:
     #     return {"errors": "image required"}, 400
     image = request.files["image"]
-
+    if not image:
+        return {"errors": "No files found"}, 400
     if not allowed_file(image.filename):
         # print('did i get here 1')
         return {"errors": "file type not permitted"}, 400
@@ -178,9 +179,11 @@ def update_image(image_id):
     # print('~~~this is image2:~~~:', image)
     if not image:
         return {
-            "message": "Comment not found",
+            "message": "Image not found",
             "statusCode": 404,
         }, 404
+        
+    
     data = request.get_json()
     
     # print('~~~~does it get here~~~ this is data:', data)
@@ -188,7 +191,10 @@ def update_image(image_id):
     image.title = data['title']
     # print('~~~this is image.title:', image.title)
     image.description = data['description']
-    image.image_url = data['image_url']
+    if data['image_url'] == 'please':
+        image.image_url = image.image_url
+    else:
+        image.image_url = data['image_url']
     # image.image_url = data
     
 
