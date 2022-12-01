@@ -36,8 +36,8 @@ const EditImageForm = ({ setShowModal }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError([]);
-        if (!title) Error.push('Title cannot be empty.')
-        if (!description) Error.push('Description cannot be empty.')
+        if (!title || title.length < 1 || title.length > 20) Error.push("*Must have a title that is less than 20 characters.");
+        if (!description || description.length < 1 || description.length > 500) Error.push("*Must have a description that is less than 500 characters.");
         // if (!imageUrl) Error.push('Image Url cannot be empty.')
         setError(Error)
         if (error) return;
