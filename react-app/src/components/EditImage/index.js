@@ -76,7 +76,7 @@ const EditImageForm = ({ setShowModal }) => {
     return (
         <form className='edit_image_wrapper' onSubmit={handleSubmit}>
             <h1>Edit Image</h1><br></br>
-            <div>{error.map((error, ind) => (
+            <div className='error'>{error.map((error, ind) => (
                 <div key={ind}>{error}</div>
             ))}</div><br></br>
             <label>Title:</label>
