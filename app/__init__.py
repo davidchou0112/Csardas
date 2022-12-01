@@ -23,9 +23,16 @@ app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 def upload_image():
     # if "image" not in request.files:
     #     return {"errors": "image required"}, 400
-    image = request.files["image"]
-    if not image:
-        return {"errors": "No files found"}, 400
+    print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~', request.files)
+    if(request.files):
+        image = request.files["image"]
+    else:
+        return {"errors": "No files found"}
+                
+    print('~~~~~~~~~~~~~~~~~~~ln27 in backend routes~~~~~~~~~~~~~~~~~~~~~~~~')
+    # if not image:
+    #     print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ln29 in backend routes~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+    #     return {"errors": "No files found"}, 400
     if not allowed_file(image.filename):
         # print('did i get here 1')
         return {"errors": "file type not permitted"}, 400

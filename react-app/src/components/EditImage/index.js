@@ -48,29 +48,33 @@ const EditImageForm = ({ setShowModal }) => {
         console.log('3')
 
         const formData = new FormData();
-        console.log('4')
-
-        formData.append("image", images);
-        console.log('5')
+        console.log('image, ln51 ', image)
         if (!image) {
+            console.log('imageUrl from front end -- before setImageUrl', imageUrl)
             setImageUrl(image.image_url)
+            console.log('imageUrl from front end -- after setImageUrl', imageUrl)
+            // setImage(image)
         }
+        formData.append("image", images);
+        console.log('formData, front end', formData)
+
         await fetch(`/api/users/aws`, {
             method: "POST",
             body: formData,
         })
             .then(async (url) => {
+                console.log('this is after .then, ln66')
                 let imgUrl = await url.text()
                 let newImage;
                 if (imgUrl.includes('No files found')) {
-                    // console.log(`111111111111111`)
+                    console.log(`111111111111111`)
                     newImage = {
                         title,
                         description,
                         image_url: 'please'
                     }
                 } else {
-                    // console.log(`22222222222222222222`)
+                    console.log(`22222222222222222222`)
 
                     newImage = {
                         title,
@@ -79,9 +83,11 @@ const EditImageForm = ({ setShowModal }) => {
                     }
                 }
                 dispatch(actionUpdateImage(newImage, imageId))
+
             })
             .catch(() => { alert('failed') })
 
+        console.log('image, ln90 ', image)
         history.push(`/images/${imageId}`)
         setShowModal(false)
     }
@@ -94,7 +100,14 @@ const EditImageForm = ({ setShowModal }) => {
 
     const updateImage = (e) => {
         const file = e.target.files[0];
+
+        console.log('this is file', file)
+        console.log('this is image', image)
+        // if (!file) {
+        //     setImage(image)
+        // }
         setImage(file);
+
     }
 
     return (
