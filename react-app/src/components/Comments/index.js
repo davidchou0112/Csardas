@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { actionDeleteComment, getAllComments } from '../../store/comments';
 import { getSingleImage } from '../../store/images';
 import EditCommentModal from '../EditComment/editCommentModal';
+import './index.css'
 
 const AllComments = ({ imageId }) => {
     const dispatch = useDispatch();
@@ -22,12 +23,12 @@ const AllComments = ({ imageId }) => {
 
     return (
         <div>
-            <h3>Comments:</h3>
+            <h3>Comments:</h3><br></br>
             {comments.map(comment => (
 
-                <p>
-                    {comment.user?.firstname}:<br></br>
-                    {comment.body}
+                <p className='comment_body_wrapper'>
+                    <div className='user_info'>{comment.user?.firstname} {comment.user?.lastname}:</div>
+                    <div className='comment_body'>{comment.body}</div>
                     {loggedUserId === comment.user_id && (
                         <div>
                             <EditCommentModal commentId={comment.id} />

@@ -51,11 +51,11 @@ const SingleImage = () => {
                             </div>
                             <div>
                                 <div>
-                                    <div>Likes: {likes}</div>
+                                    {/* <div>Likes: {likes}</div> */}
                                     {/* <div>Likes</div> */}
                                 </div>
                                 <div>
-                                    <div>Comments: {length}</div>
+                                    {/* <div>Comments: {length}</div> */}
                                     {/* <div>Comments</div> */}
                                 </div>
                             </div>
@@ -96,11 +96,11 @@ const SingleImage = () => {
 
                         <div>
                             <div>
-                                <div>Likes: {likes}</div>
+                                {/* <div>Likes: {likes}</div> */}
                                 {/* <div>Likes</div> */}
                             </div>
                             <div>
-                                <div>Comments: {length}</div>
+                                {/* <div>Comments: {length}</div> */}
                                 {/* <div>Comments</div> */}
                             </div>
                         </div>

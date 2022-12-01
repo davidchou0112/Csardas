@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // import { useDispatch } from "react-redux";
 import CreateCommentForm from ".";
 import { Modal } from "../context/Modal";
+import './index.css'
 
 
 function CreateCommentModal() {
@@ -16,8 +17,8 @@ function CreateCommentModal() {
 
     return (
         <>
-            <button className="watchlist-page-icon" onClick={() => setShowModal(true)}>
-                <i class="fa-solid fa-pen"></i>Post Comment
+            <button className="leave_comment" onClick={() => setShowModal(true)}>
+                <i class="fa-solid fa-pen"></i>Leave Comment
             </button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>

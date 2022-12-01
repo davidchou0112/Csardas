@@ -59,7 +59,7 @@ const CreateCommentForm = ({ setShowModal }) => {
                     className='textArea'
                 >
                 </textarea> <br></br>
-                <button>Post Comment</button>
+                <button>Post</button>
 
             </label>
         </form>

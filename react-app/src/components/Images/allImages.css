@@ -49,13 +49,16 @@
 
 .splash_inside_wrapper {
     padding-top: 5%;
-    padding-bottom: 20%;
+    padding-bottom: 30%;
     display: grid;
     /* grid-template-columns: repeat(1, 1fr); */
     justify-content: center;
     justify-items: center;
 }
 
+#text_white {
+    color: white;
+}
 
 #splash_background {
     background-position: top;
