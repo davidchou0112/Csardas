@@ -15,7 +15,7 @@ const SingleImage = () => {
     const image = useSelector(state => state.images?.singleImage)
     const comments = useSelector(state => state.comments.allComments)
     const length = Object.values(comments).map(comment => comments.allComments)
-    console.log('~~~~~~~~~', length)
+    // console.log('~~~~~~~~~', length)
     // console.log('~~~~~~~~~~~this is image:', image)
     const user = useSelector(state => state.session.user);
     // console.log('~~~~~~~~~~~~~user:', user)

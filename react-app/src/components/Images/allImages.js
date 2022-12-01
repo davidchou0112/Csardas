@@ -12,7 +12,7 @@ const AllImages = () => {
     const user = useSelector(state => state.session.user)
     const images = useSelector(state => state.images?.allImages)
     const comments = useSelector(state => Object.values(state.comments?.allComments))
-    console.log('~~~~~~~~~this is image:', images)
+    // console.log('~~~~~~~~~this is image:', images)
 
     useEffect(() => {
         dispatch(getAllImages())
