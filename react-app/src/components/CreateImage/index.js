@@ -57,7 +57,7 @@ const UploadPicture = () => {
                     // console.log(`11111111`, url.errors == 'file type not permitted')
                     // console.log(`112222222222222222222`, await url.errors.text() == 'file type not permitted')
                     // console.log('errrrrrrrrrrrrrrrr', imgUrl.errors)
-                    console.log(`~~~~~~~~`, imgUrl.includes('not permitted'))
+                    // console.log(`~~~~~~~~`, imgUrl.includes('not permitted'))
                     // if (imgUrl.includes('not permitted')) {
                     //     errors.push('*file type not permitted.')
                     //     setError(errors)
