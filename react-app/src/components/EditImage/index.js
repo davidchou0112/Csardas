@@ -73,7 +73,16 @@ const EditImageForm = ({ setShowModal }) => {
                         description,
                         image_url: 'please'
                     }
-                } else {
+
+                }
+                else if (imgUrl.includes('file type not permitted')) {
+                    ErrorMessage = ['Must be proper image type. (.jpg, .jpeg, .png, .gif, .pdf)']
+                    // console.log(`=============error:`, error)
+                    console.log(`=============error:`, ErrorMessage)
+
+                    return;
+                }
+                else {
                     console.log(`22222222222222222222`)
 
                     newImage = {
@@ -88,8 +97,17 @@ const EditImageForm = ({ setShowModal }) => {
             .catch(() => { alert('failed') })
 
         console.log('image, ln90 ', image)
-        history.push(`/images/${imageId}`)
-        setShowModal(false)
+        console.log('~~~~~this is error', error)
+        // if (!error.length) {
+        if (!ErrorMessage.length) {
+
+            history.push(`/images/${imageId}`)
+            setShowModal(false)
+        } else {
+            console.log('did i get here???')
+            setError(ErrorMessage)
+            // return;
+        }
     }
 
     const handleCancel = (e) => {

@@ -35,7 +35,7 @@ def upload_image():
     #     return {"errors": "No files found"}, 400
     if not allowed_file(image.filename):
         # print('did i get here 1')
-        return {"errors": "file type not permitted"}, 400
+        return {"errors": "file type not permitted"}
 
     image.filename = get_unique_filename(image.filename)
 
