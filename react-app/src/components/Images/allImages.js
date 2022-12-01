@@ -26,12 +26,12 @@ const AllImages = () => {
         return (
             <div className='splash_wrapper' id='splash_background'>
                 <div className='splash_inside_wrapper'>
-                    <h1>Find your inspiration.</h1>
-                    <h2>Join the Csárdás community.</h2>
+                    <h1 id='text_white'>Find your inspiration.</h1><br></br>
+                    <h3 id='text_white'>Join the Csárdás community.</h3><br></br>
                     <NavLink to='/sign-up' exact={true} activeClassName='active'>
-                        <button>Get Started</button>
+                        <button id='start_free'>Start for free</button>
                     </NavLink>
-                    <div><small>Already on Csárdás? <NavLink to='/login' exact={true}>Login</NavLink></small></div>
+                    {/* <div id='text_white'><small>Already on Csárdás? <NavLink to='/login' exact={true}>Login</NavLink></small></div> */}
                 </div>
             </div>
         )

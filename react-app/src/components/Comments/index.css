@@ -1,0 +1,19 @@
+.user_info {
+    font-weight: bolder;
+    font-size: smaller;
+    padding-left: 2%;
+}
+
+.comment_body {
+    padding-left: 3%;
+    word-wrap: break-word;
+}
+
+.comment_body_wrapper {
+    /* border: 1px solid black; */
+    width: 450px;
+    /* overflow-x: scroll; */
+    word-wrap: break-word;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
