@@ -57,13 +57,13 @@ const SignUpForm = () => {
 
   return (
     <form className='signup_wrapper' id='signup_background' onSubmit={onSignUp}>
-      <div >
+      <div id='error'>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
       <div>
-        <label>User Name</label><br></br>
+        <label id='white_me'>User Name</label><br></br>
         <input
           type='text'
           name='username'
@@ -71,7 +71,7 @@ const SignUpForm = () => {
           value={username}
         ></input><br></br>
 
-        <label>First Name</label><br></br>
+        <label id='white_me'>First Name</label><br></br>
         <input
           type='text'
           name='firstname'
@@ -79,7 +79,7 @@ const SignUpForm = () => {
           value={firstname}
         ></input><br></br>
 
-        <label>Last Name</label><br></br>
+        <label id='white_me'>Last Name</label><br></br>
         <input
           type='text'
           name='lastname'
@@ -87,7 +87,7 @@ const SignUpForm = () => {
           value={lastname}
         ></input><br></br>
 
-        <label>Email</label><br></br>
+        <label id='white_me'>Email</label><br></br>
         <input
           type='text'
           name='email'
@@ -95,7 +95,7 @@ const SignUpForm = () => {
           value={email}
         ></input><br></br>
 
-        <label>Password</label><br></br>
+        <label id='white_me'>Password</label><br></br>
         <input
           type='password'
           name='password'
@@ -103,18 +103,17 @@ const SignUpForm = () => {
           value={password}
         ></input><br></br>
 
-        <label>Repeat Password</label><br></br>
+        <label id='white_me'>Repeat Password</label><br></br>
         <input
           type='password'
           name='repeat_password'
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}
-        ></input><br></br>
-        <button type='submit'>Sign Up</button>
+        ></input><br></br><br></br>
+        <button id='submit' type='submit'>Sign Up</button>
       </div>
-      <div><small>Already on Csárdás? <NavLink to='/login' exact={true}>Login</NavLink></small></div>
-
+      {/* <div id='white_me'><small>Already on Csárdás? <NavLink to='/login' exact={true}>Login</NavLink></small></div> */}
     </form>
   );
 };

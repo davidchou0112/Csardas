@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import UploadPicture from '../CreateImage';
+import './postImage.css'
 
 const PostImage = () => {
     const user = useSelector(state => state.session.user)
@@ -9,8 +10,8 @@ const PostImage = () => {
         return (Redirect('/'))
     }
     return (
-        <div>
-            <h1>Post Image Here</h1>
+        <div className='post_image_wrapper'>
+            <h1>Post Image Here</h1><br></br>
             <UploadPicture />
         </div>
     )

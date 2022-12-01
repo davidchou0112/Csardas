@@ -40,32 +40,34 @@ const LoginForm = () => {
     // <div>
     <form onSubmit={onLogin}>
       <div className='login_wrapper' id='login_background'>
-        <div>
+        <div id='error'>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
         </div>
         <div>
-          <label htmlFor='email'>Email</label><br></br>
+          <label id='white_me' htmlFor='email'>Email</label><br></br>
           <input
             name='email'
             type='text'
             placeholder='Email'
             value={email}
             onChange={updateEmail}
-          /><br></br>
-          <label htmlFor='password'>Password</label><br></br>
+          /><br></br><br></br>
+          <label id='white_me' htmlFor='password'>Password</label><br></br>
           <input
             name='password'
             type='password'
             placeholder='Password'
             value={password}
             onChange={updatePassword}
-          /><br></br>
-          <button type='submit'>Login</button><br></br>
-          <button type='submit' onClick={demoUserButton}>Demo User</button>
+          /><br></br><br></br>
+          <div id='login_button_position'>
+            <button id='submit' type='submit' onClick={demoUserButton}>Demo User</button><br></br>
+            <button id='submit' type='submit'>Login</button>
+          </div>
         </div>
-        <div><small>Not on Csárdás? <NavLink to='/sign-up' exact={true}>Create an account</NavLink></small></div>
+        {/* <div id='white_me'><small>Not on Csárdás? <NavLink to='/sign-up' exact={true}>Create an account</NavLink></small></div> */}
       </div>
     </form>
 

@@ -33,3 +33,23 @@
     background-repeat: no-repeat;
     background-size: 100%;
 }
+
+#white_me {
+    color: white;
+    /* border: 1px white solid; */
+}
+
+#login_button_position {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* border: 1px white solid; */
+}
+
+#submit {
+    cursor: pointer;
+}
+
+#error {
+    color: yellowgreen;
+}
