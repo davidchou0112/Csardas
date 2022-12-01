@@ -3,6 +3,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: black;
+    min-width: 1100px;
 }
 
 .header_left {
@@ -46,12 +47,15 @@
 .profileButtons {
     background-color: transparent;
     color: black;
-    border-radius: 5px;
     border: transparent;
     padding: 2px;
     margin: 2px;
     height: auto;
     cursor: pointer;
+}
+
+.profileButtons:hover {
+    border-bottom: black 1px solid;
 }
 
 .profile-button {

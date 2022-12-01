@@ -81,6 +81,7 @@ const EditImageForm = ({ setShowModal }) => {
             ))}</div><br></br>
             <label>Title:</label>
             <input
+                id='title_input'
                 value={title}
                 type='text'
                 placeholder='Title'
@@ -97,15 +98,16 @@ const EditImageForm = ({ setShowModal }) => {
             />
             <br></br>
             <input
+                id="image_input"
                 type="file"
                 accept="image/*"
                 onChange={updateImage}
             />
             <br></br>
-            <button type='submit' >
+            <button id='cursor_pointer' type='submit' >
                 Submit Changes
             </button>
-            <button onClick={handleCancel} type='button'>Cancel</button>
+            <button id='cursor_pointer' onClick={handleCancel} type='button'>Cancel</button>
         </form>
 
     )

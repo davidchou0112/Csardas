@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { csrfFetch } from '../../store/csrf';
+import './index.css'
 
 
 // const UploadPicture = ({ user_id }) => {
@@ -62,10 +63,11 @@ const UploadPicture = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="post_image_input_wrapper" onSubmit={handleSubmit}>
             <label>Title
-            </label><br></br>
+            </label>
             <input
+                id="title_input"
                 value={title}
                 type='text'
                 onChange={(e) => setTitle(e.target.value)}
@@ -74,8 +76,9 @@ const UploadPicture = () => {
             /><br></br>
 
             <label>Description
-            </label><br></br>
-            <input
+            </label>
+            <textarea
+                id="textarea"
                 value={description}
                 type='text'
                 onChange={(e) => setDescription(e.target.value)}
@@ -84,11 +87,12 @@ const UploadPicture = () => {
 
             <label>Image Url</label><br></br>
             <input
+                id="image_input"
                 type="file"
                 accept="image/*"
                 onChange={updateImage}
             /><br></br>
-            <button type="submit">Submit</button>
+            <button id="cursor_pointer" type="submit">Submit</button>
             {(imageLoading) && <p>Loading...</p>}
         </form>
     )

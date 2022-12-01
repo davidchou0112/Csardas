@@ -5,7 +5,6 @@
     margin: 0% 18% 0% 18%;
     padding-top: 5%;
     padding-bottom: 5%;
-    /* height: 100vh; */
 }
 
 .home_make_long {
@@ -73,4 +72,8 @@
     cursor: pointer;
     font-size: larger;
     font-weight: bold;
+}
+
+.nav_link {
+    text-decoration: none;
 }
