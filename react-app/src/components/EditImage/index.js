@@ -52,7 +52,9 @@ const EditImageForm = ({ setShowModal }) => {
 
         formData.append("image", images);
         console.log('5')
-
+        if (!image) {
+            setImageUrl(image.image_url)
+        }
         await fetch(`/api/users/aws`, {
             method: "POST",
             body: formData,
