@@ -1,19 +1,23 @@
 .single_image_wrapper {
-    display: column;
     justify-items: center;
     margin: 0% 10% 5% 10%;
+    min-width: 900px;
 }
 
 .single_image {
+    padding-top: 40px;
+    padding-bottom: 30px;
     width: 100%;
     height: fit-content;
+    max-height: 1000px;
+    padding-right: 20px;
 }
 
 .single_image_header {
     display: flex;
     justify-content: space-between;
-    margin-left: 10%;
-    margin-right: 10%;
+    min-width: 900px;
+    margin-top: 2px;
 }
 
 .single_image_edit_delete {

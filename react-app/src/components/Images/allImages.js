@@ -29,7 +29,7 @@ const AllImages = () => {
                     <h1 id='text_white'>Find your inspiration.</h1><br></br>
                     <h3 id='text_white'>Join the Csárdás community.</h3><br></br>
                     <NavLink to='/sign-up' exact={true} activeClassName='active'>
-                        <button>Start for free</button>
+                        <button id='start_free'>Start for free</button>
                     </NavLink>
                     {/* <div id='text_white'><small>Already on Csárdás? <NavLink to='/login' exact={true}>Login</NavLink></small></div> */}
                 </div>

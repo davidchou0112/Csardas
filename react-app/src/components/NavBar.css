@@ -8,11 +8,15 @@
 .header_left {
     display: flex;
     align-items: center;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 5px;
 }
 
 .header_right {
     display: flex;
     align-items: center;
+    padding-right: 10px;
 }
 
 .options {
@@ -25,7 +29,7 @@
     /* flex-direction: column; */
     grid-template-columns: repeat(1, 1fr);
     position: fixed;
-    margin-top: 175px;
+    margin-top: 185px;
     height: 105px;
     width: 120px;
     background-color: #f9cbff;
@@ -64,4 +68,8 @@
 
 .logo {
     height: 40px;
+}
+
+#splash_nav_right {
+    cursor: pointer;
 }

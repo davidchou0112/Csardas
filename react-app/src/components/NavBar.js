@@ -22,11 +22,11 @@ const NavBar = () => {
 
         <div className='header_right'>
           <NavLink to='/login' exact={true} activeClassName='active'>
-            <button>Log In</button>
+            <button id='splash_nav_right'>Log In</button>
           </NavLink>
 
           <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            <button>Sign Up</button>
+            <button id='splash_nav_right'>Sign Up</button>
           </NavLink>
         </div>
       </div>

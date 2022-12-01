@@ -68,3 +68,9 @@
     background-repeat: no-repeat;
     background-size: 100%;
 }
+
+#start_free {
+    cursor: pointer;
+    font-size: larger;
+    font-weight: bold;
+}

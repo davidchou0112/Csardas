@@ -31,15 +31,13 @@ const SingleImage = () => {
         if (user.id !== image.user_id) {
             return (
                 <div className='single_image_page'>
-                    <div className='single_image_header'>
-                        <h1>{image?.title}</h1>
-                    </div>
                     <div className='single_image_wrapper'>
                         <img className='single_image' src={image?.image_url} alt='pic didnt load' />
-                        <br></br>
+                        <div className='single_image_header'>
+                            <h1>{image?.title}</h1>
+                        </div>
                         {image?.description}
                         <br></br>
-
                         <div className='comments_details'>
                             <div>
                                 <div className='comments_position'>
@@ -67,21 +65,19 @@ const SingleImage = () => {
         }
         return (
             <div className='single_image_page'>
-                <div className='single_image_header'>
-                    <h1>{image?.title}</h1>
-                    <div className='single_image_edit_delete'>
-                        <UpdateImageModal />
-                        <button className='deleteButton'
-                            onClick={() => dispatch(actionDeleteImage(image.id), dispatch(getAllImages()).then(history.push('/')))}>
-                            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
-                            <span class="material-symbols-outlined">delete</span>
-                        </button>
-                    </div>
-
-                </div>
                 <div className='single_image_wrapper'>
                     <img className='single_image' src={image?.image_url} alt='pic didnt load' />
-                    <br></br>
+                    <div className='single_image_header'>
+                        <h1>{image?.title}</h1>
+                        <div className='single_image_edit_delete'>
+                            <UpdateImageModal />
+                            <button className='deleteButton'
+                                onClick={() => dispatch(actionDeleteImage(image.id), dispatch(getAllImages()).then(history.push('/')))}>
+                                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
+                                <span class="material-symbols-outlined">delete</span>
+                            </button>
+                        </div>
+                    </div>
                     {image?.description}
                     <br></br>
                     <div className='comments_details'>
@@ -107,8 +103,6 @@ const SingleImage = () => {
                     </div>
 
                     {/* <button><EditCommentModal commentId={commentId} /></button> */}
-
-
                 </div>
             </div>
         )
