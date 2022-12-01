@@ -7,3 +7,7 @@
 #cursor_pointer {
     cursor: pointer;
 }
+
+.error {
+    color: red;
+}

@@ -19,7 +19,7 @@ const EditImageForm = ({ setShowModal }) => {
 
     // validation
     const [error, setError] = useState([])
-    let Error = [];
+    let ErrorMessage = [];
 
     useEffect(() => {
         dispatch(getSingleImage(imageId))
@@ -36,14 +36,22 @@ const EditImageForm = ({ setShowModal }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError([]);
-        if (!title) Error.push('Title cannot be empty.')
-        if (!description) Error.push('Description cannot be empty.')
-        // if (!imageUrl) Error.push('Image Url cannot be empty.')
-        setError(Error)
-        if (error) return;
+        if (!title || title.length < 1 || title.length > 20) ErrorMessage.push("*Must have a title that is less than 20 characters.");
+        if (!description || description.length < 1 || description.length > 500) ErrorMessage.push("*Must have a description that is less than 500 characters.");
+        if (!imageUrl) ErrorMessage.push('Image Url cannot be empty.')
+        console.log('1')
+        console.log('1.1', ErrorMessage)
+        setError(ErrorMessage)
+        console.log('2')
+
+        if (ErrorMessage?.length) return;
+        console.log('3')
 
         const formData = new FormData();
+        console.log('4')
+
         formData.append("image", images);
+        console.log('5')
 
         await fetch(`/api/users/aws`, {
             method: "POST",
@@ -51,13 +59,27 @@ const EditImageForm = ({ setShowModal }) => {
         })
             .then(async (url) => {
                 let imgUrl = await url.text()
-                const newImage = {
-                    title,
-                    description,
-                    image_url: imgUrl
+                let newImage;
+                if (imgUrl.includes('No files found')) {
+                    // console.log(`111111111111111`)
+                    newImage = {
+                        title,
+                        description,
+                        image_url: 'please'
+                    }
+                } else {
+                    // console.log(`22222222222222222222`)
+
+                    newImage = {
+                        title,
+                        description,
+                        image_url: imgUrl
+                    }
                 }
                 dispatch(actionUpdateImage(newImage, imageId))
             })
+            .catch(() => { alert('failed') })
+
         history.push(`/images/${imageId}`)
         setShowModal(false)
     }
@@ -76,7 +98,7 @@ const EditImageForm = ({ setShowModal }) => {
     return (
         <form className='edit_image_wrapper' onSubmit={handleSubmit}>
             <h1>Edit Image</h1><br></br>
-            <div>{error.map((error, ind) => (
+            <div className='error'>{error.map((error, ind) => (
                 <div key={ind}>{error}</div>
             ))}</div><br></br>
             <label>Title:</label>
@@ -85,6 +107,7 @@ const EditImageForm = ({ setShowModal }) => {
                 value={title}
                 type='text'
                 placeholder='Title'
+                required={true}
                 onChange={(e) => setTitle(e.target.value)}
             />
             <br></br>
@@ -94,6 +117,7 @@ const EditImageForm = ({ setShowModal }) => {
                 value={description}
                 type='text'
                 placeholder='Description'
+                required={true}
                 onChange={(e) => setDescription(e.target.value)}
             />
             <br></br>
