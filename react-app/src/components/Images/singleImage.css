@@ -43,6 +43,10 @@
     cursor: pointer;
 }
 
+.deleteButton:hover {
+    border-bottom: 1px solid black;
+}
+
 .post_comment_button {
     display: flex;
     justify-content: center;
