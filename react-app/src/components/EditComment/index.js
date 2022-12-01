@@ -10,6 +10,9 @@ const EditCommentForm = ({ commentId, setShowModal }) => {
     const comment = useSelector(state => state);
     const imageId = useSelector(state => state.images.singleImage.id)
 
+    const [validations, setValidations] = useState([]);
+    const [errors, setErrors] = useState(false);
+
     const [body, setBody] = useState();
 
     useEffect(() => {
@@ -22,37 +25,53 @@ const EditCommentForm = ({ commentId, setShowModal }) => {
         }
     }, [comment])
 
-    // useEffect(() => {
-    //     // ERRORS
-    // })
+    useEffect(() => {
+        const errors = [];
+        if (!body || body.length < 1 || body.length > 200) errors.push('Comment must be between 1 and 200 characters.')
+        setValidations(errors)
+    }, [body])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const comment = {
-            id: commentId,
-            body
-        }
+        setErrors(true)
+        if (!validations.length) {
+            const comment = {
+                id: commentId,
+                body
+            }
 
-        let newComment = await dispatch(updateComment(comment, commentId));
+            let newComment = await dispatch(updateComment(comment, commentId));
 
-        if (newComment) {
-            dispatch(getSingleImage())
-                .then(history.push(`/images/${imageId}`))
-                .then(setShowModal(false))
+            if (newComment) {
+                dispatch(getSingleImage())
+                    .then(history.push(`/images/${imageId}`))
+                    .then(setErrors(false))
+                    .then(setShowModal(false))
+            }
         }
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <>Edit Your Comment</><br></br>
-            <input
-                value={body}
-                type='text'
-                placeholder='Body'
-                onChange={(e) => setBody(e.target.value)}
-            /><br></br>
-            <button type='submit' >Edit Comment</button>
-        </form>
+        <div className='editcomment_wrapper'>
+            <h1>Edit Your Comment</h1><br></br>
+            {errors &&
+                <ul className="errorHandling">
+                    {validations.length > 0 &&
+                        validations.map(error => (
+                            <li key={error}>{error}</li>
+                        ))}
+                </ul>
+            }<br></br>
+            <form onSubmit={handleSubmit}>
+                <textarea id='textarea'
+                    value={body}
+                    type='text'
+                    placeholder='Body'
+                    onChange={(e) => setBody(e.target.value)}
+                /><br></br>
+                <button type='submit' >Edit Comment</button>
+            </form>
+        </div>
     )
 }
 export default EditCommentForm;

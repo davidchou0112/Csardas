@@ -113,6 +113,14 @@ class Comment(db.Model, UserMixin):
             'user_id': self.user_id,
             'image_id': self.image_id
         }
+    def to_dict_user(self):
+        return {
+            'id': self.id,
+            'body': self.body,
+            'user_id': self.user_id,
+            'image_id': self.image_id,
+            'user': self.user.to_dict()
+        }
         
 class Like(db.Model, UserMixin):
     __tablename__ = 'likes'

@@ -50,8 +50,8 @@ const AllImages = () => {
                                     {image?.title}
                                     <br></br>
                                     {/* {image?.description}
-                                <br></br> */}
-                                    Likes: {image?.likes.length}
+                                    <br></br> */}
+                                    {/* Likes: {image?.likes.length} */}
                                 </div>
                                 {/* <br></br>
                                 Comments: {comments?.length} */}

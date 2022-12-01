@@ -1,36 +1,57 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { createComment } from '../../store/comments';
+import './index.css'
 
 const CreateCommentForm = ({ setShowModal }) => {
     const history = useHistory();
     const dispatch = useDispatch();
-    const [body, setBody] = useState('');
     const { imageId } = useParams();
     const userId = useSelector(state => state.session.user.id)
+    const [body, setBody] = useState('');
+
+    const [validations, setValidations] = useState([]);
+    const [errors, setErrors] = useState(false);
+
+    useEffect(() => {
+        const errors = [];
+        if (!body || body.length < 1 || body.length > 200) errors.push('Comment must be between 1 and 200 characters.')
+        setValidations(errors)
+    }, [body])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const newComment = {
-            userId: userId,
-            body
+        setErrors(true)
+        if (!validations.length) {
+            const newComment = {
+                userId: userId,
+                body
+            }
+            dispatch(createComment(newComment, imageId))
+            history.push(`/images/${imageId}`)
+            setErrors(false)
+            setShowModal(false)
         }
-
-        dispatch(createComment(newComment, imageId))
-        history.push(`/images/${imageId}`)
-        setShowModal(false)
     }
     // const handleCancel = async (e) => {
     //     e.preventDefault();
     //     return null;
     // }
     return (
-        <form onSubmit={handleSubmit}>
-            <h1>leave a comment</h1>
-            <label input-label>Comment:
+        <form className='post_comment_wrapper' onSubmit={handleSubmit}>
+            <h1>Leave a comment</h1><br></br>
+            {errors &&
+                <ul className="errorHandling">
+                    {validations.length > 0 &&
+                        validations.map(error => (
+                            <li key={error}>{error}</li>
+                        ))}
+                </ul>
+            }<br></br>
+            <label input-label>
                 <textarea
-
+                    id='textarea'
                     placeholder='What do you think?'
                     value={body}
                     required

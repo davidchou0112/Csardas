@@ -20,9 +20,10 @@
 
 #modal-content {
     position: absolute;
-    background-color: rgb(30, 33, 36);
+    background-color: #f9cbff;
     width: 450px;
-    height: 200px;
-    padding-bottom: 20px;
+    /* height: 200px; */
+    padding: 20px;
     border-radius: 12px;
+
 }

@@ -208,7 +208,6 @@ def delete_image(id):
 
 
 # ========= Get all Comments of this Image ==========
-# @app.route('/api/users/<int:user_id>/comments')
 @app.route('/api/comments/images/<int:image_id>')
 # @login_required
 def get_user_comments(image_id):
@@ -217,8 +216,9 @@ def get_user_comments(image_id):
     # data = Comment.query.filter(Comment.user_id == user_id).all()
     data = Comment.query.filter(Comment.image_id == image_id).all()
     
+    
     for lst in data:
-        all_comments.append(lst.to_dict())
+        all_comments.append(lst.to_dict_user())
     return jsonify(all_comments)
 
 # ========== Get Comment by Id ==========
@@ -231,7 +231,7 @@ def get_comments_by_id(id):
             "message": "Comment not found",
             "statusCode": 404,
         }, 404
-    return comment.to_dict()
+    return comment.to_dict_user()
 
 # ========== Update a Comment =========
 @app.route('/api/comments/<int:id>', methods=["PUT"])
@@ -247,7 +247,7 @@ def update_comment(id):
     comment.body = data['body']
     db.session.commit()
     
-    return comment.to_dict()
+    return comment.to_dict_user()
 
 # =========== Create a Comment ==========
 # @app.route('/api/users/<int:user_id>/images/<int:image_id>/comments', methods=["POST"])
@@ -264,7 +264,7 @@ def post_new_comment(image_id):
     
     db.session.add(new_comment)
     db.session.commit()
-    return new_comment.to_dict()
+    return new_comment.to_dict_user()
 
 # ========== Delete a Comment ===========
 @app.route('/api/comments/<int:id>', methods=["DELETE"])
