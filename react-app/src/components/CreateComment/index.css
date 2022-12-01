@@ -4,6 +4,7 @@
 
 .leave_comment {
     border-radius: 8px transparent;
+    cursor: pointer;
 }
 
 .post_comment_wrapper {
@@ -14,4 +15,8 @@
     grid-template-columns: repeat(1, 1fr);
     justify-content: center;
     justify-items: center;
+}
+
+#post {
+    cursor: pointer;
 }
