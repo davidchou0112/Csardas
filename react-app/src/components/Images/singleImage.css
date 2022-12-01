@@ -48,6 +48,7 @@
     justify-content: center;
     margin-top: 2%;
     margin-bottom: 20%;
+    cursor: pointer;
 }
 
 .comments_details {

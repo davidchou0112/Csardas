@@ -68,8 +68,8 @@ const EditCommentForm = ({ commentId, setShowModal }) => {
                     type='text'
                     placeholder='Body'
                     onChange={(e) => setBody(e.target.value)}
-                /><br></br>
-                <button type='submit' >Edit Comment</button>
+                /><br></br><br></br>
+                <button id='edit' type='submit' >Edit Comment</button>
             </form>
         </div>
     )

@@ -58,8 +58,8 @@ const CreateCommentForm = ({ setShowModal }) => {
                     onChange={e => setBody(e.target.value)}
                     className='textArea'
                 >
-                </textarea> <br></br>
-                <button>Post</button>
+                </textarea> <br></br><br></br>
+                <button id='post'>Post</button>
 
             </label>
         </form>
