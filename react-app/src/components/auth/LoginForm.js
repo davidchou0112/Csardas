@@ -12,7 +12,7 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   const demoUserButton = (e) => {
-    setEmail('demo@aa.io');
+    setEmail('yoru@aa.io');
     setPassword('password');
   }
 
