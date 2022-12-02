@@ -26,8 +26,8 @@ const AllImages = () => {
         return (
             <div className='splash_wrapper' id='splash_background'>
                 <div className='splash_inside_wrapper'>
-                    <h1 id='text_white'>Find your inspiration.</h1><br></br>
-                    <h3 id='text_white'>Join the Csárdás community.</h3><br></br>
+                    <div id='text_white'>Find your inspiration.</div>
+                    <div id='text_white'>Join the Csárdás community.</div>
                     <NavLink to='/sign-up' exact={true} activeClassName='active'>
                         <button id='start_free'>START</button>
                     </NavLink>
