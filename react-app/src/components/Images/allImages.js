@@ -39,34 +39,73 @@ const AllImages = () => {
 
 
     return isLoaded && (
-        <div id='home_background'>
-            <div className='home_make_long'>
-                <div className='home_all_images'>
-                    {Object.values(images).map(image => (
-                        <div className='home_image_wrapper'>
-                            <NavLink className='nav_link' to={`/images/${image.id}`}>
-                                <img className='home_image' src={image?.image_url} alt='pic didnt load' />
-                                <div className='home_image_title'>
-                                    {image?.title}
-                                    <br></br>
-                                    {/* {image?.description}
+
+        <div className='home_make_long'>
+            <div className='home_all_images'>
+                {Object.values(images).map(image => (
+                    <div className='home_image_wrapper'>
+                        <NavLink className='nav_link' to={`/images/${image.id}`}>
+                            <img className='home_image' src={image?.image_url} alt='pic didnt load' />
+
+                            <div className='home_image_title'>
+                                {image?.title}
+
+                                {/* {image?.description}
                                     <br></br> */}
-                                    {/* Likes: {image?.likes.length} */}
-                                </div>
-                                {/* <br></br>
+                                {/* Likes: {image?.likes.length} */}
+                            </div>
+
+                            {/* <br></br>
                                 Comments: {comments?.length} */}
-                            </NavLink>
-                        </div>
-                    ))}
-                </div>
-                <NavLink className='home_post' to={`/users/${user.id}/images/upload`} exact={true} activeClassName='active'>
-                    <button className='home_post_image' id='home_post_image'>
-                        Post an Image
-                    </button>
-                </NavLink><br></br>
+                        </NavLink>
+                    </div>
+                ))}
             </div>
+            <NavLink className='home_post' to={`/users/${user.id}/images/upload`} exact={true} activeClassName='active'>
+                <button className='home_post_image' id='home_post_image'>
+                    Post an Image
+                </button>
+            </NavLink><br></br>
         </div>
+        // <div className='explore-page-wrapper'>
+        //     <div className='explore-page'>
+        //         <div className='explore-images'>
+
+        //             <div className='home_make_long'>
+        //                 <div className='home_all_images'>
+        //                     {Object.values(images).map(image => (
+        //                         <div className='home_image_wrapper'>
+        //                             <NavLink className='nav_link' to={`/images/${image.id}`}>
+        //                                 <img className='home_image' src={image?.image_url} alt='pic didnt load' />
+
+        //                                 <div className='home_image_title'>
+        //                                     {image?.title}
+
+        //                                     {/* {image?.description}
+        //                             <br></br> */}
+        //                                     {/* Likes: {image?.likes.length} */}
+        //                                 </div>
+
+        //                                 {/* <br></br>
+        //                         Comments: {comments?.length} */}
+        //                             </NavLink>
+        //                         </div>
+        //                     ))}
+        //                 </div>
+        //                 <NavLink className='home_post' to={`/users/${user.id}/images/upload`} exact={true} activeClassName='active'>
+        //                     <button className='home_post_image' id='home_post_image'>
+        //                         Post an Image
+        //                     </button>
+        //                 </NavLink><br></br>
+        //             </div>
+
+
+        //         </div>
+        //     </div>
+        // </div>
     )
 }
 
 export default AllImages;
+
+
