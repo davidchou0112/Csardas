@@ -39,8 +39,10 @@ const AllImages = () => {
 
 
     return isLoaded && (
-
         <div className='home_make_long'>
+            <div id='page_title'>
+                <h1>Explore</h1>
+            </div>
             <div className='home_all_images'>
                 {Object.values(images).reverse().map(image => (
                     <div className='home_image_wrapper'>
