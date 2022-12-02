@@ -49,7 +49,7 @@
     box-sizing: content-box;
     gap: 0;
 
-    border: solid 1px white;
+    border: solid 1px rgb(236, 76, 76);
     flex-grow: 1;
     /* position: absolute;
     color: white;
@@ -80,12 +80,12 @@
     display: flex;
     justify-content: center;
     position: absolute;
-    bottom: 20px;
+    bottom: 0px;
     display: none;
     padding-left: 5px;
     animation-name: slide;
     animation-duration: 1s;
-
+    left: 0px;
     border: 3px solid yellow;
 
     /* position: absolute;
@@ -99,11 +99,22 @@
     animation-duration: 1s; */
 }
 
+#test {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 11;
+}
 
 .home_image:hover+.home_image_title {
     display: block;
     box-sizing: initial;
-    position: relative;
+    /* position: fixed; */
+}
+
+#image_title {
+    /* border: 2px solid yellow; */
+    position: relative
 }
 
 @keyframes slide {

@@ -47,14 +47,15 @@ const AllImages = () => {
                 {Object.values(images).reverse().map(image => (
                     <div className='home_image_wrapper'>
                         <NavLink className='nav_link' to={`/images/${image.id}`}>
-                            <img className='home_image' src={image?.image_url} alt='pic didnt load' />
+                            <div id='image_title'>
+                                <img className='home_image' src={image?.image_url} alt='pic didnt load' />
 
-                            <div className='home_image_title'>
-                                {image?.title}
-
-                                {/* {image?.description}
-                                    <br></br> */}
-                                {/* Likes: {image?.likes.length} */}
+                                <div className='home_image_title'>
+                                    {image?.title}
+                                </div>
+                                {/* <div id='test'>
+                                    testing
+                                </div> */}
                             </div>
 
                             {/* <br></br>
