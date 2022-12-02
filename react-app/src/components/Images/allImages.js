@@ -59,6 +59,11 @@ const AllImages = () => {
                         </div>
                     ))}
                 </div>
+                <NavLink className='home_post' to={`/users/${user.id}/images/upload`} exact={true} activeClassName='active'>
+                    <button className='home_post_image' id='home_post_image'>
+                        Post an Image
+                    </button>
+                </NavLink><br></br>
             </div>
         </div>
     )
