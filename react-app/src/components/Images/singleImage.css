@@ -7,10 +7,11 @@
 .single_image {
     padding-top: 40px;
     padding-bottom: 30px;
-    width: 100%;
+    width: 80%;
     height: fit-content;
     max-height: 1000px;
-    padding-right: 20px;
+    padding-right: 5%;
+    padding-left: 10%;
 }
 
 .single_image_header {
@@ -41,6 +42,7 @@
     background-color: transparent;
     border: transparent;
     cursor: pointer;
+    color: white
 }
 
 .deleteButton:hover {
@@ -53,6 +55,8 @@
     margin-top: 2%;
     margin-bottom: 20%;
     cursor: pointer;
+    margin-left: 41%;
+    margin-right: 41%;
 }
 
 .comments_details {
@@ -63,4 +67,9 @@
 
 #description {
     word-wrap: break-word;
+    color: white;
+}
+
+#white_me {
+    color: white
 }

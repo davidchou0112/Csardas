@@ -42,7 +42,7 @@ const AllImages = () => {
 
         <div className='home_make_long'>
             <div className='home_all_images'>
-                {Object.values(images).map(image => (
+                {Object.values(images).reverse().map(image => (
                     <div className='home_image_wrapper'>
                         <NavLink className='nav_link' to={`/images/${image.id}`}>
                             <img className='home_image' src={image?.image_url} alt='pic didnt load' />

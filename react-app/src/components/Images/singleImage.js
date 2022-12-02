@@ -34,13 +34,15 @@ const SingleImage = () => {
                     <div className='single_image_wrapper'>
                         <img className='single_image' src={image?.image_url} alt='pic didnt load' />
                         <div className='single_image_header'>
-                            <h1>{image?.title}</h1>
+                            <h1 id='white_me' >{image?.title}</h1>
                         </div>
-                        {image?.description}
+                        <div id='white_me'  >
+                            {image?.description}
+                        </div>
                         <br></br>
                         <div className='comments_details'>
                             <div>
-                                <div className='comments_position'>
+                                <div id='white_me' className='comments_position'>
                                     <AllComments imageId={imageId} />
                                 </div>
                                 <div className='post_comment_button'>
@@ -68,7 +70,7 @@ const SingleImage = () => {
                 <div className='single_image_wrapper'>
                     <img className='single_image' src={image?.image_url} alt='pic didnt load' />
                     <div className='single_image_header'>
-                        <h1>{image?.title}</h1>
+                        <h1 id='white_me' >{image?.title}</h1>
                         <div className='single_image_edit_delete'>
                             <UpdateImageModal />
                             <button className='deleteButton'
@@ -84,7 +86,7 @@ const SingleImage = () => {
                     <br></br>
                     <div className='comments_details'>
                         <div>
-                            <div className='comments_position'>
+                            <div id='white_me' className='comments_position'>
                                 <AllComments imageId={imageId} />
                             </div>
                             <div className='post_comment_button'>
