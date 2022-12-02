@@ -39,35 +39,35 @@ const EditImageForm = ({ setShowModal }) => {
         if (!title || title.length < 1 || title.length > 20) ErrorMessage.push("*Must have a title that is less than 20 characters.");
         if (!description || description.length < 1 || description.length > 500) ErrorMessage.push("*Must have a description that is less than 500 characters.");
         if (!imageUrl) ErrorMessage.push('Image Url cannot be empty.')
-        console.log('1')
-        console.log('1.1', ErrorMessage)
+        // console.log('1')
+        // console.log('1.1', ErrorMessage)
         setError(ErrorMessage)
-        console.log('2')
+        // console.log('2')
 
         if (ErrorMessage?.length) return;
-        console.log('3')
+        // console.log('3')
 
         const formData = new FormData();
-        console.log('image, ln51 ', image)
+        // console.log('image, ln51 ', image)
         if (!image) {
-            console.log('imageUrl from front end -- before setImageUrl', imageUrl)
+            // console.log('imageUrl from front end -- before setImageUrl', imageUrl)
             setImageUrl(image.image_url)
-            console.log('imageUrl from front end -- after setImageUrl', imageUrl)
+            // console.log('imageUrl from front end -- after setImageUrl', imageUrl)
             // setImage(image)
         }
         formData.append("image", images);
-        console.log('formData, front end', formData)
+        // console.log('formData, front end', formData)
 
         await fetch(`/api/users/aws`, {
             method: "POST",
             body: formData,
         })
             .then(async (url) => {
-                console.log('this is after .then, ln66')
+                // console.log('this is after .then, ln66')
                 let imgUrl = await url.text()
                 let newImage;
                 if (imgUrl.includes('No files found')) {
-                    console.log(`111111111111111`)
+                    // console.log(`111111111111111`)
                     newImage = {
                         title,
                         description,
@@ -78,12 +78,12 @@ const EditImageForm = ({ setShowModal }) => {
                 else if (imgUrl.includes('file type not permitted')) {
                     ErrorMessage = ['Must be proper image type. (.jpg, .jpeg, .png, .gif, .pdf)']
                     // console.log(`=============error:`, error)
-                    console.log(`=============error:`, ErrorMessage)
+                    // console.log(`=============error:`, ErrorMessage)
 
                     return;
                 }
                 else {
-                    console.log(`22222222222222222222`)
+                    // console.log(`22222222222222222222`)
 
                     newImage = {
                         title,
@@ -96,15 +96,15 @@ const EditImageForm = ({ setShowModal }) => {
             })
             .catch(() => { alert('failed') })
 
-        console.log('image, ln90 ', image)
-        console.log('~~~~~this is error', error)
+        // console.log('image, ln90 ', image)
+        // console.log('~~~~~this is error', error)
         // if (!error.length) {
         if (!ErrorMessage.length) {
 
             history.push(`/images/${imageId}`)
             setShowModal(false)
         } else {
-            console.log('did i get here???')
+            // console.log('did i get here???')
             setError(ErrorMessage)
             // return;
         }
@@ -119,8 +119,8 @@ const EditImageForm = ({ setShowModal }) => {
     const updateImage = (e) => {
         const file = e.target.files[0];
 
-        console.log('this is file', file)
-        console.log('this is image', image)
+        // console.log('this is file', file)
+        // console.log('this is image', image)
         // if (!file) {
         //     setImage(image)
         // }

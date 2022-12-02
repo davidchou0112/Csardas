@@ -9,11 +9,12 @@ const EditCommentForm = ({ commentId, setShowModal }) => {
     const history = useHistory();
     const comment = useSelector(state => state);
     const imageId = useSelector(state => state.images.singleImage.id)
+    console.log('~~~~this is comment', comment)
 
     const [validations, setValidations] = useState([]);
     const [errors, setErrors] = useState(false);
 
-    const [body, setBody] = useState();
+    const [body, setBody] = useState('');
 
     useEffect(() => {
         dispatch(getSingleComments(commentId));
@@ -64,9 +65,10 @@ const EditCommentForm = ({ commentId, setShowModal }) => {
             }<br></br>
             <form onSubmit={handleSubmit}>
                 <textarea id='textarea'
-                    value={body}
+                    defaultValue={comment.comments.singleComment.body}
+                    // value={body}
                     type='text'
-                    placeholder='Body'
+                    // placeholder='Body'
                     onChange={(e) => setBody(e.target.value)}
                 /><br></br><br></br>
                 <button id='edit' type='submit' >Edit Comment</button>

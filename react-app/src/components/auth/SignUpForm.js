@@ -109,7 +109,6 @@ const SignUpForm = () => {
           name='repeat_password'
           onChange={updateRepeatPassword}
           value={repeatPassword}
-          required={true}
         ></input><br></br><br></br>
         <div id='button_position'>
           <button id='submit' type='submit'>Sign Up</button>
