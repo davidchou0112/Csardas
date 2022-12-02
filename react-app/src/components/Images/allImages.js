@@ -26,8 +26,8 @@ const AllImages = () => {
         return (
             <div className='splash_wrapper' id='splash_background'>
                 <div className='splash_inside_wrapper'>
-                    <h1 id='text_white'>Find your inspiration.</h1><br></br>
-                    <h3 id='text_white'>Join the Csárdás community.</h3><br></br>
+                    <div id='text_white'>Find your inspiration.</div>
+                    <div id='text_white'>Join the Csárdás community.</div>
                     <NavLink to='/sign-up' exact={true} activeClassName='active'>
                         <button id='start_free'>START</button>
                     </NavLink>
@@ -39,20 +39,23 @@ const AllImages = () => {
 
 
     return isLoaded && (
-
         <div className='home_make_long'>
+            <div id='page_title'>
+                <h1>Explore</h1>
+            </div>
             <div className='home_all_images'>
                 {Object.values(images).reverse().map(image => (
                     <div className='home_image_wrapper'>
                         <NavLink className='nav_link' to={`/images/${image.id}`}>
-                            <img className='home_image' src={image?.image_url} alt='pic didnt load' />
+                            <div id='image_title'>
+                                <img className='home_image' src={image?.image_url} alt='pic didnt load' />
 
-                            <div className='home_image_title'>
-                                {image?.title}
-
-                                {/* {image?.description}
-                                    <br></br> */}
-                                {/* Likes: {image?.likes.length} */}
+                                <div className='home_image_title'>
+                                    {image?.title}
+                                </div>
+                                {/* <div id='test'>
+                                    testing
+                                </div> */}
                             </div>
 
                             {/* <br></br>

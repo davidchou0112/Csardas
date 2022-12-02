@@ -7,11 +7,12 @@
 .single_image {
     padding-top: 40px;
     padding-bottom: 30px;
+    padding-right: 5%;
+    padding-left: 10%;
     width: 80%;
     height: fit-content;
     max-height: 1000px;
-    padding-right: 5%;
-    padding-left: 10%;
+    margin-top: 5%;
 }
 
 .single_image_header {
