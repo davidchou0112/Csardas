@@ -50,9 +50,14 @@ const NavBar = () => {
 
 
       <div className='header_right'>
-        <NavLink to='/dev' exact={true} activeClassName='active'>
-          <button id='signup_button' className='splash_nav_right'>Developer</button>
-        </NavLink>
+        {/* <NavLink to='/dev' exact={true} activeClassName='active'> */}
+        <a href="https://github.com/davidchou0112">
+          <button id='signup_button' className='splash_nav_right'>GitHub</button>
+        </a>
+        {/* </NavLink> */}
+        <a href="https://www.linkedin.com/in/david-chou-a47026249/">
+          <button id='signup_button' className='splash_nav_right'>LinkedIn</button>
+        </a>
 
         <ProfileButton user={user} />
 
