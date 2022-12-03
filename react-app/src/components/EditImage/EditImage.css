@@ -3,10 +3,19 @@
     grid-template-columns: repeat(1, 1fr);
     justify-content: center;
     justify-items: center;
-    background-color: #f9cbff;
     border-radius: 12px;
-    padding-bottom: 20px;
-    padding-top: 15px;
+    padding-bottom: 25px;
+    padding-top: 20px;
+    color: white;
+}
+
+#edit_image_wrapper {
+    background-position: top;
+    height: 100%;
+    width: 100%;
+    background-image: url('..//BackgroundImage/Background4.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .edit_button {
@@ -35,5 +44,5 @@
 }
 
 .error {
-    color: red;
+    color: yellowgreen;
 }

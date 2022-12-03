@@ -100,7 +100,7 @@ const UploadPicture = () => {
     }
 
     return (
-        <form className="post_image_input_wrapper" onSubmit={handleSubmit}>
+        <form className="post_image_input_wrapper" id="post_image_background" onSubmit={handleSubmit}>
             <div id="error">
                 {error.map((error, ind) => (
                     <div key={ind}>{error}</div>

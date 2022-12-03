@@ -11,16 +11,12 @@ const AllImages = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const user = useSelector(state => state.session.user)
     const images = useSelector(state => state.images?.allImages)
-    const comments = useSelector(state => Object.values(state.comments?.allComments))
-    // console.log('~~~~~~~~~this is image:', images)
 
     useEffect(() => {
         dispatch(getAllImages())
-            // dispatch(getAllComments())
             .then(() => setIsLoaded(true))
     }, [dispatch])
 
-    // console.log('~~~~~~~~Object.values(image)', Object.values(images).map(image => (image)))
 
     if (!user) {
         return (
@@ -31,7 +27,6 @@ const AllImages = () => {
                     <NavLink to='/sign-up' exact={true} activeClassName='active'>
                         <button id='start_free'>START</button>
                     </NavLink>
-                    {/* <div id='text_white'><small>Already on Csárdás? <NavLink to='/login' exact={true}>Login</NavLink></small></div> */}
                 </div>
             </div>
         )
@@ -49,17 +44,10 @@ const AllImages = () => {
                         <NavLink className='nav_link' to={`/images/${image.id}`}>
                             <div id='image_title'>
                                 <img className='home_image' src={image?.image_url} alt='pic didnt load' />
-
                                 <div className='home_image_title'>
                                     {image?.title}
                                 </div>
-                                {/* <div id='test'>
-                                    testing
-                                </div> */}
                             </div>
-
-                            {/* <br></br>
-                                Comments: {comments?.length} */}
                         </NavLink>
                     </div>
                 ))}

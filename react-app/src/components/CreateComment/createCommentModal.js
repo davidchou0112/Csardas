@@ -17,8 +17,8 @@ function CreateCommentModal() {
 
     return (
         <>
-            <button className="leave_comment" onClick={() => setShowModal(true)}>
-                <i class="fa-solid fa-pen"></i>Leave Comment
+            <button id="leave_comment" className="leave_comment" onClick={() => setShowModal(true)}>
+                Comment
             </button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>

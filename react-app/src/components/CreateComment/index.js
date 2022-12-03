@@ -39,8 +39,8 @@ const CreateCommentForm = ({ setShowModal }) => {
     //     return null;
     // }
     return (
-        <form className='post_comment_wrapper' onSubmit={handleSubmit}>
-            <h1>Leave a comment</h1><br></br>
+        <form className='post_comment_wrapper' id='post_comment_wrapper' onSubmit={handleSubmit}>
+            <h1 id='white_me'>Leave a comment</h1><br></br>
             {errors &&
                 <ul className="errorHandling">
                     {validations.length > 0 &&
@@ -59,8 +59,7 @@ const CreateCommentForm = ({ setShowModal }) => {
                     className='textArea'
                 >
                 </textarea> <br></br><br></br>
-                <button id='post'>Post</button>
-
+                <button id='leave_comment' className='leave_comment'>Post</button>
             </label>
         </form>
     )
