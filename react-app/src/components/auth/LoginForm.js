@@ -40,31 +40,33 @@ const LoginForm = () => {
     // <div>
     <form onSubmit={onLogin} id='login_background'>
       <div className='login_wrapper' >
-        <div id='error'>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
-        </div>
-        <div>
-          <label id='white_me' htmlFor='email'>Email</label><br></br>
-          <input
-            name='email'
-            type='text'
-            placeholder='Email'
-            value={email}
-            onChange={updateEmail}
-          /><br></br><br></br>
-          <label id='white_me' htmlFor='password'>Password</label><br></br>
-          <input
-            name='password'
-            type='password'
-            placeholder='Password'
-            value={password}
-            onChange={updatePassword}
-          /><br></br><br></br>
-          <div id='button_position'>
-            <button id='submit' type='submit' onClick={demoUserButton}>Demo User</button><br></br>
-            <button id='submit' type='submit'>Login</button>
+        <div className='login_display'>
+          <div className='login_height'>
+            <div id='error'>
+              {errors.map((error, ind) => (
+                <div key={ind}>{error}</div>
+              ))}
+            </div>
+            <label id='white_me' htmlFor='email'>Email</label><br></br>
+            <input
+              name='email'
+              type='text'
+              placeholder='Email'
+              value={email}
+              onChange={updateEmail}
+            /><br></br><br></br>
+            <label id='white_me' htmlFor='password'>Password</label><br></br>
+            <input
+              name='password'
+              type='password'
+              placeholder='Password'
+              value={password}
+              onChange={updatePassword}
+            /><br></br><br></br>
+            <div id='button_position'>
+              <button id='submit' type='submit' onClick={demoUserButton}>Demo User</button><br></br>
+              <button id='submit' type='submit'>Login</button>
+            </div>
           </div>
         </div>
         {/* <div id='white_me'><small>Not on Csárdás? <NavLink to='/sign-up' exact={true}>Create an account</NavLink></small></div> */}
