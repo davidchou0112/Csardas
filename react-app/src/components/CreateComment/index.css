@@ -1,5 +1,5 @@
 .errorHandling {
-    color: red;
+    color: yellowgreen;
 }
 
 .leave_comment {
@@ -8,15 +8,106 @@
 }
 
 .post_comment_wrapper {
-    background-color: #f9cbff;
+    /* background-color: gray; */
+    padding: 15px;
     border-radius: 12px;
     height: 110%;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     justify-content: center;
     justify-items: center;
+    text-align: center;
 }
+
+#post_comment_wrapper {
+    background-position: top;
+    height: 100%;
+    width: 100%;
+    background-image: url('..//BackgroundImage/Background3.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 
 #post {
     cursor: pointer;
+    font-size: medium;
+    font-weight: bold;
+    background-image: linear-gradient(to right,
+            #54b3d6,
+            #54b3d6 50%,
+            white 50%);
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 5px 0;
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+    /* border: none; */
+    border: 3px solid gray;
+    border-bottom: 1px solid black;
+}
+
+#post:before {
+    content: '';
+    background: #54b3d6;
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+#post:hover {
+    background-position: 0;
+}
+
+#post:hover::before {
+    width: 100%;
+}
+
+
+
+#leave_comment {
+    cursor: pointer;
+    font-size: medium;
+    font-weight: bold;
+    background-image: linear-gradient(to right,
+            #54b3d6,
+            #54b3d6 50%,
+            white 50%);
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 5px 0;
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+    border: none;
+    border-bottom: 3px solid white;
+}
+
+#leave_comment:before {
+    content: '';
+    background: #54b3d6;
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+#leave_comment:hover {
+    background-position: 0;
+}
+
+#leave_comment:hover::before {
+    width: 100%;
 }

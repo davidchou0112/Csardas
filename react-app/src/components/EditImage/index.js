@@ -129,8 +129,8 @@ const EditImageForm = ({ setShowModal }) => {
     }
 
     return (
-        <form className='edit_image_wrapper' onSubmit={handleSubmit}>
-            <h1>Edit Image</h1><br></br>
+        <form className='edit_image_wrapper' id='edit_image_wrapper' onSubmit={handleSubmit}>
+            <h1>Edit Image</h1>
             <div className='error'>{error.map((error, ind) => (
                 <div key={ind}>{error}</div>
             ))}</div><br></br>
@@ -161,10 +161,10 @@ const EditImageForm = ({ setShowModal }) => {
                 onChange={updateImage}
             />
             <br></br>
-            <button id='cursor_pointer' type='submit' >
+            <button id='leave_comment' type='submit' >
                 Submit Changes
             </button>
-            <button id='cursor_pointer' onClick={handleCancel} type='button'>Cancel</button>
+            <button id='leave_comment' onClick={handleCancel} type='button'>Cancel</button>
         </form>
 
     )

@@ -11,27 +11,22 @@ const AllImages = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const user = useSelector(state => state.session.user)
     const images = useSelector(state => state.images?.allImages)
-    const comments = useSelector(state => Object.values(state.comments?.allComments))
-    // console.log('~~~~~~~~~this is image:', images)
 
     useEffect(() => {
         dispatch(getAllImages())
-            // dispatch(getAllComments())
             .then(() => setIsLoaded(true))
     }, [dispatch])
 
-    // console.log('~~~~~~~~Object.values(image)', Object.values(images).map(image => (image)))
 
     if (!user) {
         return (
             <div className='splash_wrapper' id='splash_background'>
                 <div className='splash_inside_wrapper'>
-                    <div id='text_white'>Find your inspiration.</div>
-                    <div id='text_white'>Join the Csárdás community.</div>
+                    <div id='text_white1'>Find your inspiration.</div>
+                    <div id='text_white2'>Join the Csárdás community.</div>
                     <NavLink to='/sign-up' exact={true} activeClassName='active'>
                         <button id='start_free'>START</button>
                     </NavLink>
-                    {/* <div id='text_white'><small>Already on Csárdás? <NavLink to='/login' exact={true}>Login</NavLink></small></div> */}
                 </div>
             </div>
         )
@@ -39,6 +34,7 @@ const AllImages = () => {
 
 
     return isLoaded && (
+
         <div className='home_make_long'>
             <div id='page_title'>
                 <h1>Explore</h1>
@@ -49,17 +45,10 @@ const AllImages = () => {
                         <NavLink className='nav_link' to={`/images/${image.id}`}>
                             <div id='image_title'>
                                 <img className='home_image' src={image?.image_url} alt='pic didnt load' />
-
                                 <div className='home_image_title'>
                                     {image?.title}
                                 </div>
-                                {/* <div id='test'>
-                                    testing
-                                </div> */}
                             </div>
-
-                            {/* <br></br>
-                                Comments: {comments?.length} */}
                         </NavLink>
                     </div>
                 ))}
@@ -70,42 +59,7 @@ const AllImages = () => {
                 </button>
             </NavLink><br></br>
         </div>
-        // <div className='explore-page-wrapper'>
-        //     <div className='explore-page'>
-        //         <div className='explore-images'>
 
-        //             <div className='home_make_long'>
-        //                 <div className='home_all_images'>
-        //                     {Object.values(images).map(image => (
-        //                         <div className='home_image_wrapper'>
-        //                             <NavLink className='nav_link' to={`/images/${image.id}`}>
-        //                                 <img className='home_image' src={image?.image_url} alt='pic didnt load' />
-
-        //                                 <div className='home_image_title'>
-        //                                     {image?.title}
-
-        //                                     {/* {image?.description}
-        //                             <br></br> */}
-        //                                     {/* Likes: {image?.likes.length} */}
-        //                                 </div>
-
-        //                                 {/* <br></br>
-        //                         Comments: {comments?.length} */}
-        //                             </NavLink>
-        //                         </div>
-        //                     ))}
-        //                 </div>
-        //                 <NavLink className='home_post' to={`/users/${user.id}/images/upload`} exact={true} activeClassName='active'>
-        //                     <button className='home_post_image' id='home_post_image'>
-        //                         Post an Image
-        //                     </button>
-        //                 </NavLink><br></br>
-        //             </div>
-
-
-        //         </div>
-        //     </div>
-        // </div>
     )
 }
 

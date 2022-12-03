@@ -18,6 +18,9 @@ const NavBar = () => {
           <NavLink to='/' exact={true} activeClassName='active'>
             <img className='logo' src={Logo} alt='logo' />
           </NavLink>
+          <NavLink to='/' exact={true} activeClassName='active'>
+            <button id='signup_button' className='splash_nav_right'>Explore</button>
+          </NavLink>
         </div>
 
         <div className='header_right'>
@@ -40,13 +43,16 @@ const NavBar = () => {
         <NavLink to='/' exact={true} activeClassName='active'>
           <img className='logo' src={Logo} alt='logo' />
         </NavLink>
+        <NavLink to='/' exact={true} activeClassName='active'>
+          <button id='signup_button' className='splash_nav_right'>Explore</button>
+        </NavLink>
       </div>
 
 
       <div className='header_right'>
-        {/* <NavLink to='/users/userId/images/upload' exact={true} activeClassName='active'>
-          <button>Post an Image</button>
-        </NavLink> */}
+        <NavLink to='/dev' exact={true} activeClassName='active'>
+          <button id='signup_button' className='splash_nav_right'>Developer</button>
+        </NavLink>
 
         <ProfileButton user={user} />
 

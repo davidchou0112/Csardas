@@ -8,6 +8,17 @@
     cursor: pointer;
 }
 
-.error {
-    color: red;
+#error {
+    margin-top: 10%;
+    color: yellowgreen;
+
+}
+
+#post_image_background {
+    background-position: top;
+    height: 100vh;
+    width: 100%;
+    background-image: url('..//BackgroundImage/Background1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }

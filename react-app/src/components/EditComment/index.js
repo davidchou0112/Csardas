@@ -53,8 +53,8 @@ const EditCommentForm = ({ commentId, setShowModal }) => {
     }
 
     return (
-        <div className='editcomment_wrapper'>
-            <h1>Edit Your Comment</h1><br></br>
+        <div className='editcomment_wrapper' id='editcomment_wrapper'>
+            <h1>Edit Comment</h1><br></br>
             {errors &&
                 <ul className="errorHandling">
                     {validations.length > 0 &&
@@ -71,7 +71,7 @@ const EditCommentForm = ({ commentId, setShowModal }) => {
                     // placeholder='Body'
                     onChange={(e) => setBody(e.target.value)}
                 /><br></br><br></br>
-                <button id='edit' type='submit' >Edit Comment</button>
+                <button id='leave_comment' type='submit' >Edit</button>
             </form>
         </div>
     )

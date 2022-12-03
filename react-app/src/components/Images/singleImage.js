@@ -13,6 +13,8 @@ const SingleImage = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const image = useSelector(state => state.images?.singleImage)
+    const imgUserId = useSelector(state => state.images?.singleImage.user_id)
+    console.log('imgUserId', imgUserId)
     const comments = useSelector(state => state.comments.allComments)
     const length = Object.values(comments).map(comment => comments.allComments)
     // console.log('~~~~~~~~~', length)
@@ -25,6 +27,7 @@ const SingleImage = () => {
     useEffect(() => {
         // console.log('~~~~~~~~~~~~useEffect loaded~~~~~~~~~~~~~')
         dispatch(getSingleImage(imageId))
+        dispatch(getAllImages())
     }, [dispatch, imageId])
     // console.log('did i get here, before return?')
     if (user) {
@@ -40,6 +43,9 @@ const SingleImage = () => {
                             {image?.description}
                         </div>
                         <br></br>
+                        <div>
+                            { }
+                        </div>
                         <div className='comments_details'>
                             <div>
                                 <div id='white_me' className='comments_position'>

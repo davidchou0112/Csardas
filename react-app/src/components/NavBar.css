@@ -26,7 +26,9 @@
 
 .options {
     width: 150px;
-    height: 2px;
+    height: auto;
+    word-wrap: break-word;
+    padding: 2px;
 }
 
 .profile-dropdown {
@@ -34,10 +36,10 @@
     /* flex-direction: column; */
     grid-template-columns: repeat(1, 1fr);
     position: fixed;
-    margin-top: 185px;
-    height: 105px;
-    width: 120px;
-    background-color: #f9cbff;
+    margin-top: 200px;
+    height: auto;
+    width: auto;
+    background-color: grey;
     box-shadow: 0px 1px 8px #dddddd;
     border-radius: 10px;
     border: 1px solid #dddddd;
