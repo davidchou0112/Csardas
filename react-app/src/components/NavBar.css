@@ -69,11 +69,15 @@
     color: #f8c5d5;
     border-radius: 5px;
     padding: 2px;
-    padding-right: 2px;
+    padding-right: 25px;
     margin: 5%;
     margin-right: 15px;
     height: auto;
     cursor: pointer;
+}
+
+.profile-button:hover {
+    color: #54b3d6;
 }
 
 .logo {

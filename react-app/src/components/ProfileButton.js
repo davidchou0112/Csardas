@@ -57,9 +57,9 @@ function ProfileButton({ user }) {
         return (
             <>
                 <button className='profile-button' onClick={openMenu}>
-                    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
+                    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,0" />
                     <span class="material-symbols-outlined">
-                        cinematic_blur
+                        density_medium
                     </span>
                 </button>
 
