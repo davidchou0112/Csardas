@@ -56,65 +56,70 @@ const SignUpForm = () => {
   }
 
   return (
-    <form className='signup_wrapper' id='signup_background' onSubmit={onSignUp}>
-      <div id='error'>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label id='white_me'>User Name</label><br></br>
-        <input
-          type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
-        ></input><br></br>
+    <form onSubmit={onSignUp} id='signup_background'>
+      <div className='login_wrapper' >
+        <div className='login_display'>
+          <div className='login_display'>
+            <div id='signup_error'>
+              {errors.map((error, ind) => (
+                <div key={ind}>{error}</div>
+              ))}
+            </div>
 
-        <label id='white_me'>First Name</label><br></br>
-        <input
-          type='text'
-          name='firstname'
-          onChange={updateFirstName}
-          value={firstname}
-        ></input><br></br>
+            <label id='white_me'>User Name</label><br></br>
+            <input
+              type='text'
+              name='username'
+              onChange={updateUsername}
+              value={username}
+            ></input><br></br>
 
-        <label id='white_me'>Last Name</label><br></br>
-        <input
-          type='text'
-          name='lastname'
-          onChange={updateLastName}
-          value={lastname}
-        ></input><br></br>
+            <label id='white_me'>First Name</label><br></br>
+            <input
+              type='text'
+              name='firstname'
+              onChange={updateFirstName}
+              value={firstname}
+            ></input><br></br>
 
-        <label id='white_me'>Email</label><br></br>
-        <input
-          type='text'
-          name='email'
-          onChange={updateEmail}
-          value={email}
-        ></input><br></br>
+            <label id='white_me'>Last Name</label><br></br>
+            <input
+              type='text'
+              name='lastname'
+              onChange={updateLastName}
+              value={lastname}
+            ></input><br></br>
 
-        <label id='white_me'>Password</label><br></br>
-        <input
-          type='password'
-          name='password'
-          onChange={updatePassword}
-          value={password}
-        ></input><br></br>
+            <label id='white_me'>Email</label><br></br>
+            <input
+              type='text'
+              name='email'
+              onChange={updateEmail}
+              value={email}
+            ></input><br></br>
 
-        <label id='white_me'>Repeat Password</label><br></br>
-        <input
-          type='password'
-          name='repeat_password'
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-        ></input><br></br><br></br>
-        <div id='button_position'>
-          <button id='submit' type='submit'>Sign Up</button>
+            <label id='white_me'>Password</label><br></br>
+            <input
+              type='password'
+              name='password'
+              onChange={updatePassword}
+              value={password}
+            ></input><br></br>
+
+            <label id='white_me'>Repeat Password</label><br></br>
+            <input
+              type='password'
+              name='repeat_password'
+              onChange={updateRepeatPassword}
+              value={repeatPassword}
+            ></input><br></br><br></br>
+            <div id='button_position'>
+              <button id='submit' type='submit'>Sign Up</button>
+            </div>
+
+          </div>
         </div>
       </div>
-      {/* <div id='white_me'><small>Already on Csárdás? <NavLink to='/login' exact={true}>Login</NavLink></small></div> */}
     </form>
   );
 };

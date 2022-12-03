@@ -27,11 +27,11 @@
 
 #signup_background {
     background-position: top;
-    height: 100%;
+    height: 100vh;
     width: 100%;
     background-image: url('..//BackgroundImage/Background1.jpg');
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: cover;
 }
 
 #white_me {
@@ -102,4 +102,9 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+
+#signup_error {
+    color: yellowgreen;
+    padding-bottom: 10px;
 }

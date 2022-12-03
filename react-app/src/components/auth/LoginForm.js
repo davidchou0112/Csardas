@@ -41,7 +41,7 @@ const LoginForm = () => {
     <form onSubmit={onLogin} id='login_background'>
       <div className='login_wrapper' >
         <div className='login_display'>
-          <div className='login_height'>
+          <div className='login_display'>
             <div id='error'>
               {errors.map((error, ind) => (
                 <div key={ind}>{error}</div>
@@ -69,7 +69,6 @@ const LoginForm = () => {
             </div>
           </div>
         </div>
-        {/* <div id='white_me'><small>Not on Csárdás? <NavLink to='/sign-up' exact={true}>Create an account</NavLink></small></div> */}
       </div>
     </form>
 
