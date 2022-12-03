@@ -50,6 +50,9 @@ const NavBar = () => {
 
 
       <div className='header_right'>
+        <NavLink to='/dev' exact={true} activeClassName='active'>
+          <button id='signup_button' className='splash_nav_right'>Developer</button>
+        </NavLink>
 
         <ProfileButton user={user} />
 

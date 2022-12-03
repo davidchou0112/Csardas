@@ -1,8 +1,22 @@
 .editcomment_wrapper {
+    padding: 15px;
+    border-radius: 12px;
+    height: 110%;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     justify-content: center;
     justify-items: center;
+    text-align: center;
+    color: white;
+}
+
+#editcomment_wrapper {
+    background-position: top;
+    height: 100%;
+    width: 100%;
+    background-image: url('..//BackgroundImage/Background3.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .edit_button {

@@ -4,7 +4,7 @@
     flex-direction: row;
     justify-items: center;
     justify-content: flex-start;
-    padding-top: 10%;
+    padding-top: 135px;
     padding-bottom: 5%;
     padding-right: 2%;
     padding-left: 12%;
@@ -213,6 +213,7 @@
     transition: all 0.3s ease-in-out;
     border: none;
     margin-right: 2%;
+    border-bottom: 3px solid;
 }
 
 #home_post_image:before {
@@ -264,7 +265,7 @@
 }
 
 #page_title {
-    margin-top: 5%;
+    margin-top: 80px;
     color: white;
     display: flex;
     position: absolute;

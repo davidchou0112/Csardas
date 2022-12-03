@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import AllImages from './components/Images/allImages';
 import SingleImage from './components/Images/singleImage';
 import PostImage from './components/PostImage/postImage';
+import Dev from './components/Dev';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -57,13 +58,10 @@ function App() {
           <PostImage />
         </Route>
 
-        <Route path='/current' exact={true}>
-
+        <Route path='/dev' exact={true}>
+          <Dev />
         </Route>
 
-        <Route path='/my-reviews' exact={true}>
-
-        </Route>
 
 
       </Switch>

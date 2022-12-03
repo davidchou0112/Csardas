@@ -34,6 +34,7 @@ const AllImages = () => {
 
 
     return isLoaded && (
+
         <div className='home_make_long'>
             <div id='page_title'>
                 <h1>Explore</h1>
@@ -58,6 +59,7 @@ const AllImages = () => {
                 </button>
             </NavLink><br></br>
         </div>
+
     )
 }
 
