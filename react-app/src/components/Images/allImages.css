@@ -272,3 +272,43 @@
     align-items: center;
     z-index: 1;
 }
+
+#postImage {
+    cursor: pointer;
+    font-size: larger;
+    background-image: linear-gradient(to right,
+            #54b3d6,
+            #54b3d6 50%,
+            white 50%);
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 2px;
+    margin-right: 35px;
+    position: fixed;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+    border: none;
+    border-bottom: solid 3px white;
+}
+
+#postImage:before {
+    content: '';
+    background: #54b3d6;
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+#postImage:hover {
+    background-position: 0;
+}
+
+#postImage:hover::before {
+    width: 100%;
+}

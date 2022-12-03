@@ -107,7 +107,7 @@ const UploadPicture = () => {
                 ))}
             </div> <br></br>
             <label>Title
-            </label>
+            </label><br></br>
             <input
                 id="title_input"
                 value={title}
@@ -118,7 +118,7 @@ const UploadPicture = () => {
             /><br></br>
 
             <label>Description
-            </label>
+            </label><br></br>
             <textarea
                 id="textarea"
                 value={description}
@@ -134,7 +134,7 @@ const UploadPicture = () => {
                 accept="image/*"
                 onChange={updateImage}
             /><br></br>
-            <button id="cursor_pointer" type="submit">Submit</button>
+            <button id="submit" type="submit">Submit</button>
             {(imageLoading) && <p>Loading...</p>}
         </form>
     )
