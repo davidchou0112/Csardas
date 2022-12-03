@@ -26,8 +26,8 @@ const AllImages = () => {
         return (
             <div className='splash_wrapper' id='splash_background'>
                 <div className='splash_inside_wrapper'>
-                    <div id='text_white'>Find your inspiration.</div>
-                    <div id='text_white'>Join the Csárdás community.</div>
+                    <div id='text_white1'>Find your inspiration.</div>
+                    <div id='text_white2'>Join the Csárdás community.</div>
                     <NavLink to='/sign-up' exact={true} activeClassName='active'>
                         <button id='start_free'>START</button>
                     </NavLink>
@@ -70,42 +70,6 @@ const AllImages = () => {
                 </button>
             </NavLink><br></br>
         </div>
-        // <div className='explore-page-wrapper'>
-        //     <div className='explore-page'>
-        //         <div className='explore-images'>
-
-        //             <div className='home_make_long'>
-        //                 <div className='home_all_images'>
-        //                     {Object.values(images).map(image => (
-        //                         <div className='home_image_wrapper'>
-        //                             <NavLink className='nav_link' to={`/images/${image.id}`}>
-        //                                 <img className='home_image' src={image?.image_url} alt='pic didnt load' />
-
-        //                                 <div className='home_image_title'>
-        //                                     {image?.title}
-
-        //                                     {/* {image?.description}
-        //                             <br></br> */}
-        //                                     {/* Likes: {image?.likes.length} */}
-        //                                 </div>
-
-        //                                 {/* <br></br>
-        //                         Comments: {comments?.length} */}
-        //                             </NavLink>
-        //                         </div>
-        //                     ))}
-        //                 </div>
-        //                 <NavLink className='home_post' to={`/users/${user.id}/images/upload`} exact={true} activeClassName='active'>
-        //                     <button className='home_post_image' id='home_post_image'>
-        //                         Post an Image
-        //                     </button>
-        //                 </NavLink><br></br>
-        //             </div>
-
-
-        //         </div>
-        //     </div>
-        // </div>
     )
 }
 
