@@ -63,6 +63,7 @@
     -webkit-text-fill-color: transparent;
     transition: all 0.3s ease-in-out;
     border: none;
+    border-bottom: solid 3px gray;
 }
 
 #submit:before {

@@ -205,6 +205,7 @@
     -webkit-text-fill-color: transparent;
     transition: all 0.3s ease-in-out;
     border: none;
+    border-bottom: 3px solid gray;
 }
 
 #start_free:before {
