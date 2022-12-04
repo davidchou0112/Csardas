@@ -27,6 +27,14 @@
     justify-content: center;
     gap: 0;
 
+    /* position: absolute;
+    background-position: top;
+
+    width: 100%;
+    background-image: url('..//BackgroundImage/ashes.gif');
+    background-repeat: no-repeat;
+    background-size: cover; */
+
 }
 
 .home_image {
