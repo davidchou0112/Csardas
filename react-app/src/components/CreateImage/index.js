@@ -135,7 +135,7 @@ const UploadPicture = () => {
                 onChange={updateImage}
             /><br></br>
             <button id="submit" type="submit">Submit</button>
-            {(imageLoading) && <p>Loading...</p>}
+            {(imageLoading)}
         </form>
     )
 }

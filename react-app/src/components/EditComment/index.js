@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { getSingleComments, updateComment } from '../../store/comments';
+import { getAllComments, getSingleComments, updateComment } from '../../store/comments';
 import { getSingleImage } from '../../store/images';
 
-const EditCommentForm = ({ commentId, setShowModal }) => {
+const EditCommentForm = ({ comment, setShowModal }) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const comment = useSelector(state => state);
+    // const comment = useSelector(state => state);
     const imageId = useSelector(state => state.images.singleImage.id)
     console.log('~~~~this is comment', comment)
 
@@ -17,8 +17,8 @@ const EditCommentForm = ({ commentId, setShowModal }) => {
     const [body, setBody] = useState('');
 
     useEffect(() => {
-        dispatch(getSingleComments(commentId));
-    }, [dispatch, commentId])
+        dispatch(getSingleComments(comment.id));
+    }, [dispatch, comment.id])
 
     useEffect(() => {
         if (comment) {
@@ -36,15 +36,15 @@ const EditCommentForm = ({ commentId, setShowModal }) => {
         e.preventDefault();
         setErrors(true)
         if (!validations.length) {
-            const comment = {
-                id: commentId,
+            const comments = {
+                id: comment.id,
                 body
             }
 
-            let newComment = await dispatch(updateComment(comment, commentId));
+            let newComment = await dispatch(updateComment(comments, comment.id));
 
             if (newComment) {
-                dispatch(getSingleImage())
+                dispatch(getSingleImage(imageId))
                     .then(history.push(`/images/${imageId}`))
                     .then(setErrors(false))
                     .then(setShowModal(false))
@@ -65,7 +65,7 @@ const EditCommentForm = ({ commentId, setShowModal }) => {
             }<br></br>
             <form onSubmit={handleSubmit}>
                 <textarea id='textarea'
-                    defaultValue={comment.comments.singleComment.body}
+                    defaultValue={comment.body}
                     // value={body}
                     type='text'
                     // placeholder='Body'
