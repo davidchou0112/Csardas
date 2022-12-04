@@ -3,12 +3,18 @@ import EditCommentForm from ".";
 import { Modal } from "../context/Modal";
 import './EditComment.css'
 
-function EditCommentModal({ commentId }) {
+function EditCommentModal({ comment }) {
     const [showModal, setShowModal] = useState(false)
+    const [currComment, setCurrComment] = useState('');
+
+    const handleEdit = () => {
+        setShowModal(true)
+        setCurrComment(comment.body)
+    }
 
     return (
         <>
-            <button className="edit_button" onClick={() => setShowModal(true)}>
+            <button className="edit_button" onClick={handleEdit}>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
                 <span class="material-symbols-outlined">
                     edit
@@ -16,7 +22,7 @@ function EditCommentModal({ commentId }) {
             </button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    < EditCommentForm commentId={commentId} setShowModal={setShowModal}
+                    < EditCommentForm comment={comment} setShowModal={setShowModal}
                     />
                 </Modal>
             )}

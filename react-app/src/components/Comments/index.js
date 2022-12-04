@@ -31,7 +31,7 @@ const AllComments = ({ imageId }) => {
                     <div className='comment_body'>{comment.body}</div>
                     {loggedUserId === comment.user_id && (
                         <div>
-                            <EditCommentModal commentId={comment.id} />
+                            <EditCommentModal comment={comment} />
                             <button className='edit_button'
                                 onClick={() => dispatch(actionDeleteComment(comment.id), dispatch(getSingleImage()).then(history.push(`/images/${imageId}`)))}>
                                 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
