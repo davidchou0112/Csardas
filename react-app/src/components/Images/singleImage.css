@@ -2,6 +2,8 @@
     justify-items: center;
     margin: 0% 10% 5% 10%;
     min-width: 900px;
+
+
 }
 
 .single_image {
@@ -30,6 +32,14 @@
 .single_image_page {
     background-color: black;
     height: 100vh;
+
+    /* background-position: top;
+
+    width: 100%;
+    background-image: url('..//BackgroundImage/ashes.gif');
+    background-repeat: no-repeat;
+    background-size: cover; */
+
 }
 
 .comments_position {
