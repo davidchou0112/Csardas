@@ -30,10 +30,6 @@
 
 [API Documentation](https://github.com/davidchou0112/Capstone/wiki/API-Documentation)
 
-# Flask React Project
-
-This is the starter for the Flask React project.
-
 ## Getting started
 1. Clone this repository (only this branch)
 
