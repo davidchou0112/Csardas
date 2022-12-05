@@ -33,7 +33,7 @@ const SingleImage = () => {
     if (user) {
         if (user.id !== image.user_id) {
             return (
-                <div className='single_image_page'>
+                <div className='single_image_page' id='background_ashes_single'>
                     <div className='single_image_wrapper'>
                         <img className='single_image' src={image?.image_url} alt='pic didnt load' />
                         <div className='single_image_header'>
@@ -72,7 +72,7 @@ const SingleImage = () => {
             )
         }
         return (
-            <div className='single_image_page'>
+            <div className='single_image_page' id='background_ashes_single'>
                 <div className='single_image_wrapper'>
                     <img className='single_image' src={image?.image_url} alt='pic didnt load' />
                     <div className='single_image_header'>
