@@ -36,6 +36,7 @@ const AllImages = () => {
     return isLoaded && (
 
         <div className='home_make_long'>
+            <div id='background_ashes'></div>
             <div id='page_title'>
                 <h1>Explore</h1>
             </div>
