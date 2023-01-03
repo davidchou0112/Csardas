@@ -14,22 +14,15 @@ const SingleImage = () => {
     const dispatch = useDispatch();
     const image = useSelector(state => state.images?.singleImage)
     const imgUserId = useSelector(state => state.images?.singleImage.user_id)
-    console.log('imgUserId', imgUserId)
     const comments = useSelector(state => state.comments.allComments)
     const length = Object.values(comments).map(comment => comments.allComments)
-    // console.log('~~~~~~~~~', length)
-    // console.log('~~~~~~~~~~~this is image:', image)
     const user = useSelector(state => state.session.user);
-    // console.log('~~~~~~~~~~~~~user:', user)
     const { imageId } = useParams();
     const likes = image?.likes?.length
-    // console.log('======this is likes:', likes)
     useEffect(() => {
-        // console.log('~~~~~~~~~~~~useEffect loaded~~~~~~~~~~~~~')
         dispatch(getSingleImage(imageId))
         dispatch(getAllImages())
     }, [dispatch, imageId])
-    // console.log('did i get here, before return?')
     if (user) {
         if (user.id !== image.user_id) {
             return (
@@ -111,8 +104,6 @@ const SingleImage = () => {
                             </div>
                         </div>
                     </div>
-
-                    {/* <button><EditCommentModal commentId={commentId} /></button> */}
                 </div>
             </div>
         )

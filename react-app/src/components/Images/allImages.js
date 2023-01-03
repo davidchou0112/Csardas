@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { getAllComments } from '../../store/comments';
-// import { getAllComments } from '../../store/comments';
 import { getAllImages } from '../../store/images';
 import './allImages.css'
 

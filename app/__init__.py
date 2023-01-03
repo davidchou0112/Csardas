@@ -288,6 +288,16 @@ def delete_comment(id):
     db.session.commit()
     return 'Comment has successfully been deleted'
 
+# ========== Get All Tags ===========
+@app.route('/api/tags')
+# @login_required
+def get_tags():
+    all_tags = []
+    data = Tag.query.all()
+    for tags in data:
+        all_tags.append(tags.to_dict())
+    return jsonify(all_tags)
+
 # ============= Always leave these two at the bottom of the file page =============
 
 @app.route('/', defaults={'path': ''})

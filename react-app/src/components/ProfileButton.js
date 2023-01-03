@@ -3,19 +3,12 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../src/store/session';
 import { NavLink, useHistory } from 'react-router-dom';
-// import EditSpotFormModal from '../EditSpot';
 import './NavBar.css';
-
-// import { useSelector } from 'react-redux';
-// import CreateSpotFormModal from '../CreateSpotFormModal';
 
 function ProfileButton({ user }) {
     const dispatch = useDispatch();
     const history = useHistory();
     const [showMenu, setShowMenu] = useState(false);
-
-
-    // const sessionUser = useSelector(state => state.session.user);
 
     const openMenu = () => {
         if (showMenu) return;
@@ -39,17 +32,6 @@ function ProfileButton({ user }) {
         dispatch(sessionActions.logout());
         history.push('/')
     };
-
-
-    // const sessionUser = useSelector(state => state.session.user);
-    // let sessionLinks
-    // if (sessionUser) {
-    //     sessionLinks = (
-    //         <div>
-    //             <CreateSpotFormModal />
-    //         </div>
-    //     );
-    // }
 
     if (!user.username) {
         return 'Refresh'

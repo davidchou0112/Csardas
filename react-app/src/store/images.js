@@ -5,17 +5,12 @@ import { csrfFetch } from './csrf';
 
 const GET_ALL_IMAGES = 'images/displayAllImages';
 const GET_SINGLE_IMAGE = 'images/displaySingleImage';
-
-// might not need anymore because can already create the image through aws
-// const POST_IMAGE = 'images/postImage';
-
 const UPDATE_IMAGE = 'images/updateImage';
 const DELETE = 'images/deleteImage';
 
 // REGULAR ACTION CREATOR
 
 const displayAllImages = (images) => {
-    // console.log('~~~~~~~~~~~this is images from displayAllImages:', images)
     return {
         type: GET_ALL_IMAGES,
         images
@@ -55,7 +50,6 @@ export const getAllImages = () => async dispatch => {
 }
 
 export const getSingleImage = (imageId) => async dispatch => {
-    // console.log('got here! 1')
     const response = await fetch(`/api/images/${imageId}`)
 
     if (response.ok) {
@@ -73,7 +67,6 @@ export const actionUpdateImage = (update, imageId) => async dispatch => {
         body: JSON.stringify(update)
     })
 
-    // console.log('~~~~~~~~~~~~got here~~~~~~~~')
     if (response.ok) {
         const updatedImage = await response.json();
         dispatch(updateImage(updatedImage))
@@ -112,7 +105,6 @@ const imagesReducer = (state = initialState, action) => {
                 ...state,
                 singleImage: { ...action.singleImage }
             }
-            // console.log('~~~~~~this is newState:', newState)
             return newState
 
         case UPDATE_IMAGE:

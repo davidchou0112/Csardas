@@ -7,9 +7,7 @@ import { getSingleImage } from '../../store/images';
 const EditCommentForm = ({ comment, setShowModal }) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    // const comment = useSelector(state => state);
     const imageId = useSelector(state => state.images.singleImage.id)
-    console.log('~~~~this is comment', comment)
 
     const [validations, setValidations] = useState([]);
     const [errors, setErrors] = useState(false);
