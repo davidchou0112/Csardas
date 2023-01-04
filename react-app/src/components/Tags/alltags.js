@@ -10,7 +10,11 @@ const AllTags = () => {
     })
 
     return (
-        <h1>This will be all tags</h1>
+
+        <div id='background_ashes'>
+            <h1>This will be all tags</h1>
+        </div>
+
     )
 }
 
