@@ -5,10 +5,10 @@ import { getAllTags } from '../../store/tags';
 
 const AllTags = () => {
     const dispatch = useDispatch();
-    const [isLoaded, setIsLoaded] = useState(false);
+    // const [isLoaded, setIsLoaded] = useState(false);
 
-    const tags = useSelector(state => state.tags)
-    console.log(`this is tags, from alltags.js -- :`, tags)
+    const allTags = useSelector(state => state.tags?.allTags)
+    console.log(`this is tags, from alltags.js -- :`, allTags)
 
     // const allTagsArr = Object.values(tags.AllTags)
     // console.log(`this is allTagsArr, from alltags.js --:`, allTagsArr)
@@ -16,8 +16,8 @@ const AllTags = () => {
     useEffect(() => {
         dispatch(getAllTags())
         dispatch(getAllImages())
-            .then(() => setIsLoaded(true))
-    }, [dispatch])
+        // .then(() => setIsLoaded(true))
+    }, [])
 
     return (
 
