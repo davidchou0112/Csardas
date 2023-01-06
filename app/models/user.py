@@ -68,6 +68,8 @@ class Image(db.Model):
             "image_url" : self.image_url,
             "user_id" : self.user_id,
             'likes': [like.to_dict() for like in self.likes],
+            'tags': [tag.to_dict() for tag in self.tags],
+            
     }
 
 class Tag(db.Model, UserMixin):
