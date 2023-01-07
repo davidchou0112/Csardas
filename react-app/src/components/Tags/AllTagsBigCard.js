@@ -1,0 +1,1 @@
+// big card ? or write in all tags js.
