@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import './ImageCard.css';
 
 const ImageCard = ({ image, comments, likes, users }) => {
-    const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user)
 
     const imageOwner = user.id
@@ -17,8 +16,8 @@ const ImageCard = ({ image, comments, likes, users }) => {
     // const photoLikes = likesArr.filter(like => like?.imageId === Number(image.id))
 
     let title;
-    let firstname;
-    let lastname;
+    // let firstname;
+    // let lastname;
 
     if (image?.title?.length > 18) {
         title = (image?.title)?.slice(0, 18) + '...'
@@ -26,29 +25,29 @@ const ImageCard = ({ image, comments, likes, users }) => {
         title = (image?.title)
     }
 
-    if (imageOwner?.first_name?.length > 15) {
-        firstname = (imageOwner?.first_name)?.slice(0, 15) + '...'
-    } else {
-        firstname = (imageOwner?.first_name)?.slice(0, 15)
-    }
+    // if (imageOwner?.first_name?.length > 15) {
+    //     firstname = (imageOwner?.first_name)?.slice(0, 15) + '...'
+    // } else {
+    //     firstname = (imageOwner?.first_name)?.slice(0, 15)
+    // }
 
-    if (imageOwner?.last_name?.length > 15) {
-        lastname = (imageOwner?.last_name)?.slice(0, 15) + '...'
-    } else {
-        lastname = (imageOwner?.last_name)?.slice(0, 15)
-    }
+    // if (imageOwner?.last_name?.length > 15) {
+    //     lastname = (imageOwner?.last_name)?.slice(0, 15) + '...'
+    // } else {
+    //     lastname = (imageOwner?.last_name)?.slice(0, 15)
+    // }
 
-    if (imageOwner?.last_name?.length + imageOwner?.first_name?.length > 30) {
-        lastname = ''
-    } else {
-        lastname = (imageOwner?.last_name)
-    }
+    // if (imageOwner?.last_name?.length + imageOwner?.first_name?.length > 30) {
+    //     lastname = ''
+    // } else {
+    //     lastname = (imageOwner?.last_name)
+    // }
 
 
     return (
         <div className="image-card-container" key={''}>
             <Link to={`/images/${image?.id}`}>
-                <img className="image-card-image" src={image?.image_url} alt="" onError={e => { e.currentTarget.src = "https://demofree.sirv.com/nope-not-here.jpg"; }}></img>
+                <img className="image-card-image" src={image?.image_url} alt=""></img>
                 <div className="image-card-text-container">
                     <div>
                         <div className="image-card-text-title">{title}</div>
