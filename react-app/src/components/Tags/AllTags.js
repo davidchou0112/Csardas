@@ -32,7 +32,7 @@ const AllTags = () => {
 
         <div>
             <h1>This will be all tags</h1>
-            <div>
+            <div className='allTags_container'>
                 {tagNames.map((tagname) => {
                     return (
                         <div key={tagname}>
