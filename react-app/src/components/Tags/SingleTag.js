@@ -5,9 +5,11 @@ import { getAllTags } from "../../store/tags";
 import { getAllImages } from "../../store/images";
 import ImageCard from "../ImageCard/ImageCard";
 import './SingleTag.css';
+import { getAllUsersThunk } from "../../store/user";
 
 const SingleTag = () => {
     const dispatch = useDispatch();
+    const users = useSelector(state => state.users)
 
     const tagname = useParams().tagname;
 
@@ -41,6 +43,7 @@ const SingleTag = () => {
     useEffect(() => {
         dispatch(getAllTags())
         dispatch(getAllImages())
+        dispatch(getAllUsersThunk())
     }, [dispatch])
 
     let results;
@@ -67,7 +70,7 @@ const SingleTag = () => {
                                 return (
                                     <div key={i}>
                                         #{tagname}
-                                        <ImageCard image={image} />
+                                        <ImageCard image={image} users={users} />
                                     </div>
                                 );
                             })}
