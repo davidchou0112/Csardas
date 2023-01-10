@@ -19,6 +19,9 @@ const NavBar = () => {
           <NavLink to='/' exact={true} activeClassName='active'>
             <button id='signup_button' className='splash_nav_right'>Explore</button>
           </NavLink>
+          <NavLink to='/tags' exact={true} activeClassName='active'>
+            <button id='signup_button' className='splash_nav_right'>Tags</button>
+          </NavLink>
         </div>
 
         <div className='header_right'>
@@ -48,6 +51,9 @@ const NavBar = () => {
         </NavLink>
         <NavLink to='/' exact={true} activeClassName='active'>
           <button id='signup_button' className='splash_nav_right'>Explore</button>
+        </NavLink>
+        <NavLink to='/tags' exact={true} activeClassName='active'>
+          <button id='signup_button' className='splash_nav_right'>Tags</button>
         </NavLink>
       </div>
 

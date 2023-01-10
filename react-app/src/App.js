@@ -12,7 +12,8 @@ import AllImages from './components/Images/allImages';
 import SingleImage from './components/Images/singleImage';
 import PostImage from './components/PostImage/postImage';
 import Dev from './components/Dev';
-import AllTags from './components/Tags/alltags';
+import AllTags from './components/Tags/AllTags';
+import SingleTag from './components/Tags/SingleTag';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -36,16 +37,18 @@ function App() {
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
+
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
         </ProtectedRoute>
+
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-
 
         <Route path='/' exact={true}>
           <AllImages />
@@ -67,7 +70,9 @@ function App() {
           <AllTags />
         </Route>
 
-
+        <Route path='/tags/:tagname' exact={true}>
+          <SingleTag />
+        </Route>
 
       </Switch>
     </BrowserRouter >
