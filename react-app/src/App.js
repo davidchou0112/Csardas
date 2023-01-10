@@ -12,7 +12,7 @@ import AllImages from './components/Images/allImages';
 import SingleImage from './components/Images/singleImage';
 import PostImage from './components/PostImage/postImage';
 import Dev from './components/Dev';
-import AllTags from './components/Tags/alltags';
+import AllTags from './components/Tags/AllTags';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
