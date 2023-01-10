@@ -14,7 +14,6 @@
 .image-card-text-container {
     transition: .5s ease;
     opacity: 0;
-    /* opacity: 1; */
     position: absolute;
     left: 108px;
     top: 248px;
@@ -27,21 +26,6 @@
     flex-direction: row;
 }
 
-/* .image-card-like-container {
-    transition: .5s ease;
-    opacity: 0;
-    opacity: 1;
-    position: absolute;
-    left: 108px;
-    top: 16px;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    display: flex;
-    width: 200px;
-    flex-direction: column;
-    justify-content: flex-start;
-    flex-direction: row;
-  } */
 
 .image-card-bottom-right-container {
     display: flex;
@@ -51,15 +35,11 @@
 .image-card-bottom-right {
     transition: .5s ease;
     opacity: 0;
-    /* opacity: 1; */
     position: absolute;
     bottom: 0px;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
-    /* display: flex; */
-    /* width: 100%; */
     width: 58px;
-    /* border: 1px solid red; */
     display: flex;
     justify-content: space-between;
     color: white;
