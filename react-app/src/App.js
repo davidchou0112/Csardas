@@ -13,6 +13,7 @@ import SingleImage from './components/Images/singleImage';
 import PostImage from './components/PostImage/postImage';
 import Dev from './components/Dev';
 import AllTags from './components/Tags/AllTags';
+import SingleTag from './components/Tags/SingleTag';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -67,6 +68,10 @@ function App() {
 
         <Route path='/tags' exact={true}>
           <AllTags />
+        </Route>
+
+        <Route path='/tags/:tagname' exact={true}>
+          <SingleTag />
         </Route>
 
       </Switch>

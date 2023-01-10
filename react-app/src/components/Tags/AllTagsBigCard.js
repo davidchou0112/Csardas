@@ -40,7 +40,7 @@ const TagBigCard = ({ tagname, images, tags }) => {
     return (
         <div className='tagbigcard-container' onClick={() => history.push(`/tags/${tagname}`)}>
             <img className='tagbigcard-pic' src={randomImage?.image_url} alt=''></img>
-            <div className='tagbigcard-text'>{tagname}</div>
+            <div className='tagbigcard-text'>#{tagname}</div>
         </div>
     )
 }
