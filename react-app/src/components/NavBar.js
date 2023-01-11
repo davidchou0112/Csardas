@@ -33,7 +33,6 @@ const NavBar = () => {
           </NavLink>
         </div>
 
-
         <div className='navbar-search'>
           <i class="navbar-glass fa-solid fa-magnifying-glass" onClick={handleSearch}></i>
           <form>
@@ -47,8 +46,6 @@ const NavBar = () => {
             />
           </form>
         </div>
-
-
 
         <div className='header_right'>
           <a target='_blank' rel='noopener noreferrer' href="https://github.com/davidchou0112">
@@ -83,7 +80,6 @@ const NavBar = () => {
         </NavLink>
       </div>
 
-
       <div className='navbar-search'>
         <i class="navbar-glass fa-solid fa-magnifying-glass" onClick={handleSearch}></i>
         <form>
@@ -97,7 +93,6 @@ const NavBar = () => {
           />
         </form>
       </div>
-
 
       <div className='header_right'>
         <a target='_blank' rel='noopener noreferrer' href="https://github.com/davidchou0112">
