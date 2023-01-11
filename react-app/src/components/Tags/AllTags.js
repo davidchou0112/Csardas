@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllImages } from '../../store/images';
 import { getAllTags } from '../../store/tags';
 import TagBigCard from './AllTagsBigCard';
-
+import { Redirect } from 'react-router-dom';
 import './AllTags.css'
 
 const AllTags = () => {
     const dispatch = useDispatch();
+
+    const user = useSelector((state) => state.session.user)
 
     const allTags = useSelector(state => state.tags?.allTags)
     const allTagsArr = Object.values(allTags)
@@ -27,6 +29,10 @@ const AllTags = () => {
         dispatch(getAllTags())
         dispatch(getAllImages())
     }, [])
+
+    if (!user) {
+        return (Redirect('/login'))
+    }
 
     return (
 
