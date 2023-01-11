@@ -3,7 +3,8 @@
 }
 
 .allTags_container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    margin: 50px 20px 20px 20px;
+    margin: 5% 24% 0px 26%;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
 }

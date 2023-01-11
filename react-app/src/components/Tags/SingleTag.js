@@ -20,7 +20,7 @@ const SingleTag = () => {
     const imagesArr = Object.values(images);
 
     const filteredTags = tagsArr.filter(tag => tag.name === tagname);
-    console.log(`this is filteredTags, from SingleTag.js -- :`, filteredTags)
+    // console.log(`this is filteredTags, from SingleTag.js -- :`, filteredTags)
 
     let eventIdArr = [];
     for (let i = 0; i < filteredTags.length; i++) {
@@ -29,7 +29,7 @@ const SingleTag = () => {
         }
     }
 
-    console.log(`this is eventIdArr -- : `, eventIdArr)
+    // console.log(`this is eventIdArr -- : `, eventIdArr)
 
     const filteredByTag = imagesArr.filter(image => eventIdArr.includes(image.id))
     const filteredByTitle = imagesArr.filter(image => image.title.toLowerCase().includes(tagname.toLowerCase()))
@@ -42,7 +42,7 @@ const SingleTag = () => {
         }
     }
 
-    console.log(`this is finalFiltered -- : `, finalFiltered)
+    // console.log(`this is finalFiltered -- : `, finalFiltered)
 
     useEffect(() => {
         dispatch(getAllTags())

@@ -85,7 +85,7 @@
     color: white
 }
 
-#background_ashes_single {
+/* #background_ashes_single {
     position: relative;
     background-position: top;
     height: 100vh;
@@ -93,4 +93,4 @@
     background-image: url('..//BackgroundImage/ashes.gif');
     background-repeat: no-repeat;
     background-size: cover;
-}
+} */
