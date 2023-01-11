@@ -39,7 +39,7 @@ const NavBar = () => {
             <input
               className='navbar-search-input'
               type="text"
-              placeholder="Search photos or tags"
+              placeholder="Search title or tag"
               value={body}
               onKeyPress={(e) => { if (e.key === "Enter") { handleSearch(e) } }}
               onChange={(e) => setBody(e.target.value)}
@@ -86,7 +86,7 @@ const NavBar = () => {
           <input
             className='navbar-search-input'
             type="text"
-            placeholder="Search photos or tags"
+            placeholder="Search title or tag"
             value={body}
             onKeyPress={(e) => { if (e.key === "Enter") { handleSearch(e) } }}
             onChange={(e) => setBody(e.target.value)}

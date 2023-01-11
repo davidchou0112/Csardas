@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 import { useEffect } from "react";
 import { getAllTags } from "../../store/tags";
 import { getAllImages } from "../../store/images";
@@ -10,6 +10,8 @@ import { getAllUsersThunk } from "../../store/user";
 const SingleTag = () => {
     const dispatch = useDispatch();
     const users = useSelector(state => state.users)
+    const user = useSelector((state) => state.session.user)
+
 
     const tagname = useParams().tagname;
 
@@ -83,6 +85,10 @@ const SingleTag = () => {
                 </div>
             </div>
         )
+    }
+
+    if (!user) {
+        return (Redirect('/'))
     }
 
     return (
