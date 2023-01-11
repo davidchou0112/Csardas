@@ -37,7 +37,7 @@
 
 }
 
-#background_ashes {
+/* #background_ashes {
     position: fixed;
     background-position: top;
     height: 100vh;
@@ -45,7 +45,7 @@
     background-image: url('..//BackgroundImage/ashes.gif');
     background-repeat: no-repeat;
     background-size: cover;
-}
+} */
 
 .home_image {
     width: 100%;
