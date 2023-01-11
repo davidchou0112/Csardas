@@ -104,3 +104,48 @@
 #signup_button:hover {
     color: #54b3d6;
 }
+
+/* Nav Bar */
+.navbar-search {
+    /* width: 230px; */
+    display: flex;
+    align-items: center;
+}
+
+.navbar-glass {
+    padding: 8px 11px 7px 11px;
+    color: black;
+    border-radius: 3px 0 0 3px;
+    height: 33px;
+    box-sizing: border-box;
+    cursor: pointer;
+    /* background-color: hsla(0,0%,100%,.8); */
+    background-color: white;
+}
+
+.navbar-search-input {
+    height: 33px;
+    font-size: 14px;
+    line-height: 20px;
+    border-radius: 0 3px 3px 0;
+    border: none;
+    box-sizing: border-box;
+    outline: none;
+    width: 180px;
+    /* background-color: hsla(0,0%,100%,.8); */
+    background-color: white;
+}
+
+.navbar-search-input:focus {
+    /* height: 33px;
+    font-size: 14px;
+    line-height: 20px;
+    border-radius: 0 3px 3px 0;
+    border: none;
+    box-sizing: border-box;
+    outline: none; */
+    /* background-color: hsla(0,0%,100%,.8); */
+    /* background-color: white; */
+    width: 320px;
+    transition: 0.4s;
+}
