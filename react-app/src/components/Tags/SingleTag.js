@@ -20,14 +20,16 @@ const SingleTag = () => {
     const imagesArr = Object.values(images);
 
     const filteredTags = tagsArr.filter(tag => tag.name === tagname);
-    // console.log(`this is filteredTags, from SingleTag.js -- :`, filteredTags)
+    console.log(`this is filteredTags, from SingleTag.js -- :`, filteredTags)
 
     let eventIdArr = [];
     for (let i = 0; i < filteredTags.length; i++) {
-        if (!eventIdArr.includes(filteredTags[i].imageId)) {
-            eventIdArr.push(filteredTags[i].imageId)
+        if (!eventIdArr.includes(filteredTags[i].image_id)) {
+            eventIdArr.push(filteredTags[i].image_id)
         }
     }
+
+    console.log(`this is eventIdArr -- : `, eventIdArr)
 
     const filteredByTag = imagesArr.filter(image => eventIdArr.includes(image.id))
     const filteredByTitle = imagesArr.filter(image => image.title.toLowerCase().includes(tagname.toLowerCase()))
@@ -39,6 +41,8 @@ const SingleTag = () => {
             finalFiltered.push(combinedFiltered[i])
         }
     }
+
+    console.log(`this is finalFiltered -- : `, finalFiltered)
 
     useEffect(() => {
         dispatch(getAllTags())
@@ -65,11 +69,11 @@ const SingleTag = () => {
             <div className='tagsearch-outer-container'>
                 <div className="tagsearch-container">
                     <div className="tagsearch-inner-container">
+                        <h1>#{tagname}</h1>
                         <div className="tagsearch-images-container">
                             {finalFiltered.map((image, i) => {
                                 return (
                                     <div key={i}>
-                                        #{tagname}
                                         <ImageCard image={image} users={users} />
                                     </div>
                                 );
