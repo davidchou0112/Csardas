@@ -39,7 +39,7 @@ const AllImages = () => {
                 <h1>Explore</h1>
             </div>
             <div className='home_all_images'>
-                {Object.values(images).reverse().map(image => (
+                {Object.values(images).map(image => (
                     <div className='home_image_wrapper'>
                         <NavLink className='nav_link' to={`/images/${image.id}`}>
                             <div id='image_title'>
