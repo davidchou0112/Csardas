@@ -71,7 +71,7 @@ const SingleTag = () => {
             <div className='tagsearch-outer-container'>
                 <div className="tagsearch-container">
                     <div className="tagsearch-inner-container">
-                        <h1>#{tagname}</h1>
+                        <h1 className="tagname_header">{tagname}</h1>
                         <div className="tagsearch-images-container">
                             {finalFiltered.map((image, i) => {
                                 return (
