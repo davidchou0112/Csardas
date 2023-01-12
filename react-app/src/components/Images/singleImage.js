@@ -8,6 +8,8 @@ import UpdateImageModal from '../EditImage/editModal';
 import CreateCommentModal from '../CreateComment/createCommentModal';
 import EditCommentModal from '../EditComment/editCommentModal';
 import { getAllComments } from '../../store/comments';
+import { getAllTags } from '../../store/tags';
+import TagCard from '../Tags/TagCard';
 
 const SingleImage = () => {
     const history = useHistory();
@@ -18,11 +20,21 @@ const SingleImage = () => {
     const length = Object.values(comments).map(comment => comments.allComments)
     const user = useSelector(state => state.session.user);
     const { imageId } = useParams();
-    const likes = image?.likes?.length
+    const likes = image.likes?.length
+
+    const tags = useSelector(state => state.tags.allTags)
+    // console.log(`this is tags -- :`, tags)
+    const tagsArr = Object.values(tags)
+    // console.log(`this is tagsArr -->`, tagsArr)
+    const filteredTags = tagsArr.filter(tag => tag.image_id === Number(imageId))
+    // console.log(`this is filteredTags --> `, filteredTags)
+
     useEffect(() => {
         dispatch(getSingleImage(imageId))
         dispatch(getAllImages())
+        dispatch(getAllTags())
     }, [dispatch, imageId])
+
     if (user) {
         if (user.id !== image.user_id) {
             return (
@@ -57,6 +69,13 @@ const SingleImage = () => {
                                     {/* <div>Comments: {length}</div> */}
                                     {/* <div>Comments</div> */}
                                 </div>
+
+                                <div className='image-detail-tag-card-container'>
+                                    {filteredTags.map((tag) => (
+                                        <TagCard tag={tag} />
+                                    ))}
+                                </div>
+
                             </div>
                         </div>
 
@@ -102,6 +121,13 @@ const SingleImage = () => {
                                 {/* <div>Comments: {length}</div> */}
                                 {/* <div>Comments</div> */}
                             </div>
+
+                            <div className='image-detail-tag-card-container'>
+                                {filteredTags.map((tag) => (
+                                    <TagCard tag={tag} />
+                                ))}
+                            </div>
+
                         </div>
                     </div>
                 </div>

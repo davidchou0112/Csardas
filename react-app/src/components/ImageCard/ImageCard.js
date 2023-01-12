@@ -1,9 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import './ImageCard.css';
 
 const ImageCard = ({ image, comments, likes, users }) => {
     const user = useSelector((state) => state.session.user)
+
+    if (!user) {
+        return (Redirect('/login'))
+    }
 
     const imageOwner = user.id
 
@@ -42,7 +46,6 @@ const ImageCard = ({ image, comments, likes, users }) => {
     // } else {
     //     lastname = (imageOwner?.last_name)
     // }
-
 
     return (
         <div className="image-card-container" key={''}>

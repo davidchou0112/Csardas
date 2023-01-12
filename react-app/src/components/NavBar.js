@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import './NavBar.css'
 import Logo from '../../src/components/BackgroundImage/Csardas_logo.jpg'
 import ProfileButton from './ProfileButton';
@@ -8,6 +8,15 @@ import ProfileButton from './ProfileButton';
 const NavBar = () => {
 
   const user = useSelector(state => state.session.user);
+  const history = useHistory();
+  const [body, setBody] = useState("");
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    history.push(`/tags/${body}`)
+    setBody("")
+  }
 
   if (!user) {
     return (
@@ -17,11 +26,25 @@ const NavBar = () => {
             <img className='logo' src={Logo} alt='logo' />
           </NavLink>
           <NavLink to='/' exact={true} activeClassName='active'>
-            <button id='signup_button' className='splash_nav_right'>Explore</button>
+            <button id='login_button' className='splash_nav_right'>Explore</button>
           </NavLink>
           <NavLink to='/tags' exact={true} activeClassName='active'>
             <button id='signup_button' className='splash_nav_right'>Tags</button>
           </NavLink>
+        </div>
+
+        <div className='navbar-search'>
+          <i class="navbar-glass fa-solid fa-magnifying-glass" onClick={handleSearch}></i>
+          <form>
+            <input
+              className='navbar-search-input'
+              type="text"
+              placeholder="Search title or tag"
+              value={body}
+              onKeyPress={(e) => { if (e.key === "Enter") { handleSearch(e) } }}
+              onChange={(e) => setBody(e.target.value)}
+            />
+          </form>
         </div>
 
         <div className='header_right'>
@@ -50,11 +73,25 @@ const NavBar = () => {
           <img className='logo' src={Logo} alt='logo' />
         </NavLink>
         <NavLink to='/' exact={true} activeClassName='active'>
-          <button id='signup_button' className='splash_nav_right'>Explore</button>
+          <button id='login_button' className='splash_nav_right'>Explore</button>
         </NavLink>
         <NavLink to='/tags' exact={true} activeClassName='active'>
           <button id='signup_button' className='splash_nav_right'>Tags</button>
         </NavLink>
+      </div>
+
+      <div className='navbar-search'>
+        <i class="navbar-glass fa-solid fa-magnifying-glass" onClick={handleSearch}></i>
+        <form>
+          <input
+            className='navbar-search-input'
+            type="text"
+            placeholder="Search title or tag"
+            value={body}
+            onKeyPress={(e) => { if (e.key === "Enter") { handleSearch(e) } }}
+            onChange={(e) => setBody(e.target.value)}
+          />
+        </form>
       </div>
 
       <div className='header_right'>

@@ -1,0 +1,25 @@
+.tag-card-container {
+    margin-right: 5px;
+    margin-bottom: 5px;
+    position: relative;
+    display: inline-block;
+}
+
+.tag-card-tag-nouser {
+    background-color: #cfd6d9;
+    border-radius: 5px;
+    color: #212124;
+    font-weight: 400;
+    line-height: 21px;
+    overflow: hidden;
+    display: inline-block;
+    max-width: 225px;
+    box-sizing: border-box;
+    padding-left: 10px;
+}
+
+.tag-card-tag-nouser:hover {
+    cursor: pointer;
+    color: white;
+    background-color: #7a7a7a;
+}

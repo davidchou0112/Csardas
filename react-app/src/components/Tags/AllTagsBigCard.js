@@ -1,7 +1,9 @@
 import './TagBigCard.css'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Redirect } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const TagBigCard = ({ tagname, images, tags }) => {
+    const user = useSelector((state) => state.session.user)
 
     const history = useHistory();
 
@@ -23,6 +25,10 @@ const TagBigCard = ({ tagname, images, tags }) => {
     const finalFiltered = filteredByTag.concat(filteredByTitle)
     const randomNum = Math.floor(Math.random() * finalFiltered.length)
     const randomImage = finalFiltered[randomNum]
+
+    if (!user) {
+        return (Redirect('/'))
+    }
 
     return (
         <div className='tagbigcard-container' onClick={() => history.push(`/tags/${tagname}`)}>

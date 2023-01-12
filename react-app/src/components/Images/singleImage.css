@@ -1,9 +1,8 @@
 .single_image_wrapper {
     justify-items: center;
-    margin: 0% 10% 5% 10%;
+    margin: 0% 10% 5% 13%;
     min-width: 900px;
-
-
+    max-width: 1500px;
 }
 
 .single_image {
